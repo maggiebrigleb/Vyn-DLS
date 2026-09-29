@@ -67,11 +67,11 @@ colors:
   tag-default-border: "#ebeae8"             # Tag/tag-default-border → Grey/200
   tag-success: "#dcfce7"                    # Tag/tag-success → Functional/Success/100 → Semantic Green/100
   tag-success-text: "#14532d"               # Tag/tag-success-text → Functional/Success/900 → Semantic Green/900
-  tag-chip-success-border: "#bbf7d0"        # Tag/chip-success-border → Functional/Success/200 → Semantic Green/200
-  tag-warning-bg: "#fff3e0"                 # Tag/tag-warning-bg → Functional/Warning/100 → Orange/100
+  tag-success-border: "#bbf7d0"        # Tag/tag-success-border → Functional/Success/200 → Semantic Green/200
+  tag-warning: "#fff3e0"                 # Tag/tag-warning → Functional/Warning/100 → Orange/100
   tag-warning-text: "#bf360c"               # Tag/tag-warning-text → Functional/Warning/900 → Orange/900
   tag-warning-border: "#ffe0b2"             # Tag/tag-warning-border → Functional/Warning/200 → Orange/200
-  tag-danger-bg: "#ffebee"                  # Tag/tag-danger-bg → Functional/Danger/100 → Red/100
+  tag-danger: "#ffebee"                  # Tag/tag-danger → Functional/Danger/100 → Red/100
   tag-danger-text: "#b71c1c"                # Tag/tag-danger-text → Functional/Danger/800 → Red/800
   tag-danger-border: "#ffcdd2"              # Tag/tag-danger-border → Functional/Danger/200 → Red/200
   # --- Chip ---
