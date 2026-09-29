@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vyn-Web-App-design
-description: "A calm, desk-side operations console for utilities and infrastructure teams: white work surfaces framed by warm charcoal chrome (background-dark), one confident brand green (button-primary) for action, and warm stone greys for everything structural. Type is Inter throughout, set small and dense (16px body, 20px H1) with a 150% line-height, because the product is read all day by people triaging video evidence, not skimmed once. Components are Bootstrap-shaped (4px radius, 1px borders, 48px form controls) with Material icons. The personality is practical and proven first, lightly playful second: the product earns trust by showing the evidence, not by decorating it."
+description: "A calm, desk-side operations console for utilities and infrastructure teams: white work surfaces framed by warm charcoal chrome (background-dark), one confident action green (button-primary), with the neon brand green reserved for Vyn AI outputs and the logo, and warm stone greys for everything structural. Type is Inter throughout, set small and dense (16px body, 20px H1) with a 150% line-height, because the product is read all day by people triaging video evidence, not skimmed once. Components are Bootstrap-shaped (4px radius, 1px borders, 48px form controls) with Material icons. The personality is practical and proven first, lightly playful second: the product earns trust by showing the evidence, not by decorating it."
 
 # Naming rule: every key is the developer token minus its category prefix,
 # so {colors.text-secondary} == --color-text-secondary == Figma "Text/text-secondary".
@@ -99,7 +99,7 @@ colors:
   grey-500: "#7c7874"                     # Grey/500 — navbar workflow-switcher border
   grey-600: "#585450"                     # Grey/600 — navbar icon-button fill
   grey-700: "#403d3b"                     # Grey/700 — sidebar footer divider
-  neon-green-800: "#98db40"               # Neon Green/800 — logo mark on dark chrome
+  neon-green-800: "#98db40"               # Neon Green/800 — THE brand color: logo + Vyn AI outputs only (provisional rule)
 
 typography:
   header-h1-semi-bold:                # --font-header-h1-semi-bold
@@ -442,15 +442,16 @@ components:
 
 ## Overview
 
-Vyn is the web console for **Vyntelligence**. Customers and field crews record short guided videos, Vyn AI® analyses them, and desk teams use this app to review what came back, triage it and act on it. The two product lines are **CX** (Customer Experience) and **FX** (Field Experience). The core users are operations managers, back-office teams and supervisors at UK utilities (water, gas, energy, telecoms), and the US infrastructure market is next.
+Vyn is the web console for **Vyntelligence**. Customers and field crews record short guided videos (**Vyns**). **Vyn AI®** runs several models over each one to write **AI summaries**, generate **labels** (sometimes with **evidence frames** attached), push **AI nudges** to field workers, and more. Desk teams, mainly supervisors and customer-care staff, use this app to review what came back, triage it and act on it. The summaries and labels appear in the **Vyn Viewer**. The web app also hosts the **Agentic Toolbox**, where users build and deploy their own agents on selected workflows, or have agents triage incoming Vyns into predefined categories. The two product lines are **CX** (Customer Experience) and **FX** (Field Experience). The core users are operations managers, back-office teams and supervisors at UK utilities (water, gas, energy, telecoms), and the US infrastructure market is next. The company is moving from a digital solutions platform to **Physical World AI**: technology that helps the people doing the work on site, where the tools still lag behind what's possible.
 
-The brand audit sums up the feel in one line: *"a practical, proven, slightly playful engineering partner."* The UI should read the same way. It's a tool people trust with safety and compliance evidence, so it stays calm and legible, and the personality shows up in small places (the Vynnie icon, the brand words, the neon green mark on dark chrome) rather than in decoration.
+The brand audit sums up the feel in one line: *"a practical, proven, slightly playful engineering partner."* The UI should read the same way. It's a tool people trust with safety and compliance evidence, so it stays calm and legible, and the personality shows up in small places (Vynnie, the brand words, the neon brand green) rather than in decoration. The brand's own summary is **professional but playful**, and it should always feel **premium**, digitally and physically.
 
-The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are stock Bootstrap themed with Vyn tokens. That means 4px control corners, 1px borders, 48px form controls and a Bootstrap-width (0.25rem) focus ring in classic Bootstrap blue. It uses **Material icons** throughout and Material elevation values for shadows. On top of that sits a warm, Vyn-specific palette: stone greys with a brown undertone (`#2c2a29` → `#f5f4f3`) instead of Bootstrap's cool greys, and one brand green.
+The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are stock Bootstrap themed with Vyn tokens. That means 4px control corners, 1px borders, 48px form controls and a Bootstrap-width (0.25rem) focus ring in classic Bootstrap blue. It uses **Material icons** throughout and Material elevation values for shadows. On top of that sits a warm, Vyn-specific palette: stone greys with a brown undertone (`#2c2a29` → `#f5f4f3`) instead of Bootstrap's cool greys. There are two greens with separate jobs: **action green** (`button-primary`, Green/600) for UI actions, and **neon brand green** (Neon Green/800) for Vyn AI and the logo.
 
 **Key characteristics:**
 - **Dark chrome, light work area.** The navbar and sidebar sit on warm charcoal `{colors.background-dark}`. Everything the user works on sits on white `{colors.background-primary}`, with `{colors.background-secondary}` for secondary panels such as filters.
-- **One action color.** Vyn green (`{colors.button-primary}`, `{colors.link-primary}`, `{colors.input-primary-active}`) marks primary buttons, links, active inputs and the selected tab. It isn't used as a background for regions.
+- **Neon green belongs to Vyn AI.** The neon brand green marks Vyn AI outputs (and the logo), nothing else. This is a provisional rule; see *Vyn AI UI*.
+- **One action color.** Action green (`{colors.button-primary}`, `{colors.link-primary}`, `{colors.input-primary-active}`) marks primary buttons, links, active inputs and the selected tab. It isn't used as a background for regions.
 - **Dense, small type.** Inter at 16px body with a 20px H1. Hierarchy comes from weight (400/500/600), not size jumps. Every style uses a 1.5 line-height.
 - **Warm neutrals do the structural work.** Borders, dividers, disabled states and secondary buttons all come from the Grey ramp. There's no pure black in the UI.
 - **Status is neutral by default.** "Info" is grey, not blue. Color is saved for success, warning and danger, so it means something when it appears.
@@ -617,11 +618,13 @@ These are the external primitives library. They're listed for reference only, so
 **Primitives used directly today:** four places in Figma bind a primitive because no semantic token exists yet. These are `grey-500` (navbar workflow-switcher border), `grey-600` (navbar icon-button fill), `grey-700` (sidebar footer divider) and `neon-green-800` (logo mark). They're in the front matter under their primitive names so they're easy to find and replace once semantic tokens exist.
 
 ### Usage guidance
-- **Brand green is for action.** `button-primary`, `link-primary`, `input-primary-active` and the selected tab's `link-primary` underline. Don't use it as a background for regions.
+- **Action green is for action.** `button-primary`, `link-primary`, `input-primary-active` and the selected tab's `link-primary` underline. Don't use it as a background for regions.
 - **Hover and pressed are overlays, not new colors.** Layer `state-hover-shade` (black 15%) or `state-pressed-shade` (black 20%) over the base fill. On dark surfaces, use `state-hover-tint` / `state-pressed-tint` (white 15% / 20%).
 - **Success isn't brand.** Success tokens alias the cooler Semantic Green ramp, so a success state never reads as a primary action.
 - **Info and default are neutral grey** (`alert-default-*`, `tag-default*`), not blue. Color is kept for success, warning and danger.
-- **On dark chrome** (`background-dark`), use the `link-secondary-light*` family for text. Brand green drops to 3.1:1 there, so the logo uses Neon Green instead.
+- **Neon brand green is for Vyn AI outputs and the logo only** *(provisional rule, subject to change)*. Neon Green/800 is Vyntelligence's brand color. It's vibrant and energetic, and it looks premium against a dark backdrop. To make AI outputs easy to spot and trust, it's reserved for two things: the logo, and marking content produced by Vyn AI. Don't use it for buttons, links, success states, selection, highlights or decoration. See *Vyn AI UI* for how to apply it.
+- **Neon on white is a fill, never a foreground.** Neon on `background-primary` is 1.7:1, which fails even the 3:1 minimum for non-text UI. Use it as a background behind `text-primary` (8.5:1), or as text and icons on `background-dark` (8.5:1). Never use it as text, a thin border or a lone icon on a light surface.
+- **On dark chrome** (`background-dark`), use the `link-secondary-light*` family for text. Action green drops to 3.1:1 there, so don't use it on dark surfaces.
 - **Non-token values from Bootstrap:** the modal and offcanvas backdrop (black 50%) and the card border (`$border-color-translucent`, black 17.5%) are Bootstrap 5 defaults, not Vyn tokens.
 
 ## Typography
@@ -722,7 +725,7 @@ Rules:
 
 ### Iconography
 - **Material Design icons** (MUI set) are the default icon library and are already in the Vyn codebase. Use the outlined style for utilities (bell, chevrons) and filled glyphs in the sidebar.
-- The **"Vynnie"** is a custom camera/box glyph taken from the logo mark. It represents Vyns and Cases in the sidebar. It's a brand asset, so keep it for Vyn-specific objects.
+- **Vynnie** is the Vyn mascot (see *Brand & Mascot*). A face-less Vynnie silhouette (`.vynnie no face`) is the sidebar icon for Cases and Vyns. The full smiling Vynnie is a brand asset, so keep it for brand moments (empty states, onboarding, Vyn AI identity) and don't use it as a generic icon.
 - Sizes: 20px in the sidebar, 14–16px inside buttons, 22px in input add-ons, and 22.5px inside the 40px navbar icon button.
 
 ### Photography & Video
@@ -851,6 +854,50 @@ Vyn uses **Bootstrap 5's default transitions** and defines no motion tokens of i
 
 Dropdown menus open instantly, with no animation, which is also Bootstrap's default. Keep `$enable-reduced-motion: true` (the default) so that every transition is removed under `prefers-reduced-motion: reduce`.
 
+## Vyn AI UI
+
+> **Status: in progress.** The team is currently working to make Vyn AI's outputs more **transparent, helpful and actionable** for web-app users. Rules in this section are provisional, and there are no dedicated AI components or tokens in Figma yet. Treat this section as direction, not spec.
+
+### Scope
+This section covers **AI UI**: how Vyn AI's outputs are *presented in the desktop web app*, mainly in the **Vyn Viewer**.
+
+| In scope | Out of scope |
+|---|---|
+| **AI summaries** of a Vyn | **AI nudges**, which are notifications sent to field workers in the *mobile app* |
+| **AI-generated labels**, including their **evidence frames** | **Agentic Toolbox**, where users create and deploy custom agents and triage rules |
+| Other Vyn AI outputs shown to supervisors and customer-care staff | Mobile capture UI |
+
+### Neon marks Vyn AI (provisional)
+- **Every Vyn AI output gets the same, consistent marker** so users can always tell AI content from human-entered content. The marker combines three things:
+  1. the neon brand green,
+  2. a text label ("Vyn AI"), because color alone is never the only signal,
+  3. optionally, the Vynnie mark.
+- **Where it goes:** on the output's container, such as the summary card header or the label chip, not scattered through the content.
+- **How to apply the color:**
+  - **On light surfaces:** neon as a *fill* with `text-primary` on top, for example a small "Vyn AI" tag, or a header band on the summary card. Neon borders and underlines on white are decorative only, so always pair them with the text label.
+  - **On dark surfaces:** neon text and icons are fine at 8.5:1.
+- **Nothing else is neon.** If it isn't a Vyn AI output or the logo, it doesn't use neon. That's how the marker keeps its meaning.
+- Per the Figma note, Vyn Viewer AI insights currently use a **modified Card**, not the Accordion. Build AI output containers on `card`.
+
+### Make outputs transparent, helpful and actionable
+These follow from the brand values (Trust: *show the evidence*; Mutuality: *everyone sees the same picture*):
+
+- **Transparent: show where it came from.**
+  - Attach the **evidence frame** or timestamp to every label that has one, and make it one click to jump to that moment in the video.
+  - Say that it's AI-generated. Where confidence is available, express it in plain language ("Likely", "Check this"), not as unexplained percentages.
+- **Helpful: summaries first, detail on demand.**
+  - Lead with the outcome in one or two sentences ("Show, don't claim").
+  - Let the supporting labels and frames sit underneath, so AI supports the human judgement rather than replacing it.
+- **Actionable: put the next step on the output.**
+  - Put the action right next to the AI output, for example *Accept label*, *Edit*, *Reject*, *Send to crew* or *Review Vyn*.
+  - The person always makes the final call. Record human overrides visibly, so everyone sees the same record.
+- **States:** design each output for processing ("Vyn AI is analysing this Vyn…"), no output ("Vyn AI didn't find anything to flag"), partial, and failed states. Never leave an empty neon container.
+
+### AI copy
+- **AI helps the people doing the work.** The brand is at the frontier of AI, in a space with a lot of fear about job loss, so the voice stays warm and human. Write "Vyn AI spotted…", "Suggested label" or "Check this frame", not language that implies the AI decides or replaces anyone.
+- **Keep it factual about uncertainty.** No hype, and no false certainty ("Vyn AI has determined…"). Plain, specific and checkable.
+- **Stay serious near risk.** AI outputs about safety, flooding, fines or compliance use no playful copy and no mascot expressions.
+
 ## Voice & Content
 
 The Brand Feel audit defines four values and four voice principles. They apply to in-app copy (buttons, empty states, errors, onboarding) as well as marketing.
@@ -873,15 +920,28 @@ The Brand Feel audit defines four values and four voice principles. They apply t
 | **Keep it moving** | Verbs first. One idea per sentence | Buttons: "Review Vyn", "Send to crew", "Approve". Split any line with more than one "and" |
 | **Serious about safety, light about everything else** | Play only where the stakes allow. Never joke about risk | Playful in welcome and empty states. Never playful near fines, flooding, injuries or compliance |
 
+### Brand & Mascot: Vynnie
+- **Who Vynnie is:** the Vyntelligence mascot. Vynnie was born from the visual, human element of the first logo, and the face is made from the letters **v, y, n**.
+- **What Vynnie stands for:** the core of the brand, **professional but playful**. That applies everywhere: the AI in the backend, how clients are engaged, and how people feel when they use the product.
+- **The smile matters.** It carries a warm personality on purpose. At the frontier of AI, where many people worry about job loss, Vynnie signals that the technology is on the side of the people doing the work.
+- **Always premium.** Vyn green against a black or dark backdrop is the signature pairing: playful energy meets a premium, professional look. Every version of the experience, digital or physical, should feel premium.
+- **Vynnie has grown arms and legs** as Vyn moves into **Physical World AI**, taking the brand from the screen into on-site work.
+- **In the web app:** use Vynnie sparingly. The face-less silhouette is the sidebar icon, and the full Vynnie is for brand moments (empty states, onboarding, Vyn AI identity). Never use Vynnie near safety-critical or compliance content, where it would read as flippant.
+
 ### Brand vocabulary
-- **Names:** *Vyntelligence* (the company), *Vyn* (the product, and also one captured video/job, as in "every Vyn"), *Vyn AI®* (the analysis layer), *CX* and *FX* (the product lines).
+- **Names:** *Vyntelligence* (the company), *Vyn* (the product, and also one captured video/job, as in "every Vyn"), *Vyn AI®* (the analysis layer), *CX* and *FX* (the product lines), *Vynnie* (the mascot).
+- **Product features:**
+  - *AI summaries*, *labels* and *evidence frames* (Vyn AI outputs shown in the Vyn Viewer).
+  - *AI nudges* (mobile notifications to field workers).
+  - *Agentic Toolbox*. It's also called "Agent Toolbox" or "Smart Agent Toolbox", but use **Agentic Toolbox**, which matches the sidebar label.
+  - *Physical World AI* (the company's focus area).
 - **Coined words:** *Vynners* (users and staff) and *Vynified*. Use them sparingly, in welcome, onboarding and celebration moments only.
 - **Recurring phrases:** "Seeing is believing" (the recommended brand promise), "right first time" and "digital eyes and ears".
 
 ## Do's and Don'ts
 
 ### Do
-- Keep brand green (`button-primary`, `link-primary`, `input-primary-active`) for actions: primary buttons, links, the active input and the selected tab.
+- Keep action green (`button-primary`, `link-primary`, `input-primary-active`) for actions: primary buttons, links, the active input and the selected tab.
 - Use the most specific semantic token for every property, even when a different token has the same value today. Tokens will diverge as the DLS evolves.
 - Build every screen from one of the four shell templates, and keep the 24px content padding.
 - Use weight (400 → 500 → 600) to create hierarchy before reaching for a bigger size.
@@ -891,11 +951,13 @@ The Brand Feel audit defines four values and four voice principles. They apply t
 - Reference semantic tokens (`--color-button-primary`) in code, never primitives (`--color-green-600`) or raw hex.
 - Fall back to the Bootstrap component and its usage guidance whenever a pattern isn't specified, then apply Vyn tokens.
 - Show the evidence (video, time, person) next to any AI-generated status.
+- Mark every Vyn AI output with the same neon + "Vyn AI" label treatment, and give it an action the user can take.
 
 ### Don't
-- Don't put `Green/600` text on dark chrome, where it's 3.1:1. Use white, `Grey/300` or Neon Green there.
-- Don't use Neon Green on white backgrounds. It's a dark-surface accent only.
-- Don't use the success green (`Semantic Green`) for primary actions, or the brand green for success states.
+- Don't use action green (`button-primary`) on dark chrome, where it's 3.1:1. Use the `link-secondary-light*` tokens there.
+- Don't use neon brand green for anything except Vyn AI outputs and the logo (provisional): no neon buttons, links, highlights, selection or success states.
+- Don't use neon as text, a thin border or a lone icon on light surfaces (1.7:1). On light surfaces it's a fill behind `text-primary`.
+- Don't use the success green (`Semantic Green`) for primary actions, or action or neon green for success states.
 - Don't use more than one Primary Filled button in a view region.
 - Don't use pill-shaped text buttons, or round inputs and cards beyond the documented radii.
 - Don't import Bootstrap's large display headings (2.5rem h1) into app views. 20px is the top of the scale.
@@ -948,6 +1010,7 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
 - **Focus ring stays classic Bootstrap blue for now** (#007BFF border, #80BDFF ring at 40%, 0.25rem). It's intentionally the only blue in the system, as a high-visibility accessibility affordance. Don't swap it for a green ring.
 - **The BETA pill is a temporary placeholder.** Its purples (#7C3AED, #352D40, #4B3175) aren't system colors.
 - **Sidebar width is 250px** (expanded). The Vyn Viewer drawer's left inset follows at 290px.
+- **Neon brand green is reserved for Vyn AI outputs and the logo.** *Provisional and subject to change.* This is part of the effort to make AI outputs more transparent, helpful and actionable.
 - **The Workflow switcher is a Medium Button** with a 14px (`--font-s`) label, and matches the Button component as a whole.
 
 ## Deferred
@@ -967,5 +1030,8 @@ Still open, to resolve in Figma or code:
 - **No semantic token for success and warning fills** used by Bootstrap's `$success` and `$warning`. They're mapped to primitives for now.
 - **Token naming inconsistencies in Figma:** `Tag/chip-success-border` sits in the Tag group but is named `chip-`. Background suffixes also vary (`tag-default` and `tag-success` vs. `tag-warning-bg` and `tag-danger-bg`). Keys here mirror the Figma names exactly, so renaming in Figma means renaming here too.
 - **Eyebrow label** (10px Bold, +2px, uppercase) has no Figma text style. It's composed from primitives. Consider adding a style.
+- **No semantic tokens or components for Vyn AI yet.** AI UI currently has to reference the `neon-green-800` primitive directly. Before AI UI ships, consider an `AI/*` group in the Color collection (for example an accent fill and the text on it) and a dedicated AI output card or tag component, so the provisional neon rule can be changed in one place.
+- **Which green is "the brand"?** Figma describes `Green/600` as *"Branding main green"*, but Neon Green/800 is the brand color. The variable description should be updated. This file treats Green/600 as the action color and neon as the brand and Vyn AI color.
+- **Do agent outputs count as Vyn AI outputs?** It's unclear whether results produced by Agentic Toolbox agents (for example auto-triage categories) get the neon AI marker. The Toolbox UI itself is out of scope.
 - **Undocumented components:** the header counts 33 component sets and 9 standalone components, and 15 are documented here. The TBD components are listed under *Components → TBD components*.
 - **Marketing site:** vyntelligence.com couldn't be fetched while drafting. Voice guidance relies on the Brand Feel audit, which quotes the site directly.
