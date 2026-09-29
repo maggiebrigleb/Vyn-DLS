@@ -42,7 +42,7 @@ colors:
   danger-strong: "#5f0f0f"
   info: "#f5f4f3"               # Info is neutral grey in this system, not blue
   info-text: "#403d3b"
-  # Focus (live variables; classic Bootstrap blue — see Known Gaps)
+  # Focus (live variables; classic Bootstrap blue — intentional, keep for now)
   focus-border: "#007bff"
   focus-ring: "rgba(128,189,255,0.4)"
   focus-border-error: "#dc3545"
@@ -334,7 +334,14 @@ components:
     backgroundColor: "{colors.chrome}"
     textColor: "{colors.inverse-ink-muted}"
     typography: "{typography.nav-link}"
-    width: 249px
+    width: 250px
+  navbar-workflow-switcher:
+    backgroundColor: "{colors.chrome}"
+    textColor: "{colors.inverse-ink}"
+    typography: "{typography.button-md}"
+    rounded: "{rounded.sm}"
+    height: 39px
+    padding: 8px 16px
   sidebar-link:
     backgroundColor: "{colors.chrome}"
     textColor: "{colors.inverse-ink-muted}"
@@ -451,7 +458,7 @@ Size primitives: `--font-xxs` 10 · `--font-xs` 12 · `--font-s` 14 · `--font-m
 - **Use weight before size.** To make one thing stand out from its neighbours, go Regular → Medium → Semi-Bold at the same size before stepping up a size.
 - **Keep line-height at 1.5 everywhere.** This matches Bootstrap's `$line-height-base` and keeps an 8px-friendly rhythm (16 × 1.5 = 24).
 - **Letter spacing stays at 0**, except the uppercase eyebrow at +2px.
-- **Sentence case** for headings, buttons, tabs and menu items. Uppercase is reserved for eyebrow labels and the "BETA" pill.
+- **Sentence case** for headings, buttons, tabs and menu items. Uppercase is reserved for eyebrow labels.
 
 ## Layout
 
@@ -468,14 +475,14 @@ Every screen is one of four shells, all designed at **1440 × 900**:
 
 | Template | Structure | Use |
 |---|---|---|
-| **Desktop** | Navbar (64px) + Sidebar (249px) + Content (fluid, 24px padding) | Default for list and detail pages: Cases, Analytics, Vyns |
+| **Desktop** | Navbar (64px) + Sidebar (250px) + Content (fluid, 24px padding) | Default for list and detail pages: Cases, Analytics, Vyns |
 | **Desktop + Filter panel** | Navbar + Sidebar + Filter panel (300px, `surface-1`, 16px padding) + Content | List views with persistent filtering. The content panel gets a 1px left border (black 12%) and a soft shadow so it sits above the filter rail |
-| **Desktop + Vyn Viewer Drawer** | Desktop shell + 50% scrim + right-hand drawer | Opening a single Vyn (video + insights) without leaving the list. The drawer starts 289px from the left edge (sidebar + 40px), leaving the list visible behind the scrim for orientation |
+| **Desktop + Vyn Viewer Drawer** | Desktop shell + 50% scrim + right-hand drawer | Opening a single Vyn (video + insights) without leaving the list. The drawer starts 290px from the left edge (sidebar + 40px), leaving the list visible behind the scrim for orientation |
 | **Desktop + Full Page** | Navbar + Content (no sidebar) | Focused, single-task flows: settings wizards, storyboard editing, anything that needs full width |
 
-**Navbar:** the Vyn logo, then the **Workflow switcher**, an outline button on chrome with a `Grey/500` border and 32px height. The right side holds the utility links: a notification icon button (40px, `Grey/600` fill, with a danger badge) and the avatar menu.
+**Navbar:** the Vyn logo, then the **Workflow switcher**. This is a standard **Medium Button** (39px tall, 8px 16px padding, 14px / `--font-s` Medium label) in an outline style for chrome: transparent fill, `Grey/500` border, white label and a trailing dropdown caret. It should match the Button component exactly, not a one-off navbar size. The right side holds the utility links: a notification icon button (40px, `Grey/600` fill, with a danger badge) and the avatar menu.
 
-**Sidebar:** grouped links under eyebrow labels (WORKFLOW with a BETA pill, then SETTINGS), with a collapse chevron in the footer. Expanded and collapsed variants exist.
+**Sidebar:** grouped links under eyebrow labels (WORKFLOW, then SETTINGS), with a collapse chevron in the footer. Expanded and collapsed variants exist.
 
 ### Grid & Container
 - **12-column grid** on the Full Page template: **48px outer margins**, **24px gutters**, stretch alignment, plus an **8px baseline row grid**. This matches Bootstrap's 12-column model and its default 24px (1.5rem) gutter.
@@ -580,7 +587,7 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 - **Card:** Bootstrap 5's default `.card`. It's white with a 1px `$border-color-translucent` border (black 17.5%) and a 6px radius (`$border-radius`, 0.375rem), with 16px padding and a 12px internal gap. It's the only container that uses Bootstrap's default radius; buttons and inputs are overridden to 4px. It has a free-form **Content** slot. The **Drop Shadow** variant adds elevation 2 for cards that are clickable or draggable.
 - **Accordion:** Bootstrap's `.accordion`. A stacked, expandable list for FAQs and progressive disclosure, with Expanded True/False and slot-based rows. *Per the Figma note, the Accordion isn't currently used in the Web App. Vyn Viewer AI insights use a modified card instead.*
 - **Filter panel:** a 300px `surface-1` rail on the left of list views.
-- **Drawer:** Bootstrap's `.offcanvas.offcanvas-end`, sized to the 289px left inset. A right-hand panel over a 50% backdrop, used to open a Vyn without losing list context. Close it with an explicit close button, Esc and a scrim click.
+- **Drawer:** Bootstrap's `.offcanvas.offcanvas-end`, sized to the 290px left inset. A right-hand panel over a 50% backdrop, used to open a Vyn without losing list context. Close it with an explicit close button, Esc and a scrim click.
 
 ### Alerts
 - Four types: **Success, Warning, Danger, Info** (Info is neutral grey). Each has a 1px tinted border, 4px radius, 12px 16px padding and 16px Medium text. There's an optional close button and a content slot for links or actions.
@@ -598,9 +605,9 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 - **Tooltip:** four positions with fixed or auto width. Bootstrap 5 tooltips are opt-in, so initialize them in JS. Following Bootstrap, tooltips are **supplementary only**. They open on hover *and* keyboard focus, never hold essential information or interactive content, and aren't used on disabled elements without a focusable wrapper.
 
 ### Navigation
-- **Navbar** (64px, chrome): the logo, the workflow switcher, the notification icon button with its badge, and the avatar menu.
-- **Sidebar** (249px, chrome): eyebrow-labelled groups with 20px icon + 16px Medium label links. Default links use `Grey/300`, and the active link is white. There are Expanded and Collapsed variants with a collapse chevron in the footer.
-- The **BETA pill** marks pre-release sections. It currently uses an off-system purple (see Known Gaps).
+- **Navbar** (64px, chrome): the logo, the workflow switcher (a Medium outline Button, 14px label), the notification icon button with its badge, and the avatar menu.
+- **Sidebar** (250px, chrome): eyebrow-labelled groups with 20px icon + 16px Medium label links. Default links use `Grey/300`, and the active link is white. There are Expanded and Collapsed variants with a collapse chevron in the footer.
+- The **BETA pill** next to the WORKFLOW label is a **temporary placeholder**. Its purple colors aren't part of the Vyn system, so don't reuse them or build on them. If a pre-release marker is needed before one is designed, use a neutral Tag (`Tag/tag-default`).
 
 ### TBD components
 Breadcrumb, Chip and Tag (on hold, though tokens exist), Filters, Modal, Pagination, Progress, Table and Video Player are **TBD**. They have placeholder pages in Figma but no design yet. Until they're designed, **use the stock Bootstrap 5 component with Vyn tokens**: 4px radius, `hairline` borders, Inter type, green primary and warm greys. Don't invent a bespoke version.
@@ -708,7 +715,7 @@ The Brand Feel audit defines four values and four voice principles. They apply t
 - Bootstrap 5's `xl` (1200px) and `xxl` (1400px) breakpoints are the only ones in play. Use them for density adjustments inside content, such as 3-up vs. 4-up card grids. Don't use `sm`, `md` or `lg` layouts.
 
 ### Sidebar
-The sidebar collapses from 249px to icon-only (`.Link-collapsed`) when the user presses the chevron in its footer. It doesn't collapse automatically at any width.
+The sidebar collapses from 250px to icon-only (`.Link-collapsed`) when the user presses the chevron in its footer. It doesn't collapse automatically at any width.
 
 ### Pointer targets
 Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The Small icon button (24px) is the smallest allowed. Don't shrink controls below the documented sizes.
@@ -721,7 +728,7 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
   - White on Danger is 5.6:1.
   - Grey/300 on chrome is 9.7:1.
   - Grey/500 on white is 4.4:1, which fails for small text, so use it only for disabled or decorative content.
-- **Focus:** every interactive element shows the 4px focus ring and must never have `outline: none` without it.
+- **Focus:** every interactive element shows the 4px blue focus ring (#80BDFF at 40%, with a #007BFF border on inputs) and must never have `outline: none` without it.
 - **Color is never the only signal.** Pair status color with text or an icon, which applies to alerts, badges, tags and validation.
 - **Keyboard:** drawers and modals trap focus and close on Esc. Dropdowns and tabs follow the WAI-ARIA patterns that Bootstrap implements.
 - **Motion:** keep Bootstrap's `$enable-reduced-motion` on so drawers, modals and accordions don't animate under `prefers-reduced-motion`.
@@ -736,17 +743,25 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
 6. Before shipping, check new copy against the four voice principles, especially near safety or compliance content.
 7. Run `npx @google/design.md lint DESIGN.md` after edits.
 
+## Decisions Log
+
+- **Focus ring stays classic Bootstrap blue for now** (#007BFF border, #80BDFF ring at 40%, 0.25rem). It's intentionally the only blue in the system, as a high-visibility accessibility affordance. Don't swap it for a green ring.
+- **The BETA pill is a temporary placeholder.** Its purples (#7C3AED, #352D40, #4B3175) aren't system colors.
+- **Sidebar width is 250px** (expanded). The Vyn Viewer drawer's left inset follows at 290px.
+- **The Workflow switcher is a Medium Button** with a 14px (`--font-s`) label, and matches the Button component as a whole.
+
+## Deferred
+
+These will be resolved at a later date. Until then, keep things as they are:
+
+- **Secondary Outline button border:** `Grey/200` (#EBEAE8) is only about 1.2:1 against white. Don't change it ad hoc.
+- **Dark mode:** only a Light mode exists. Don't build dark themes for the work area.
+
 ## Known Gaps
 
-These came up while drafting and should be resolved in Figma or code:
+Still open, to resolve in Figma or code:
 
-- **Focus color is classic Bootstrap blue** (#007BFF border, #80BDFF ring at 40%). It's the only blue in the system, and it isn't Bootstrap 5's own default: Bootstrap 5 derives the ring from `$primary` at 25%. Decide whether to keep the blue as a deliberately high-visibility affordance, or let Bootstrap derive a green ring from `$primary`.
 - **Foundations documentation page is out of date.** Its Alert table (for example, success bg #E8F5E9) and several Tag and Chip rows (which render #000000) don't match the live variables. This file follows the variables, so the page should be regenerated from them.
 - **Card radius and border** come from Bootstrap defaults (0.375rem, `$border-color-translucent`) rather than Vyn tokens. That's fine, but consider adding `--radius-m: 6px` and a `Border/border-translucent` token so Figma and code share names.
-- **Sidebar width of 249px** is off the 4/8px grid. Consider 248px or 256px.
-- **BETA pill** uses off-system purples (#7C3AED text on #352D40 with a #4B3175 border) at 2.3:1 contrast, which fails AA. It needs a token and a contrast fix.
-- **Font-size token naming:** the navbar workflow button binds to a variable named `xs` that resolves to 14px, while the local Typography collection defines `XS` as 12px. These probably come from two different libraries and need reconciling.
-- **Secondary Outline buttons** use a `Grey/200` border (#EBEAE8), which is only about 1.2:1 against white. It's legible through the label, but weak as a boundary, so consider `Grey/300` or `Grey/400`.
-- **Dark mode:** only a Light mode exists. The chrome is dark, but there's no dark theme for the work area.
 - **Undocumented components:** the header counts 33 component sets and 9 standalone components, and 15 are documented here. The TBD components are listed under *Components → TBD components*.
 - **Marketing site:** vyntelligence.com couldn't be fetched while drafting. Voice guidance relies on the Brand Feel audit, which quotes the site directly.
