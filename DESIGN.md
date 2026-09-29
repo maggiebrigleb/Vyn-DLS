@@ -67,11 +67,11 @@ colors:
   tag-default-border: "#ebeae8"             # Tag/tag-default-border → Grey/200
   tag-success: "#dcfce7"                    # Tag/tag-success → Functional/Success/100 → Semantic Green/100
   tag-success-text: "#14532d"               # Tag/tag-success-text → Functional/Success/900 → Semantic Green/900
-  tag-success-border: "#bbf7d0"        # Tag/tag-success-border → Functional/Success/200 → Semantic Green/200
-  tag-warning: "#fff3e0"                 # Tag/tag-warning → Functional/Warning/100 → Orange/100
+  tag-success-border: "#bbf7d0"             # Tag/tag-success-border → Functional/Success/200 → Semantic Green/200
+  tag-warning: "#fff3e0"                    # Tag/tag-warning → Functional/Warning/100 → Orange/100
   tag-warning-text: "#bf360c"               # Tag/tag-warning-text → Functional/Warning/900 → Orange/900
   tag-warning-border: "#ffe0b2"             # Tag/tag-warning-border → Functional/Warning/200 → Orange/200
-  tag-danger: "#ffebee"                  # Tag/tag-danger → Functional/Danger/100 → Red/100
+  tag-danger: "#ffebee"                     # Tag/tag-danger → Functional/Danger/100 → Red/100
   tag-danger-text: "#b71c1c"                # Tag/tag-danger-text → Functional/Danger/800 → Red/800
   tag-danger-border: "#ffcdd2"              # Tag/tag-danger-border → Functional/Danger/200 → Red/200
   # --- Chip ---
@@ -559,11 +559,11 @@ Values are the live variable values, which are the source of truth.
 | `tag-default-border` | `Tag/tag-default-border` | `--color-tag-default-border` | Grey/200 | `#ebeae8` |
 | `tag-success` | `Tag/tag-success` | `--color-tag-success` | Functional/Success/100 → Semantic Green/100 | `#dcfce7` |
 | `tag-success-text` | `Tag/tag-success-text` | `--color-tag-success-text` | Functional/Success/900 → Semantic Green/900 | `#14532d` |
-| `tag-chip-success-border` | `Tag/chip-success-border` | `--color-tag-chip-success-border` | Functional/Success/200 → Semantic Green/200 | `#bbf7d0` |
-| `tag-warning-bg` | `Tag/tag-warning-bg` | `--color-tag-warning-bg` | Functional/Warning/100 → Orange/100 | `#fff3e0` |
+| `tag-success-border` | `Tag/tag-success-border` | `--color-tag-success-border` | Functional/Success/200 → Semantic Green/200 | `#bbf7d0` |
+| `tag-warning` | `Tag/tag-warning` | `--color-tag-warning` | Functional/Warning/100 → Orange/100 | `#fff3e0` |
 | `tag-warning-text` | `Tag/tag-warning-text` | `--color-tag-warning-text` | Functional/Warning/900 → Orange/900 | `#bf360c` |
 | `tag-warning-border` | `Tag/tag-warning-border` | `--color-tag-warning-border` | Functional/Warning/200 → Orange/200 | `#ffe0b2` |
-| `tag-danger-bg` | `Tag/tag-danger-bg` | `--color-tag-danger-bg` | Functional/Danger/100 → Red/100 | `#ffebee` |
+| `tag-danger` | `Tag/tag-danger` | `--color-tag-danger` | Functional/Danger/100 → Red/100 | `#ffebee` |
 | `tag-danger-text` | `Tag/tag-danger-text` | `--color-tag-danger-text` | Functional/Danger/800 → Red/800 | `#b71c1c` |
 | `tag-danger-border` | `Tag/tag-danger-border` | `--color-tag-danger-border` | Functional/Danger/200 → Red/200 | `#ffcdd2` |
 
@@ -1028,7 +1028,6 @@ Still open, to resolve in Figma or code:
 - **Card radius and border** come from Bootstrap defaults (0.375rem, `$border-color-translucent`) rather than Vyn tokens. That's fine, but consider adding `--radius-m: 6px` and a `Border/border-translucent` token so Figma and code share names.
 - **Primitives bound directly in Figma:** the navbar workflow-switcher border (`grey-500`), the navbar icon-button fill (`grey-600`), the sidebar footer divider (`grey-700`) and the logo (`neon-green-800`) use primitives. Semantic tokens such as `Background/bg-dark-control` and `Border/border-dark` would let these swap like everything else.
 - **No semantic token for success and warning fills** used by Bootstrap's `$success` and `$warning`. They're mapped to primitives for now.
-- **Token naming inconsistencies in Figma:** `Tag/chip-success-border` sits in the Tag group but is named `chip-`. Background suffixes also vary (`tag-default` and `tag-success` vs. `tag-warning-bg` and `tag-danger-bg`). Keys here mirror the Figma names exactly, so renaming in Figma means renaming here too.
 - **Eyebrow label** (10px Bold, +2px, uppercase) has no Figma text style. It's composed from primitives. Consider adding a style.
 - **No semantic tokens or components for Vyn AI yet.** AI UI currently has to reference the `neon-green-800` primitive directly. Before AI UI ships, consider an `AI/*` group in the Color collection (for example an accent fill and the text on it) and a dedicated AI output card or tag component, so the provisional neon rule can be changed in one place.
 - **Which green is "the brand"?** Figma describes `Green/600` as *"Branding main green"*, but Neon Green/800 is the brand color. The variable description should be updated. This file treats Green/600 as the action color and neon as the brand and Vyn AI color.
