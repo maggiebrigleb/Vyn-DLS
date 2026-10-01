@@ -17,7 +17,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 **Links**
 - Figma: [Vyn Web App](https://www.figma.com/design/LNixxQjUWEwccxM0LgcW6g/Vyn-Web-App)
 - Design-system page (private, shared from its own Share menu): https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi
-- PR: [maggiebrigleb/design-tests#1](https://github.com/maggiebrigleb/design-tests/pull/1)
+- PR: [maggiebrigleb/Vyn-DLS#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)
 
 ---
 
@@ -90,7 +90,8 @@ Newest first. Each entry links to its commit or PR.
 
 | Date | Change | Ref |
 |---|---|---|
-| 2026-10-01 | Added `DECISIONS.md` and the `CLAUDE.md` logging rule. Backfilled the decisions, questions and changes made so far. `DESIGN.md`'s Decisions, Deferred and Known Gaps sections now summarize this log. | [#1](https://github.com/maggiebrigleb/design-tests/pull/1) |
+| 2026-10-01 | Repo renamed to `maggiebrigleb/Vyn-DLS`. Updated the git remote, the PR links in this file and the `CLAUDE.md` heading. `DESIGN.md` and the design-system page are unchanged. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |
+| 2026-10-01 | Added `DECISIONS.md` and the `CLAUDE.md` logging rule. Backfilled the decisions, questions and changes made so far. `DESIGN.md`'s Decisions, Deferred and Known Gaps sections now summarize this log. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |
 | 2026-09-29 | Design-system page (v2) published from the Design System artifact type. It includes the tokens from the live variables, the brand book, 18 component previews, the Vyn Viewer example, and the logo and icons exported from Figma. | [artifact](https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi) |
 | 2026-09-29 | Applied the Tag renames to the lookup table and removed the resolved naming gap. | `4295b52` |
 | 2026-09-29 | Tag token renames (D-011). | `69bad5b` (Maggie) |

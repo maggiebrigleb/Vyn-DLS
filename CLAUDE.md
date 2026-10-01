@@ -1,4 +1,4 @@
-# design-tests
+# Vyn-DLS
 
 This repo holds the Vyn Web App design system spec: `DESIGN.md` (the current state) and `DECISIONS.md` (the running log of decisions, open questions and changes).
 
