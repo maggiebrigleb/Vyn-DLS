@@ -95,7 +95,7 @@ colors:
   state-hover-tint: "rgba(255,255,255,0.15)"  # State/hover-tint
   state-pressed-shade: "rgba(0,0,0,0.2)"    # State/pressed-shade
   state-pressed-tint: "rgba(255,255,255,0.2)"  # State/pressed-tint
-  # --- Primitives referenced directly in Figma (no semantic token yet — see Known Gaps) ---
+  # --- Primitives referenced directly in Figma (no semantic token yet — see Q-003 in DECISIONS.md) ---
   grey-500: "#7c7874"                     # Grey/500 — navbar workflow-switcher border
   grey-600: "#585450"                     # Grey/600 — navbar icon-button fill
   grey-700: "#403d3b"                     # Grey/700 — sidebar footer divider
@@ -712,7 +712,7 @@ Rules:
 | Token | Value | Use |
 |---|---|---|
 | `--radius-s` | 4px | **Default.** Buttons, inputs, dropdowns, menus, alerts, tooltips |
-| *(card)* | 6px | Cards. This value isn't tokenized yet (see Known Gaps) |
+| *(card)* | 6px | Cards. This value isn't tokenized yet (see Q-002 in DECISIONS.md) |
 | `--radius-l` | 8px | Larger containers, modals |
 | `--radius-xl` | 16px | Feature panels, media frames |
 | `--radius-xxl` | 24px | Hero or marketing surfaces only |
@@ -819,8 +819,8 @@ Point each variable at the Vyn CSS variable rather than pasting a hex, so that a
 | `$primary` / `--bs-primary` | `var(--color-button-primary)` |
 | `$secondary` | `var(--color-button-secondary)` |
 | `$danger` | `var(--color-button-danger)` |
-| `$success` | `Functional/Success/500` primitive (no semantic token yet, see Known Gaps) |
-| `$warning` | `Functional/Warning/400` primitive (no semantic token yet, see Known Gaps) |
+| `$success` | `Functional/Success/500` primitive (no semantic token yet, see Q-004) |
+| `$warning` | `Functional/Warning/400` primitive (no semantic token yet, see Q-004) |
 | `$body-color` | `var(--color-text-primary)` |
 | `$body-secondary-color` | `var(--color-text-secondary)` |
 | `$body-bg` | `var(--color-background-primary)` |
@@ -1005,32 +1005,47 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
 6. Before shipping, check new copy against the four voice principles, especially near safety or compliance content.
 7. When a token value changes, update its front-matter line and its row in *Semantic tokens*, re-check the contrast pairs under *Accessibility*, then run `npx @google/design.md lint DESIGN.md`.
 
-## Decisions Log
+## Decisions, Deferred and Open Questions
 
-- **Focus ring stays classic Bootstrap blue for now** (#007BFF border, #80BDFF ring at 40%, 0.25rem). It's intentionally the only blue in the system, as a high-visibility accessibility affordance. Don't swap it for a green ring.
-- **The BETA pill is a temporary placeholder.** Its purples (#7C3AED, #352D40, #4B3175) aren't system colors.
-- **Sidebar width is 250px** (expanded). The Vyn Viewer drawer's left inset follows at 290px.
-- **Neon brand green is reserved for Vyn AI outputs and the logo.** *Provisional and subject to change.* This is part of the effort to make AI outputs more transparent, helpful and actionable.
-- **The Workflow switcher is a Medium Button** with a 14px (`--font-s`) label, and matches the Button component as a whole.
+The full record, with dates, owners, reasons and history, lives in [`DECISIONS.md`](DECISIONS.md). This section summarizes what's currently in force. Entries marked *proposed* were drafted by Claude and are awaiting confirmation.
 
-## Deferred
+**In force**
+- **D-001:** live Figma variables are the source of truth.
+- **D-002:** the codebase uses Bootstrap 5.3.x.
+- **D-003:** desktop-only. *(proposed: D-016, a 1280px minimum width)*
+- **D-004:** Bootstrap 5 default motion.
+- **D-005:** placeholder components are TBD, so use stock Bootstrap meanwhile.
+- **D-006:** the focus ring stays classic Bootstrap blue. *(provisional)*
+- **D-007:** the BETA pill is a placeholder.
+- **D-008:** the sidebar is 250px, and the drawer inset is 290px.
+- **D-009:** the Workflow switcher is a Medium Button with a 14px label.
+- **D-010:** token names mirror the developer tokens and are never merged.
+- **D-011:** the Tag token renames.
+- **D-012:** neon green is for Vyn AI outputs and the logo only. *(provisional)*
+- **D-013:** AI UI scope is outputs in the web app, not nudges or Agentic Toolbox.
+- **Proposed, awaiting confirmation:**
+  - **D-017:** the action green and neon green split.
+  - **D-018:** neon on light grounds is only a fill.
+  - **D-019:** one Vyn AI marker.
+  - **D-020:** cards keep Bootstrap's radius and border.
+  - **D-021:** the standard name is "Agentic Toolbox".
 
-These will be resolved at a later date. Until then, keep things as they are:
+**Deferred.** Leave these as they are until resolved:
+- **D-014:** the secondary outline button border (`button-secondary`, about 1.2:1 on white).
+- **D-015:** dark mode. There's only a Light mode.
 
-- **Secondary Outline button border:** it uses `button-secondary` (currently Grey/200), which is only about 1.2:1 against white. Don't change it ad hoc.
-- **Dark mode:** only a Light mode exists. Don't build dark themes for the work area.
-
-## Known Gaps
-
-Still open, to resolve in Figma or code:
-
-- **Foundations documentation page is out of date.** Its Alert table (for example, success bg #E8F5E9) and several Tag and Chip rows (which render #000000) don't match the live variables. This file follows the variables, so the page should be regenerated from them.
-- **Card radius and border** come from Bootstrap defaults (0.375rem, `$border-color-translucent`) rather than Vyn tokens. That's fine, but consider adding `--radius-m: 6px` and a `Border/border-translucent` token so Figma and code share names.
-- **Primitives bound directly in Figma:** the navbar workflow-switcher border (`grey-500`), the navbar icon-button fill (`grey-600`), the sidebar footer divider (`grey-700`) and the logo (`neon-green-800`) use primitives. Semantic tokens such as `Background/bg-dark-control` and `Border/border-dark` would let these swap like everything else.
-- **No semantic token for success and warning fills** used by Bootstrap's `$success` and `$warning`. They're mapped to primitives for now.
-- **Eyebrow label** (10px Bold, +2px, uppercase) has no Figma text style. It's composed from primitives. Consider adding a style.
-- **No semantic tokens or components for Vyn AI yet.** AI UI currently has to reference the `neon-green-800` primitive directly. Before AI UI ships, consider an `AI/*` group in the Color collection (for example an accent fill and the text on it) and a dedicated AI output card or tag component, so the provisional neon rule can be changed in one place.
-- **Which green is "the brand"?** Figma describes `Green/600` as *"Branding main green"*, but Neon Green/800 is the brand color. The variable description should be updated. This file treats Green/600 as the action color and neon as the brand and Vyn AI color.
-- **Do agent outputs count as Vyn AI outputs?** It's unclear whether results produced by Agentic Toolbox agents (for example auto-triage categories) get the neon AI marker. The Toolbox UI itself is out of scope.
-- **Undocumented components:** the header counts 33 component sets and 9 standalone components, and 15 are documented here. The TBD components are listed under *Components → TBD components*.
-- **Marketing site:** vyntelligence.com couldn't be fetched while drafting. Voice guidance relies on the Brand Feel audit, which quotes the site directly.
+**Open:**
+- **Q-001:** regenerate the Foundations page from the variables.
+- **Q-002:** give the card radius and border token names?
+- **Q-003:** semantic tokens for the primitives bound directly in Figma.
+- **Q-004:** success and warning fill tokens.
+- **Q-005:** an eyebrow text style.
+- **Q-006:** `AI/*` tokens and an AI output component.
+- **Q-007:** fix the Green/600 description.
+- **Q-008:** do Agentic Toolbox outputs get the neon marker?
+- **Q-009:** document the remaining component sets.
+- **Q-010:** review the marketing site.
+- **Q-011:** confirm the 1280px minimum width.
+- **Q-012:** a logo for light backgrounds?
+- **Q-013:** rebind the Workflow switcher label to `S`.
+- **Q-014:** keep `DESIGN.md` and the design-system page in sync.
