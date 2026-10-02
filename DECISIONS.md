@@ -17,7 +17,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 **Links**
 - Figma: [Vyn Web App](https://www.figma.com/design/LNixxQjUWEwccxM0LgcW6g/Vyn-Web-App) (semantic tokens, text styles) · [Vyn Global](https://www.figma.com/design/PXB9RwThJHEP09SPoKZg4J/Vyn-Global) (primitives)
 - Branches: `claude/figma-file-connection-of9n12` (v1, PR #1) · `v2`
-- Design-system pages (private, shared from each page's Share menu): v1 https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi · v2 https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4
+- Design-system pages (private, shared from each page's Share menu): v1 https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi · v2 (template) https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4 · v2 (branded, interactive) https://claude.ai/artifact/PjtjrkSpD9PgtRG47w1q9g
 - PR: [maggiebrigleb/Vyn-DLS#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)
 
 ---
@@ -56,6 +56,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | D-028 | 2026-10-02 | **Type keys in `DESIGN.md` are the text-style names without their group** (`Heading/h1` → `h1`, `Body/body-small-medium` → `body-small-medium`). | proposed | Claude | No CSS developer tokens are published for the v2 styles yet (Q-021). |
 | D-029 | 2026-10-02 | **v2 lives on its own `v2` branch.** The first pass stays unchanged on `claude/figma-file-connection-of9n12` (PR #1). | firm | Maggie | So v1 isn't overwritten. |
 | D-030 | 2026-10-02 | **The v2 design-system page is separate from v1:** https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4. The v1 page stays unchanged so it remains viewable. | firm | Maggie | Answers Q-023. |
+| D-031 | 2026-10-02 | **A Vyn-branded, interactive v2 page sits alongside the template page.** The template's own frame can't be restyled, so the branded page is a separate custom page (https://claude.ai/artifact/PjtjrkSpD9PgtRG47w1q9g). Both are kept: the template page is the structured reference, and the branded page shows the system in use. | firm | Maggie | Chosen over replacing the template page or staying template-only. |
 
 ## Open questions and to-dos
 
@@ -72,7 +73,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | Q-010 | 2026-09-29 | Review the marketing site (vyntelligence.com) for voice. It couldn't be fetched from the drafting environment. | Maggie | Voice currently relies on the Brand Feel audit. |
 | Q-011 | 2026-09-29 | Confirm the 1280px minimum supported width. | Maggie | See D-016. |
 | Q-012 | 2026-09-29 | Is a logo version for light backgrounds needed? Figma only has the dark-background logo. | Design | |
-| Q-014 | 2026-10-01 | Keep `DESIGN.md` and the design-system page in sync. They're separate, so changing one doesn't update the other. Decide whether one should be generated from the other. | Maggie | Until then, `CLAUDE.md` requires checking both. |
+| Q-014 | 2026-10-01 | Keep `DESIGN.md` and the design-system page in sync. They're separate, so changing one doesn't update the other. Decide whether one should be generated from the other. | Maggie | Until then, `CLAUDE.md` requires checking both. **2026-10-02:** there are now three v2 surfaces (`DESIGN.md`, the template page and the branded page). The branded page's colors and type are generated from the same token file as the template page, but its copy is written by hand. |
 | Q-015 | 2026-10-02 | Figma still uses the old Tag names (`Tag/tag-warning-bg`, `Tag/tag-danger-bg`, `Tag/chip-success-border`), while D-011 renamed them in `DESIGN.md`. Rename them in Figma, or revert D-011? | Maggie | Until this is settled, `DESIGN.md` keeps the D-011 names and notes the Figma names. |
 | Q-016 | 2026-10-02 | `button-primary` and `background-dark` are both Grey/900, so a Primary Filled button disappears on the navbar and sidebar (1:1). Is that intended, and should dark surfaces get their own button token? | Design | See D-024. |
 | Q-017 | 2026-10-02 | `chip-secondary` is still Green/600 (#60A211), and `chip-text-light` on it is 3.2:1, which fails AA for small text. Should it move to charcoal, or use dark text? | Design | It's the last semantic use of Green/600. |
@@ -108,6 +109,7 @@ Newest first. Each entry links to its commit or PR.
 
 | Date | Change | Ref |
 |---|---|---|
+| 2026-10-02 | **Published the branded, interactive v2 page** (https://claude.ai/artifact/PjtjrkSpD9PgtRG47w1q9g), source at `site/design-system-v2.html`. The page itself uses the Vyn Web App shell: charcoal navbar and sidebar, v2 tokens, Inter and inline Vyn icons. It has:<ul><li>copy-on-click swatches for all 79 semantic tokens and the primitive ramps</li><li>an editable type specimen</li><li>a button configurator that shows the Bootstrap classes</li><li>a validating form, keyboard dropdown, tri-state checkbox, switches, tabs, accordion, dismissible alerts, a badge counter, tooltips, and a collapsible sidebar</li><li>a Vyn AI card with its states and Accept/Edit/Reject</li><li>a Vyn Viewer drawer that closes on Esc and the backdrop</li></ul>Also on the v2 template page: the logo and icons are now inline SVG in the previews (they weren't loading from the asset store), and the brand book links to the branded page. `DESIGN.md` gained a link to the branded page. | branch `v2` |
 | 2026-10-02 | **Published the v2 design-system page** (https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4). It's built from v2 `DESIGN.md`: 148 color tokens (the 79 semantic tokens plus the Vyn Global primitives and Functional aliases), the v2 heading, body, utility and display styles, the font-size variables, the stylesheet and previews retargeted to v2 tokens, sidebar icons re-exported in their v2 grey, the brand-book Color, Neon and Typography sections rewritten, and the cover recoloured. The v1 page is unchanged. `DESIGN.md` gained a link to the page. | branch `v2` |
 | 2026-10-02 | **DLS v2 on branch `v2`.** Updated `DESIGN.md` from the changed Vyn Global and Vyn Web App libraries: all 79 semantic tokens and their aliases, the Vyn Global primitive ramps, the v2 type scale and its Bootstrap mapping, the contrast checks, and the prose that relied on action green or warm greys. Logged D-023 to D-029, Q-015 to Q-023 and R-013/R-014. Added the Vyn Global file key to `CLAUDE.md`. The **design-system page was not updated** and still shows v1 (Q-023). | branch `v2` |
 | 2026-10-01 | Repo renamed to `maggiebrigleb/Vyn-DLS`. Updated the git remote, the PR links in this file and the `CLAUDE.md` heading. `DESIGN.md` and the design-system page are unchanged. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |
