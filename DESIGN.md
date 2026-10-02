@@ -462,7 +462,7 @@ The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are s
 - **Status is neutral by default.** "Info" is grey, not blue. Color is saved for success, warning and danger, so it means something when it appears.
 - **Bootstrap behaviour, Vyn skin.** When a pattern isn't specified here, fall back to the Bootstrap component and its usage guidance, then apply Vyn tokens.
 
-> **Version 2 (2026-10-02).** This version follows the updated **Vyn Global** (primitives) and **Vyn Web App** (semantic tokens, text styles) libraries. The first pass (v1) is kept unchanged on branch `claude/figma-file-connection-of9n12` ([PR #1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)). What changed, and why, is in `DECISIONS.md` (D-023 to D-029).
+> **Version 2 (2026-10-02).** This version follows the updated **Vyn Global** (primitives) and **Vyn Web App** (semantic tokens, text styles) libraries. The first pass (v1) is kept unchanged on branch `claude/figma-file-connection-of9n12` ([PR #1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)). What changed, and why, is in `DECISIONS.md` (D-023 to D-030). The visual version of v2 is the [v2 design-system page](https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4). The v1 page is unchanged.
 >
 > **Source of truth:** the Figma files' **live variables**. Where the Foundations Documentation page disagrees with a live variable, the variable wins, and every value in this file is taken from the variables.
 >
@@ -1093,6 +1093,7 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **D-026:** new semantic tokens `border` and `input-border-disabled`.
 - **D-027:** the v2 type scale (h1–h6, body-base/small/xsmall/xxsmall, eyebrow, display-4 to 6). *(provisional: "Proposed / In-flight" in Figma)*
 - **D-029:** v2 lives on the `v2` branch, and v1 is kept as it is.
+- **D-030:** the v2 design-system page is separate from the v1 page.
 - **Proposed, awaiting confirmation:**
   - **D-018:** neon on light grounds is only a fill.
   - **D-019:** one Vyn AI marker.
@@ -1125,4 +1126,3 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-020:** `Brand/Black` vs `background-dark`.
 - **Q-021:** CSS tokens for the v2 text styles.
 - **Q-022:** sidebar labels don't use `Utility/eyebrow`.
-- **Q-023:** the design-system page still shows v1.

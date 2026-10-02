@@ -17,7 +17,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 **Links**
 - Figma: [Vyn Web App](https://www.figma.com/design/LNixxQjUWEwccxM0LgcW6g/Vyn-Web-App) (semantic tokens, text styles) · [Vyn Global](https://www.figma.com/design/PXB9RwThJHEP09SPoKZg4J/Vyn-Global) (primitives)
 - Branches: `claude/figma-file-connection-of9n12` (v1, PR #1) · `v2`
-- Design-system page (private, shared from its own Share menu): https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi
+- Design-system pages (private, shared from each page's Share menu): v1 https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi · v2 https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4
 - PR: [maggiebrigleb/Vyn-DLS#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)
 
 ---
@@ -55,6 +55,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | D-027 | 2026-10-02 | **v2 type scale** (Vyn Web App text styles): <ul><li>Heading `h1`–`h6`: 28, 22, 18, 16, 14 and 12px, Semi-Bold, 1.2 line height.</li><li>Body `body-base`, `body-small`, `body-xsmall` and `body-xxsmall`: 16, 14, 12 and 10px with Medium and Semi-Bold variants, 1.5 line height.</li><li>`Utility/eyebrow`: 12px Medium, +1px.</li><li>Display `display-4` to `display-6`: 56, 48 and 40px. `_display-1` to `_display-3` are hidden.</li></ul> The size variables are renamed by value (`10` to `28`), and letter spacing `2` becomes `1`. | provisional | Maggie / design team (Figma libraries) | The Figma Typography page labels it *"Proposed / In-flight"*. It replaces the v1 `header-h*` / `body-p*` scale. |
 | D-028 | 2026-10-02 | **Type keys in `DESIGN.md` are the text-style names without their group** (`Heading/h1` → `h1`, `Body/body-small-medium` → `body-small-medium`). | proposed | Claude | No CSS developer tokens are published for the v2 styles yet (Q-021). |
 | D-029 | 2026-10-02 | **v2 lives on its own `v2` branch.** The first pass stays unchanged on `claude/figma-file-connection-of9n12` (PR #1). | firm | Maggie | So v1 isn't overwritten. |
+| D-030 | 2026-10-02 | **The v2 design-system page is separate from v1:** https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4. The v1 page stays unchanged so it remains viewable. | firm | Maggie | Answers Q-023. |
 
 ## Open questions and to-dos
 
@@ -80,7 +81,6 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | Q-020 | 2026-10-02 | `Brand/Black` (#2C2A29, the old charcoal) is reserved "for use with Vyn logo only", while the chrome behind the logo is `background-dark` (Grey/900 #252628). Which should sit behind the logo? | Design | |
 | Q-021 | 2026-10-02 | Publish CSS developer tokens for the v2 text styles and size variables. The v1 names (`--font-header-h1-semi-bold`, `--font-xs`) no longer match. | Design / Dev | See D-028. |
 | Q-022 | 2026-10-02 | The sidebar section labels (WORKFLOW, SETTINGS) are 10px Semi-Bold with +1px tracking, uppercase, and have no text style applied. The new `Utility/eyebrow` is 12px Medium. Should the labels use it? | Design | Replaces Q-005 (see R-013). |
-| Q-023 | 2026-10-02 | The design-system page still shows v1. Update it to v2, either as a new version of the same page or as a separate page, so v1 stays viewable? | Maggie | See Q-014. |
 
 ## Resolved questions
 
@@ -100,6 +100,7 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | R-012 | 2026-09-29 | The Foundations page and the live variables disagree. Which is right? | 2026-09-29 | The live variables (D-001). |
 | R-013 | 2026-09-29 | (Q-005) Should there be a Figma text style for the sidebar eyebrow label? | 2026-10-02 | A `Utility/eyebrow` style now exists (D-027), but the sidebar labels don't use it. Follow-up is Q-022. |
 | R-014 | 2026-09-29 | (Q-013) Rebind the Workflow switcher label to the `S` font-size variable. | 2026-10-02 | It's now bound to the size-named Typography variable `14` (D-027), which matches D-009. |
+| R-015 | 2026-10-02 | (Q-023) Should the design-system page be updated to v2 in place, or as a separate page? | 2026-10-02 | As a separate page (D-030). |
 
 ## Changelog
 
@@ -107,6 +108,7 @@ Newest first. Each entry links to its commit or PR.
 
 | Date | Change | Ref |
 |---|---|---|
+| 2026-10-02 | **Published the v2 design-system page** (https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4). It's built from v2 `DESIGN.md`: 148 color tokens (the 79 semantic tokens plus the Vyn Global primitives and Functional aliases), the v2 heading, body, utility and display styles, the font-size variables, the stylesheet and previews retargeted to v2 tokens, sidebar icons re-exported in their v2 grey, the brand-book Color, Neon and Typography sections rewritten, and the cover recoloured. The v1 page is unchanged. `DESIGN.md` gained a link to the page. | branch `v2` |
 | 2026-10-02 | **DLS v2 on branch `v2`.** Updated `DESIGN.md` from the changed Vyn Global and Vyn Web App libraries: all 79 semantic tokens and their aliases, the Vyn Global primitive ramps, the v2 type scale and its Bootstrap mapping, the contrast checks, and the prose that relied on action green or warm greys. Logged D-023 to D-029, Q-015 to Q-023 and R-013/R-014. Added the Vyn Global file key to `CLAUDE.md`. The **design-system page was not updated** and still shows v1 (Q-023). | branch `v2` |
 | 2026-10-01 | Repo renamed to `maggiebrigleb/Vyn-DLS`. Updated the git remote, the PR links in this file and the `CLAUDE.md` heading. `DESIGN.md` and the design-system page are unchanged. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |
 | 2026-10-01 | Added `DECISIONS.md` and the `CLAUDE.md` logging rule. Backfilled the decisions, questions and changes made so far. `DESIGN.md`'s Decisions, Deferred and Known Gaps sections now summarize this log. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |

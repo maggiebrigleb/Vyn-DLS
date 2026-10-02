@@ -4,7 +4,7 @@ This repo holds the Vyn Web App design system spec: `DESIGN.md` (the current sta
 
 ## Logging rule (required)
 
-Every change to `DESIGN.md`, or to the Vyn Web App design-system page (https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi), must update `DECISIONS.md` **in the same commit**:
+Every change to `DESIGN.md`, or to a Vyn Web App design-system page (v1 https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi, v2 https://claude.ai/artifact/SHWJ8Cx6KoboTtmGvQfEa4), must update `DECISIONS.md` **in the same commit**:
 
 - **Always** add a *Changelog* row: today's date, a one-line description, and the PR link. A commit can't reference its own hash.
 - **When the user decides something,** add a `D-` row with status `firm` or `provisional`, attributed to them.
