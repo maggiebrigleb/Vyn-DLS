@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vyn-Web-App-design-v2
-description: "A calm, desk-side operations console for utilities and infrastructure teams: white work surfaces framed by charcoal chrome (background-dark), charcoal primary actions (button-primary), and neutral cool greys for everything structural. The neon brand green (Brand/Green) is reserved for Vyn AI outputs and the logo. Type is Inter throughout: 16px body at 150% line height, headings from 28px down to 12px at 120%, and display styles from 56px down to 40px for dashboard figures. Components are Bootstrap 5 components (4px radius, 1px borders, 48px form controls) with Material icons. The personality is practical and proven first, lightly playful second: the product earns trust by showing the evidence, not by decorating it."
+description: "A calm, desk-side operations console for utilities and infrastructure teams: white work surfaces framed by charcoal chrome (background-dark), charcoal primary actions (button-primary), and neutral cool greys for everything structural. The neon brand green (Brand/Green) is reserved for Vyn AI outputs and the logo. Type is Inter throughout: 16px body at 150% line height, headings from 28px down to 12px at 120%, and display styles from 56px down to 40px for dashboard figures. Components are Bootstrap 5 components (4px radius, 1px borders, 48px form controls) with MUI and Bootstrap icons from Vyn Global. The personality is practical and proven first, lightly playful second: the product earns trust by showing the evidence, not by decorating it."
 
 # v2: values from the Vyn Global and Vyn Web App libraries as of 2026-10-02.
 # Naming rule: every color key is the developer token minus --color-,
@@ -368,6 +368,15 @@ components:
     typography: "{typography.body-base}"
     height: 48px
     padding: 12px
+  checkbox:
+    backgroundColor: "{colors.input-primary}"
+    rounded: "{rounded.s}"
+    size: 16px                    # 1px input-border
+  checkbox-checked:
+    backgroundColor: "{colors.input-primary-active}"
+    textColor: "{colors.input-primary}"  # the checkmark
+    rounded: "{rounded.s}"
+    size: 16px
   card:
     backgroundColor: "{colors.background-primary}"
     rounded: 6px                  # Bootstrap 5 $border-radius (not a Vyn token)
@@ -434,7 +443,7 @@ components:
     padding: 12px 18px
   sidebar-section-label:
     textColor: "{colors.link-secondary-disabled}"
-    typography: "{typography.body-xxsmall-semibold}"  # + 1px letter spacing, uppercase; no text style applied in Figma (Q-022)
+    typography: "{typography.eyebrow}"  # uppercase (D-033); Figma still has an unstyled 10px Semi-Bold (Q-028)
     padding: 8px 12px
   filter-panel:
     backgroundColor: "{colors.background-secondary}"
@@ -451,7 +460,7 @@ Vyn is the web console for **Vyntelligence**. Customers and field crews record s
 
 The brand audit sums up the feel in one line: *"a practical, proven, slightly playful engineering partner."* The UI should read the same way. It's a tool people trust with safety and compliance evidence, so it stays calm and legible, and the personality shows up in small places (Vynnie, the brand words, the neon brand green) rather than in decoration. The brand's own summary is **professional but playful**, and it should always feel **premium**, digitally and physically.
 
-The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are stock Bootstrap themed with Vyn tokens. That means 4px control corners, 1px borders, 48px form controls and a Bootstrap-width (0.25rem) focus ring in classic Bootstrap blue. It uses **Material icons** throughout and Material elevation values for shadows. On top of that sits a neutral, cool-grey palette (Grey/100 to Grey/900 in Vyn Global). Primary actions are charcoal, and the neon brand green (`Brand/Green`) is reserved for the logo and Vyn AI outputs.
+The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are stock Bootstrap themed with Vyn tokens. That means 4px control corners, 1px borders, 48px form controls and a Bootstrap-width (0.25rem) focus ring in classic Bootstrap blue. Icons come from Vyn Global's Iconography page, which has an **MUI** (Material) set and a **Bootstrap Icons** set, and shadows use Material elevation values. On top of that sits a neutral, cool-grey palette (Grey/100 to Grey/900 in Vyn Global). Primary actions are charcoal, and the neon brand green (`Brand/Green`) is reserved for the logo and Vyn AI outputs.
 
 **Key characteristics:**
 - **Dark chrome, light work area.** The navbar and sidebar sit on charcoal `{colors.background-dark}`. Everything the user works on sits on white `{colors.background-primary}`, with `{colors.background-secondary}` for secondary panels such as filters.
@@ -647,7 +656,7 @@ These come from the Vyn Global library. They're listed for reference only, so do
 ### Usage guidance
 - **Actions are charcoal, not green** (D-024). `button-primary`, `link-primary` and `link-primary-active` are Grey/900, and `input-primary-active` is Grey/700. The UI is neutral, and color is kept for status and for Vyn AI.
 - **Never put a Primary Filled button on `background-dark`.** Both are Grey/900 today (1:1), so the button disappears. On dark chrome, use the outline treatment the workflow switcher uses (Q-016).
-- **Hover and pressed are overlays, not new colors.** Layer `state-hover-shade` (black 15%) or `state-pressed-shade` (black 20%) over the base fill. On dark surfaces, use `state-hover-tint` / `state-pressed-tint` (white 15% / 20%).
+- **Hover and pressed are overlays, not new colors.** Light fills darken with `state-hover-shade` (black 15%) / `state-pressed-shade` (black 20%). Charcoal fills (dark chrome *and* Primary buttons) lighten with `state-hover-tint` / `state-pressed-tint` (white 15% / 20%). See *Buttons* for the per-type rules (D-034).
 - **Borders:**
   - `input-border` (Grey/500, 3.8:1 on white) outlines form controls.
   - `input-border-disabled` (Grey/300) outlines disabled controls.
@@ -687,7 +696,7 @@ The keys are the Vyn Web App text-style names without their group (`Heading/h1` 
 | `body-xsmall-semibold` | 12px | 600 | 1.5 | — | |
 | `body-xxsmall` | 10px | 400 | 1.5 | — | Limited use only, because this size is generally too small to read comfortably |
 | `body-xxsmall-semibold` | 10px | 600 | 1.5 | — | Limited use only |
-| `eyebrow` | 12px | 500, +1px tracking | 1.2 | — | A short label directly above a main heading that gives it context |
+| `eyebrow` | 12px | 500, +1px tracking | 1.2 | — | A short uppercase label directly above a main heading that gives it context. Also the sidebar section labels (D-033) |
 | `display-4` | 56px (3.5rem) | 400 | 1.2 | `.display-4` | TBD. Likely analytics dashboards |
 | `display-5` | 48px (3rem) | 400 | 1.2 | `.display-5` | |
 | `display-6` | 40px (2.5rem) | 400 | 1.2 | `.display-6` | Display numbers in cards |
@@ -783,9 +792,14 @@ Rules:
 `--border-1` (1px) for every control, card and divider, `--border-2` (2px) for the selected-tab underline, and `--border-8` (8px) for heavy accents such as left-edge status bars.
 
 ### Iconography
-- **Material Design icons** (MUI set) are the default icon library and are already in the Vyn codebase. Use the outlined style for utilities (bell, chevrons) and filled glyphs in the sidebar.
+- **Use only icons from Vyn Global's Iconography page** (D-035, *proposed*). It has two sets:
+  - **MUI** (Material, names ending `_MUI`, such as `add_MUI`, `call_MUI` and `notifications_bell_outline_MUI`).
+  - **Bootstrap Icons** (such as `chevron-down`, `chevron-up`, `chevron-left`, `x`, `x-lg`, `person-fill` and `caret-down-fill`).
+- **How the Web App components use them:** Bootstrap glyphs for controls (dropdown chevrons, alert close `x-lg`, accordion carets, the `person-fill` input add-on, the sidebar collapse chevron) and MUI glyphs for actions (add, call, notifications). The workflow-switcher caret is the custom `arrow_drop_down`. Which set new icons should default to is open (Q-027).
+- **No search icon yet.** Vyn Global has `search_MUI` and a Bootstrap `search`, but no Web App component uses either (Q-025).
+- **Don't redraw icons.** Use the Figma exports, so the glyph and its padding match the file.
 - **Vynnie** is the Vyn mascot (see *Brand & Mascot*). A face-less Vynnie silhouette (`.vynnie no face`) is the sidebar icon for Cases and Vyns. The full smiling Vynnie is a brand asset, so keep it for brand moments (empty states, onboarding, Vyn AI identity) and don't use it as a generic icon.
-- Sizes: 20px in the sidebar, 14–16px inside buttons, 22px in input add-ons, and 22.5px inside the 40px navbar icon button.
+- Sizes: 20px in the sidebar, 16px inside buttons (18px in Large), 16px in dropdown triggers, alerts and the accordion, 22px in input add-ons, and 22.5px inside the 40px navbar icon button.
 
 ### Photography & Video
 Video stills are the product's real imagery. Show them at their native aspect ratio, never crop evidence, frame them in 4px or 8px radius containers, and keep overlays such as timestamps and AI tags legible with a dark scrim. *(The Video Player component is TBD.)*
@@ -808,13 +822,19 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 - **Primary Text:** low-emphasis or inline actions such as "View all" or "Add another".
 - **Secondary** (`button-secondary` fill, `button-secondary-text` label): neutral actions like Cancel, Close or Back.
 - **Danger:** destructive actions only (delete, revoke, reject). Pair each one with a confirmation step.
+- **Hover and pressed** (D-034), from the Figma variants:
+  - **Primary Filled** lightens: `state-hover-tint` on hover, `state-pressed-tint` when pressed. Figma strokes the Pressed variant with `state-pressed-shade` (Q-024).
+  - **Secondary and Danger Filled** darken: `state-hover-shade` and `state-pressed-shade`.
+  - **Outline** styles fill with their base color on hover and press (`button-primary`, `button-secondary` or `button-danger`). Primary and Danger switch the label to `button-primary-text`.
+  - **Text** styles have no fill. The overlay goes on the label color instead: tint for Primary, shade for Secondary and Danger.
+  - **Secondary Text** uses `link-secondary` for its label, not `button-secondary-text`.
 - **Disabled:** `button-disabled` fill and `button-disabled-text` label. Where possible, explain why in a tooltip or helper text, and prefer hiding an action to disabling it when the user can't do anything about the reason.
 - **Order:** the primary button goes on the right in dialogs and forms, following Bootstrap's modal-footer convention.
 - **Semantics:** use `<button>` for actions and `<a>` for navigation, even when they look the same.
 
 ### Inputs & Forms (Input Group, Textarea)
 - **Anatomy:** label (16px Semi-Bold, 8px below it) → 48px field (`input-primary` fill, 1px `input-border`, 4px radius, 12px text padding, `input-text-primary` value) → optional helper, error text or character count (14px, 4px above).
-- **Add-ons:** a 48 × 48 `input-secondary` cap with an `input-border` stroke, with a Material icon (for example `person-fill`) on the leading edge. In code, this is Bootstrap 5's `.input-group` with an `.input-group-text` add-on.
+- **Add-ons:** a 48 × 48 `input-secondary` cap with an `input-border` stroke, with a 22px Bootstrap icon (for example `person-fill`) on the leading edge. In code, this is Bootstrap 5's `.input-group` with an `.input-group-text` add-on.
 - **States:**
   - Enabled.
   - Error: the border and message both switch to `input-danger`.
@@ -827,13 +847,15 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 - **Textarea:** same chrome as the text input. Show the character count by default ("0/100 characters") and use a scrollbar variant for long content.
 
 ### Dropdown
-- **Trigger:** 48px tall, styled like an input, with optional label and icon. It has Collapsed, Expanded and Selected states.
+- **Trigger:** 48px tall, styled like an input, with optional label and icon. It has Collapsed, Expanded and Selected states. It shows a 16px `chevron-down` in `input-text-secondary`, which becomes `chevron-up` while the menu is open.
+- **Focus:** the same as every other form control: a 1px `focus-border-focus` border plus the 4px `focus-shadow-focus` ring (Figma's "Focus border" layer on the trigger).
 - **Menu:** opens 8px below the trigger, with an `input-primary` fill, 1px `input-border` border, 4px radius and elevation 8. Items are 48px tall with 12px padding in 16px Regular text, and have Enabled, Hover (black 15% overlay), Pressed (black 20%) and Selected states.
 - **Menu headers** group items. They get extra top padding (16px) and a divider.
 - In code: use `.form-select` for a plain single-value select, and `.dropdown` + `.dropdown-menu` when items need icons, headers or custom rendering.
 - Use a dropdown for **5 or more** mutually exclusive options. For 2–4 options, use radio buttons so all choices are visible, following Bootstrap's form guidance.
 
 ### Checkbox, Radio & Switch
+- **Checkbox anatomy:** a 16px box with a 1px `input-border`, 4px radius and an `input-primary` fill. **Checked**, it fills with `input-primary-active` and shows a white (`input-primary`) checkmark; there's no separate border. The label is `body-base` in `input-text-primary`, 8px from the box. The checked radio dot and the switch track use the same `input-primary-active`. Focus is the blue ring (Figma's checked variant uses an `input-primary-active` focus border instead, Q-026).
 - **Checkbox:** for multiple independent choices. The Vyn-specific **Excluded** state (from `.Checkbox-exclude`) lets filters express "everything except…". Groups can be vertical (default) or horizontal.
 - **Radio Button:** a single choice among 2–5 visible options. Groups come preconfigured with 5 slots, and items should be set to fill in vertical groups.
 - **Switch (Toggle):** Bootstrap's `.form-check.form-switch`. An instant on/off setting that applies without a Save button. When the change only applies on submit, use a checkbox instead.
@@ -846,9 +868,11 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 - **Drawer:** Bootstrap's `.offcanvas.offcanvas-end`, sized to the 290px left inset. A right-hand panel over a 50% backdrop, used to open a Vyn without losing list context. Close it with an explicit close button, Esc and a scrim click.
 
 ### Alerts
-- Four types: **Success, Warning, Danger, Info** (Info is neutral grey). Each has a 1px tinted border, 4px radius, 12px 16px padding and 16px Medium text. There's an optional close button and a content slot for links or actions.
+- Four types: **Success, Warning, Danger, Info** (Info is neutral grey). Each has a 1px tinted border, 4px radius, 12px 16px padding and `body-base-medium` text. There's an optional close button and a content slot for links or actions.
+- **Layout:** a row with an 8px gap, aligned to the top, so the close lines up with the first line of text. The message fills the row. The optional close is a 16px `x-lg` in a 24px hit area, in the alert's text color.
+- **No status icon.** The Figma Alert has no leading icon. If one is added later, it must sit in a 24px box aligned with the first line, like the close.
 - Following Bootstrap: use alerts for **page- or section-level** feedback about the user's last action or the system state. Put field-level problems on the field itself.
-- Don't rely on color alone. Start the message with the outcome ("Saved.", "Couldn't upload video.") or add an icon.
+- Don't rely on color alone. Start the message with the outcome ("Saved.", "Couldn't upload video.").
 - Only make alerts dismissible (`.alert-dismissible` + `.btn-close`) when the message is no longer needed after it has been read.
 
 ### Tabs
@@ -862,7 +886,7 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 
 ### Navigation
 - **Navbar** (64px, chrome): the logo, the workflow switcher (a Medium outline Button, 14px label), the notification icon button with its badge, and the avatar menu.
-- **Sidebar** (250px, chrome): groups under uppercase section labels (10px Semi-Bold, +1px tracking, `link-secondary-disabled`; no text style applied, see Q-022), with 20px icon + `body-base-medium` label links. Default links use `link-secondary-light`, and the active link uses `link-secondary-light-active`. There are Expanded and Collapsed variants with a collapse chevron in the footer.
+- **Sidebar** (250px, chrome): groups under uppercase section labels in the `eyebrow` style (12px Medium, +1px tracking) and `link-secondary-disabled` (D-033), with 20px icon + `body-base-medium` label links. Default links use `link-secondary-light`, and the active link uses `link-secondary-light-active`. There are Expanded (250px) and Collapsed (55px, icons only, no link or section labels) variants, with a `chevron-left` collapse control in the footer.
 - The **BETA pill** next to the WORKFLOW label is a **temporary placeholder**. Its purple colors aren't part of the Vyn system, so don't reuse them or build on them. If a pre-release marker is needed before one is designed, use a neutral Tag (`Tag/tag-default`).
 
 ### TBD components
@@ -1095,12 +1119,16 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **D-029:** v2 lives on the `v2` branch, and v1 is kept as it is.
 - **D-030:** the v2 design-system page is separate from the v1 page.
 - **D-031:** a Vyn-branded, interactive v2 page sits alongside the template page.
+- **D-032:** `DESIGN.md` and the v2 template page are kept in sync. The branded page is best-effort.
+- **D-033:** sidebar section labels use `eyebrow`.
+- **D-034:** hover and pressed overlays depend on the button type (Primary lightens, Secondary and Danger darken).
 - **Proposed, awaiting confirmation:**
   - **D-018:** neon on light grounds is only a fill.
   - **D-019:** one Vyn AI marker.
   - **D-020:** cards keep Bootstrap's radius and border.
   - **D-021:** the standard name is "Agentic Toolbox".
   - **D-028:** type keys use the text-style names.
+  - **D-035:** icons come only from Vyn Global's MUI and Bootstrap sets.
 
 **Deferred.** Leave these as they are until resolved:
 - **D-014:** the secondary outline button border (`button-secondary`, about 1.2:1 on white).
@@ -1118,7 +1146,6 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-010:** review the marketing site.
 - **Q-011:** confirm the 1280px minimum width.
 - **Q-012:** a logo for light backgrounds?
-- **Q-014:** keep `DESIGN.md` and the design-system page in sync.
 - **Q-015:** rename the Tag variables in Figma, or revert D-011?
 - **Q-016:** `button-primary` equals `background-dark`.
 - **Q-017:** `chip-secondary` contrast.
@@ -1126,4 +1153,8 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-019:** the XXL shadow tint.
 - **Q-020:** `Brand/Black` vs `background-dark`.
 - **Q-021:** CSS tokens for the v2 text styles.
-- **Q-022:** sidebar labels don't use `Utility/eyebrow`.
+- **Q-024:** the Primary Pressed stroke uses the shade.
+- **Q-025:** which search icon?
+- **Q-026:** the checked checkbox's focus border.
+- **Q-027:** MUI or Bootstrap Icons as the default set?
+- **Q-028:** apply `eyebrow` to the Figma Sidebar labels.

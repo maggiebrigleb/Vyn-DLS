@@ -12,7 +12,8 @@ Every change to `DESIGN.md`, or to a Vyn Web App design-system page (v1 https://
 - **For a new open question or to-do,** add a `Q-` row. When one is answered, move it to *Resolved questions* and point it at the decision.
 - **Never delete or renumber entries.** Mark a replaced decision `superseded by D-0xx`.
 - Keep `DESIGN.md`'s *Decisions, Deferred and Open Questions* summary in step with the log.
-- `DESIGN.md` and the design-system page are separate. When one changes, say in the changelog row whether the other was updated too (see Q-014).
+- **Keep `DESIGN.md` and the v2 template page in sync (D-032).** Any design-system change made in `DESIGN.md` must also be made on the template page in the same piece of work, so a design that references the page as its design system stays accurate. Update the branded page too where it shows the change, on a best-effort basis: it can't be referenced as a working design system. Say in the changelog row which surfaces were updated.
+- **Icons:** use the Figma exports from Vyn Global's Iconography page (MUI and Bootstrap sets). Never redraw or approximate an icon (D-035).
 
 ## Spec rules
 
