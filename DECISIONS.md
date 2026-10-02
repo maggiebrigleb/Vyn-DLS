@@ -15,7 +15,8 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
   - **superseded:** replaced by a later entry.
 
 **Links**
-- Figma: [Vyn Web App](https://www.figma.com/design/LNixxQjUWEwccxM0LgcW6g/Vyn-Web-App)
+- Figma: [Vyn Web App](https://www.figma.com/design/LNixxQjUWEwccxM0LgcW6g/Vyn-Web-App) (semantic tokens, text styles) · [Vyn Global](https://www.figma.com/design/PXB9RwThJHEP09SPoKZg4J/Vyn-Global) (primitives)
+- Branches: `claude/figma-file-connection-of9n12` (v1, PR #1) · `v2`
 - Design-system page (private, shared from its own Share menu): https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi
 - PR: [maggiebrigleb/Vyn-DLS#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)
 
@@ -41,12 +42,19 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | D-014 | 2026-09-29 | **Secondary outline button border:** keep `button-secondary` (Grey/200, about 1.2:1 on white) for now. | deferred | Maggie | To be resolved at a later date. |
 | D-015 | 2026-09-29 | **Dark mode:** there's only a Light mode. Don't build dark themes for the work area. | deferred | Maggie | To be resolved at a later date. |
 | D-016 | 2026-09-29 | **Minimum supported width is 1280px.** Below that, the page scrolls horizontally rather than reflowing. | proposed | Claude | Taken from the Navbar component's base width in Figma. Needs confirming (Q-011). |
-| D-017 | 2026-09-29 | **Two greens with separate jobs:** "action green" (Green/600, `button-primary`) for UI actions, and "neon brand green" for Vyn AI and the logo. | proposed | Claude | Follows from D-012. Figma still calls Green/600 "Branding main green" (Q-007). |
-| D-018 | 2026-09-29 | **Neon on light grounds is only a fill behind `text-primary`.** It's never text, a thin border or a lone icon on white (1.7:1). On `background-dark` it can be text or a mark (8.5:1). | proposed | Claude | A WCAG contrast requirement that follows from D-012. |
+| D-017 | 2026-09-29 | **Two greens with separate jobs:** "action green" (Green/600, `button-primary`) for UI actions, and "neon brand green" for Vyn AI and the logo. | superseded by D-024 | Claude | Follows from D-012. Figma still calls Green/600 "Branding main green" (Q-007). |
+| D-018 | 2026-09-29 | **Neon on light grounds is only a fill behind `text-primary`.** It's never text, a thin border or a lone icon on white (1.7:1). On `background-dark` it can be text or a mark (8.5:1). | proposed | Claude | A WCAG contrast requirement that follows from D-012. Still holds in v2: neon on white is 1.7:1, and on `background-dark` it's 9:1. |
 | D-019 | 2026-09-29 | **One Vyn AI marker:** every AI output combines neon, a "Vyn AI" text label and, optionally, the Vynnie mark, placed on the output's container. | proposed | Claude | A direction, not a spec. There are no AI components in Figma yet (Q-006). |
 | D-020 | 2026-09-29 | **Cards keep Bootstrap 5's default radius (0.375rem) and border** (`$border-color-translucent`). Every other control uses `radius-s` (4px). | proposed | Claude | Matches the Figma card exactly (6px, black ~18%). |
 | D-021 | 2026-09-29 | **Standard name: "Agentic Toolbox"** (not "Agent Toolbox" or "Smart Agent Toolbox"). | proposed | Claude | Matches the sidebar label. |
 | D-022 | 2026-10-01 | **This file is the running log** of decisions, questions and changes. `CLAUDE.md` requires every design-system change to update it. | firm | Maggie | |
+| D-023 | 2026-10-02 | **v2 palette from the updated libraries.** Vyn Global replaces the warm stone greys with cool greys (Grey/100 #F6F7F8 to Grey/900 #252628), Red and Orange with **Semantic Red** and **Semantic Yellow**, retints Semantic Green and rebuilds the Green ramp. Vyn Web App re-points its semantic tokens to these. | firm | Maggie / design team (Figma libraries) | Read from the live variables (D-001). Values are in `DESIGN.md`, *Semantic tokens* and *Primitives*. |
+| D-024 | 2026-10-02 | **Primary actions are charcoal, not green.** `button-primary`, `link-primary` and `link-primary-active` are Grey/900, and `input-primary-active` is Grey/700. | firm | Maggie / design team (Figma libraries) | Supersedes D-017. Raises Q-016, because `button-primary` now equals `background-dark`. |
+| D-025 | 2026-10-02 | **The brand green is `Brand/Green`, which equals Green/400 (#98DB40)** in Vyn Global, and the separate Neon Green ramp is gone. Green/400's description now reads *"Vyn brand green: use is reserved for Vyn logo and VynAI only"*. | firm | Maggie / design team (Figma libraries) | Writes D-012 into the library. D-012 stays provisional. `DESIGN.md` uses the key `brand-green`. |
+| D-026 | 2026-10-02 | **New semantic tokens** `Border/border` (Grey/200) and `Input/input-border-disabled` (Grey/300). The Web App Color collection now has 79 variables. | firm | Maggie / design team (Figma libraries) | `border` is used by the Dropdown menu header. `input-border-disabled` is used by disabled Input Group fields. |
+| D-027 | 2026-10-02 | **v2 type scale** (Vyn Web App text styles): <ul><li>Heading `h1`–`h6`: 28, 22, 18, 16, 14 and 12px, Semi-Bold, 1.2 line height.</li><li>Body `body-base`, `body-small`, `body-xsmall` and `body-xxsmall`: 16, 14, 12 and 10px with Medium and Semi-Bold variants, 1.5 line height.</li><li>`Utility/eyebrow`: 12px Medium, +1px.</li><li>Display `display-4` to `display-6`: 56, 48 and 40px. `_display-1` to `_display-3` are hidden.</li></ul> The size variables are renamed by value (`10` to `28`), and letter spacing `2` becomes `1`. | provisional | Maggie / design team (Figma libraries) | The Figma Typography page labels it *"Proposed / In-flight"*. It replaces the v1 `header-h*` / `body-p*` scale. |
+| D-028 | 2026-10-02 | **Type keys in `DESIGN.md` are the text-style names without their group** (`Heading/h1` → `h1`, `Body/body-small-medium` → `body-small-medium`). | proposed | Claude | No CSS developer tokens are published for the v2 styles yet (Q-021). |
+| D-029 | 2026-10-02 | **v2 lives on its own `v2` branch.** The first pass stays unchanged on `claude/figma-file-connection-of9n12` (PR #1). | firm | Maggie | So v1 isn't overwritten. |
 
 ## Open questions and to-dos
 
@@ -54,18 +62,25 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 |---|---|---|---|---|
 | Q-001 | 2026-09-29 | Regenerate the Figma Foundations Documentation page from the live variables. Its Alert table is out of date, and several Tag and Chip rows render #000000. | Design | See D-001. |
 | Q-002 | 2026-09-29 | Should the card radius and border get Vyn token names (for example `--radius-m: 6px` and `Border/border-translucent`)? | Design | See D-020. |
-| Q-003 | 2026-09-29 | Add semantic tokens for the primitives Figma binds directly: `grey-500` (workflow-switcher border), `grey-600` (navbar icon button), `grey-700` (sidebar divider) and `neon-green-800` (logo). | Design | They currently can't be swapped like the rest. |
+| Q-003 | 2026-09-29 | Add semantic tokens for the primitives Figma binds directly: `grey-500` (workflow-switcher border), `grey-600` (navbar icon button), `grey-700` (sidebar divider) and `neon-green-800` (logo). | Design | They currently can't be swapped like the rest. **v2:** still true for `grey-500`, `grey-600` and `grey-700`, and the logo now binds `Brand/Green`. |
 | Q-004 | 2026-09-29 | Add semantic tokens for success and warning fills, so Bootstrap's `$success` and `$warning` don't map to primitives. | Design | |
-| Q-005 | 2026-09-29 | Add a Figma text style for the sidebar eyebrow label (10px Bold, +2px, uppercase)? | Design | It's currently composed from primitives. |
 | Q-006 | 2026-09-29 | Create `AI/*` semantic tokens and an AI output card or tag component, so the provisional neon rule can change in one place. | Design | See D-012 and D-019. |
-| Q-007 | 2026-09-29 | Update the Figma description of Green/600 ("Branding main green"), since neon is the brand color. | Design | See D-017. |
+| Q-007 | 2026-09-29 | Update the Figma description of Green/600 ("Branding main green"), since neon is the brand color. | Design | See D-017. **v2:** Green/400 now carries the brand description (D-025), but Green/600 still says "Branding main green", and only `chip-secondary` still uses it. |
 | Q-008 | 2026-09-29 | Do results produced by Agentic Toolbox agents (for example auto-triage categories) count as Vyn AI outputs that get the neon marker? | Maggie | The Toolbox UI itself is out of scope (D-013). |
 | Q-009 | 2026-09-29 | Document the remaining component sets. Figma counts 33 sets and 9 standalone components, and 15 are documented. | Design | |
 | Q-010 | 2026-09-29 | Review the marketing site (vyntelligence.com) for voice. It couldn't be fetched from the drafting environment. | Maggie | Voice currently relies on the Brand Feel audit. |
 | Q-011 | 2026-09-29 | Confirm the 1280px minimum supported width. | Maggie | See D-016. |
 | Q-012 | 2026-09-29 | Is a logo version for light backgrounds needed? Figma only has the dark-background logo. | Design | |
-| Q-013 | 2026-09-29 | In Figma, rebind the Workflow switcher label to the `S` font-size variable. It currently binds a variable named `xs` that resolves to 14px. | Design | See D-009. |
 | Q-014 | 2026-10-01 | Keep `DESIGN.md` and the design-system page in sync. They're separate, so changing one doesn't update the other. Decide whether one should be generated from the other. | Maggie | Until then, `CLAUDE.md` requires checking both. |
+| Q-015 | 2026-10-02 | Figma still uses the old Tag names (`Tag/tag-warning-bg`, `Tag/tag-danger-bg`, `Tag/chip-success-border`), while D-011 renamed them in `DESIGN.md`. Rename them in Figma, or revert D-011? | Maggie | Until this is settled, `DESIGN.md` keeps the D-011 names and notes the Figma names. |
+| Q-016 | 2026-10-02 | `button-primary` and `background-dark` are both Grey/900, so a Primary Filled button disappears on the navbar and sidebar (1:1). Is that intended, and should dark surfaces get their own button token? | Design | See D-024. |
+| Q-017 | 2026-10-02 | `chip-secondary` is still Green/600 (#60A211), and `chip-text-light` on it is 3.2:1, which fails AA for small text. Should it move to charcoal, or use dark text? | Design | It's the last semantic use of Green/600. |
+| Q-018 | 2026-10-02 | The navbar icon-button fill (`grey-600`, #656668) on `background-dark` is 2.6:1, below the 3:1 minimum for a control boundary. | Design | It was 3.1:1 in v1. |
+| Q-019 | 2026-10-02 | The `Elevation/XXL Drop` shadow is still tinted with the v1 warm grey (#57534F). Should it be retinted to the cool palette? | Design | |
+| Q-020 | 2026-10-02 | `Brand/Black` (#2C2A29, the old charcoal) is reserved "for use with Vyn logo only", while the chrome behind the logo is `background-dark` (Grey/900 #252628). Which should sit behind the logo? | Design | |
+| Q-021 | 2026-10-02 | Publish CSS developer tokens for the v2 text styles and size variables. The v1 names (`--font-header-h1-semi-bold`, `--font-xs`) no longer match. | Design / Dev | See D-028. |
+| Q-022 | 2026-10-02 | The sidebar section labels (WORKFLOW, SETTINGS) are 10px Semi-Bold with +1px tracking, uppercase, and have no text style applied. The new `Utility/eyebrow` is 12px Medium. Should the labels use it? | Design | Replaces Q-005 (see R-013). |
+| Q-023 | 2026-10-02 | The design-system page still shows v1. Update it to v2, either as a new version of the same page or as a separate page, so v1 stays viewable? | Maggie | See Q-014. |
 
 ## Resolved questions
 
@@ -83,6 +98,8 @@ A running log for [`DESIGN.md`](DESIGN.md) and the Vyn Web App design system as 
 | R-010 | 2026-09-29 | Should token names be invented roles (`ink`, `canvas`) or match the system? | 2026-09-29 | Match the developer tokens and never merge them (D-010). |
 | R-011 | 2026-09-29 | Some Tag token names were inconsistent (`chip-` prefix, `-bg` suffix). | 2026-09-29 | Renamed (D-011). |
 | R-012 | 2026-09-29 | The Foundations page and the live variables disagree. Which is right? | 2026-09-29 | The live variables (D-001). |
+| R-013 | 2026-09-29 | (Q-005) Should there be a Figma text style for the sidebar eyebrow label? | 2026-10-02 | A `Utility/eyebrow` style now exists (D-027), but the sidebar labels don't use it. Follow-up is Q-022. |
+| R-014 | 2026-09-29 | (Q-013) Rebind the Workflow switcher label to the `S` font-size variable. | 2026-10-02 | It's now bound to the size-named Typography variable `14` (D-027), which matches D-009. |
 
 ## Changelog
 
@@ -90,6 +107,7 @@ Newest first. Each entry links to its commit or PR.
 
 | Date | Change | Ref |
 |---|---|---|
+| 2026-10-02 | **DLS v2 on branch `v2`.** Updated `DESIGN.md` from the changed Vyn Global and Vyn Web App libraries: all 79 semantic tokens and their aliases, the Vyn Global primitive ramps, the v2 type scale and its Bootstrap mapping, the contrast checks, and the prose that relied on action green or warm greys. Logged D-023 to D-029, Q-015 to Q-023 and R-013/R-014. Added the Vyn Global file key to `CLAUDE.md`. The **design-system page was not updated** and still shows v1 (Q-023). | branch `v2` |
 | 2026-10-01 | Repo renamed to `maggiebrigleb/Vyn-DLS`. Updated the git remote, the PR links in this file and the `CLAUDE.md` heading. `DESIGN.md` and the design-system page are unchanged. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |
 | 2026-10-01 | Added `DECISIONS.md` and the `CLAUDE.md` logging rule. Backfilled the decisions, questions and changes made so far. `DESIGN.md`'s Decisions, Deferred and Known Gaps sections now summarize this log. | [#1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1) |
 | 2026-09-29 | Design-system page (v2) published from the Design System artifact type. It includes the tokens from the live variables, the brand book, 18 component previews, the Vyn Viewer example, and the logo and icons exported from Figma. | [artifact](https://claude.ai/artifact/CqA1i9k2gzTpfXUNT2hRJi) |

@@ -16,6 +16,6 @@ Every change to `DESIGN.md`, or to the Vyn Web App design-system page (https://c
 
 ## Spec rules
 
-- **Live Figma variables are the source of truth** (D-001). File: `LNixxQjUWEwccxM0LgcW6g`.
+- **Live Figma variables are the source of truth** (D-001). Files: Vyn Web App `LNixxQjUWEwccxM0LgcW6g` (semantic tokens, text styles) and Vyn Global `PXB9RwThJHEP09SPoKZg4J` (primitives).
 - **Token keys mirror the developer tokens,** and semantic tokens are never merged, even when values match (D-010). Values appear only in the front matter and the *Semantic tokens* table, so don't hard-code hex values elsewhere.
 - **After editing `DESIGN.md`, run** `npx -y @google/design.md lint DESIGN.md`. Aim for 0 errors. The expected warnings are orphaned tokens, the disabled-state contrast and `missing-primary`.

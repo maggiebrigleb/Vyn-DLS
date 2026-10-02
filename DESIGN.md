@@ -1,233 +1,238 @@
 ---
 version: alpha
-name: Vyn-Web-App-design
-description: "A calm, desk-side operations console for utilities and infrastructure teams: white work surfaces framed by warm charcoal chrome (background-dark), one confident action green (button-primary), with the neon brand green reserved for Vyn AI outputs and the logo, and warm stone greys for everything structural. Type is Inter throughout, set small and dense (16px body, 20px H1) with a 150% line-height, because the product is read all day by people triaging video evidence, not skimmed once. Components are Bootstrap-shaped (4px radius, 1px borders, 48px form controls) with Material icons. The personality is practical and proven first, lightly playful second: the product earns trust by showing the evidence, not by decorating it."
+name: Vyn-Web-App-design-v2
+description: "A calm, desk-side operations console for utilities and infrastructure teams: white work surfaces framed by charcoal chrome (background-dark), charcoal primary actions (button-primary), and neutral cool greys for everything structural. The neon brand green (Brand/Green) is reserved for Vyn AI outputs and the logo. Type is Inter throughout: 16px body at 150% line height, headings from 28px down to 12px at 120%, and display styles from 56px down to 40px for dashboard figures. Components are Bootstrap 5 components (4px radius, 1px borders, 48px form controls) with Material icons. The personality is practical and proven first, lightly playful second: the product earns trust by showing the evidence, not by decorating it."
 
-# Naming rule: every key is the developer token minus its category prefix,
+# v2: values from the Vyn Global and Vyn Web App libraries as of 2026-10-02.
+# Naming rule: every color key is the developer token minus --color-,
 # so {colors.text-secondary} == --color-text-secondary == Figma "Text/text-secondary".
+# Exception (D-011): tag-success-border, tag-warning and tag-danger are renamed here; Figma still uses the old names (Q-015).
 # Semantic tokens are listed one per variable and are NEVER merged, even when
 # two share a value today. To change a value, edit that one line.
 colors:
   # --- Text ---
-  text-primary: "#2c2a29"                   # Text/text-primary → Grey/800
-  text-secondary: "#585450"                 # Text/text-secondary → Grey/600
-  text-white: "#ffffff"                     # Text/text-white → White/100
-  text-success: "#166534"                   # Text/text-success → Functional/Success/800 → Semantic Green/800
-  text-warning: "#bf360c"                   # Text/text-warning → Functional/Warning/900 → Orange/900
-  text-danger: "#b71c1c"                    # Text/text-danger → Functional/Danger/800 → Red/800
+  text-primary: "#252628"                     # Text/text-primary → Grey/900
+  text-secondary: "#535456"                   # Text/text-secondary → Grey/700
+  text-white: "#ffffff"                       # Text/text-white → White
+  text-success: "#235825"                     # Text/text-success → Functional/Success/700 → Semantic Green/700
+  text-warning: "#6b3e00"                     # Text/text-warning → Functional/Warning/700 → Semantic Yellow/700
+  text-danger: "#9b0810"                      # Text/text-danger → Functional/Danger/700 → Semantic Red/700
   # --- Background ---
-  background-primary: "#ffffff"             # Background/bg-primary → White/100
-  background-secondary: "#f5f4f3"           # Background/bg-secondary → Grey/100
-  background-dark: "#2c2a29"                # Background/bg-dark → Grey/800
+  background-primary: "#ffffff"               # Background/bg-primary → White
+  background-secondary: "#f6f7f8"             # Background/bg-secondary → Grey/100
+  background-dark: "#252628"                  # Background/bg-dark → Grey/900
+  # --- Border ---
+  border: "#e8e9ea"                           # Border/border → Grey/200
   # --- Button ---
-  button-primary: "#548118"                 # Button/btn-primary → Green/600
-  button-primary-text: "#ffffff"            # Button/btn-primary-text → White/100
-  button-secondary: "#ebeae8"               # Button/btn-secondary → Grey/200
-  button-secondary-text: "#2c2a29"          # Button/btn-secondary-text → Grey/800
-  button-danger: "#c62828"                  # Button/btn-danger → Functional/Danger/700 → Red/700
-  button-disabled: "#ebeae8"                # Button/btn-disabled → Grey/200
-  button-disabled-text: "#a6a29e"           # Button/btn-disabled-text → Grey/400
+  button-primary: "#252628"                   # Button/btn-primary → Grey/900
+  button-primary-text: "#ffffff"              # Button/btn-primary-text → White
+  button-secondary: "#e8e9ea"                 # Button/btn-secondary → Grey/200
+  button-secondary-text: "#252628"            # Button/btn-secondary-text → Grey/900
+  button-danger: "#da1e28"                    # Button/btn-danger → Functional/Danger/600 → Semantic Red/600
+  button-disabled: "#e8e9ea"                  # Button/btn-disabled → Grey/200
+  button-disabled-text: "#a1a2a3"             # Button/btn-disabled-text → Grey/400
   # --- Input ---
-  input-primary: "#ffffff"                  # Input/input-primary → White/100
-  input-secondary: "#f5f4f3"                # Input/input-secondary → Grey/100
-  input-primary-active: "#548118"           # Input/input-primary-active → Green/600
-  input-disabled: "#f5f4f3"                 # Input/input-disabled → Grey/100
-  input-text-primary: "#2c2a29"             # Input/input-text-primary → Grey/800
-  input-text-secondary: "#585450"           # Input/input-text-secondary → Grey/600
-  input-text-disabled: "#a6a29e"            # Input/input-text-disabled → Grey/400
-  input-text-light: "#ffffff"               # Input/input-text-light → White/100
-  input-border: "#d6d4d1"                   # Input/input-border → Grey/300
-  input-danger: "#b71c1c"                   # Input/input-danger → Functional/Danger/800 → Red/800
+  input-primary: "#ffffff"                    # Input/input-primary → White
+  input-secondary: "#e8e9ea"                  # Input/input-secondary → Grey/200
+  input-primary-active: "#535456"             # Input/input-primary-active → Grey/700
+  input-disabled: "#f6f7f8"                   # Input/input-disabled → Grey/100
+  input-text-primary: "#252628"               # Input/input-text-primary → Grey/900
+  input-text-secondary: "#535456"             # Input/input-text-secondary → Grey/700
+  input-text-disabled: "#828385"              # Input/input-text-disabled → Grey/500
+  input-text-light: "#ffffff"                 # Input/input-text-light → White
+  input-border: "#828385"                     # Input/input-border → Grey/500
+  input-border-disabled: "#cbcccc"            # Input/input-border-disabled → Grey/300
+  input-danger: "#da1e28"                     # Input/input-danger → Functional/Danger/600 → Semantic Red/600
   # --- Link ---
-  link-primary: "#548118"                   # Link/link-primary → Green/600
-  link-primary-active: "#548118"            # Link/link-primary-active → Green/600
-  link-primary-disabled: "#a6a29e"          # Link/link-primary-disabled → Grey/400
-  link-secondary: "#2c2a29"                 # Link/link-secondary → Grey/800
-  link-secondary-active: "#2c2a29"          # Link/link-secondary-active → Grey/800
-  link-secondary-disabled: "#a6a29e"        # Link/link-secondary-disabled → Grey/400
-  link-secondary-light: "#d6d4d1"           # Link/link-secondary-light → Grey/300
-  link-secondary-light-active: "#ffffff"    # Link/link-secondary-light-active → White/100
-  link-secondary-light-disabled: "#7c7874"  # Link/link-secondary-light-disabled → Grey/500
+  link-primary: "#252628"                     # Link/link-primary → Grey/900
+  link-primary-active: "#252628"              # Link/link-primary-active → Grey/900
+  link-primary-disabled: "#a1a2a3"            # Link/link-primary-disabled → Grey/400
+  link-secondary: "#535456"                   # Link/link-secondary → Grey/700
+  link-secondary-active: "#535456"            # Link/link-secondary-active → Grey/700
+  link-secondary-disabled: "#a1a2a3"          # Link/link-secondary-disabled → Grey/400
+  link-secondary-light: "#cbcccc"             # Link/link-secondary-light → Grey/300
+  link-secondary-light-active: "#ffffff"      # Link/link-secondary-light-active → White
+  link-secondary-light-disabled: "#828385"    # Link/link-secondary-light-disabled → Grey/500
   # --- Alert ---
-  alert-default-bg: "#f5f4f3"               # Alert/alert-default-bg → Grey/100
-  alert-default-border: "#ebeae8"           # Alert/alert-default-border → Grey/200
-  alert-default-text: "#403d3b"             # Alert/alert-default-text → Grey/700
-  alert-success-bg: "#dcfce7"               # Alert/alert-success-bg → Functional/Success/100 → Semantic Green/100
-  alert-success-border: "#bbf7d0"           # Alert/alert-success-border → Functional/Success/200 → Semantic Green/200
-  alert-success-text: "#14532d"             # Alert/alert-success-text → Functional/Success/900 → Semantic Green/900
-  alert-warning-bg: "#fff3e0"               # Alert/alert-warning-bg → Functional/Warning/100 → Orange/100
-  alert-warning-border: "#ffe0b2"           # Alert/alert-warning-border → Functional/Warning/200 → Orange/200
-  alert-warning-text: "#bf360c"             # Alert/alert-warning-text → Functional/Warning/900 → Orange/900
-  alert-danger-bg: "#ffebee"                # Alert/alert-danger-bg → Functional/Danger/100 → Red/100
-  alert-danger-border: "#ffcdd2"            # Alert/alert-danger-border → Functional/Danger/200 → Red/200
-  alert-danger-text: "#5f0f0f"              # Alert/alert-danger-text → Functional/Danger/900 → Red/900
+  alert-default-bg: "#f6f7f8"                 # Alert/alert-default-bg → Grey/100
+  alert-default-border: "#e8e9ea"             # Alert/alert-default-border → Grey/200
+  alert-default-text: "#434446"               # Alert/alert-default-text → Grey/800
+  alert-success-bg: "#eaf6ea"                 # Alert/alert-success-bg → Functional/Success/100 → Semantic Green/100
+  alert-success-border: "#cdeacf"             # Alert/alert-success-border → Functional/Success/200 → Semantic Green/200
+  alert-success-text: "#235825"               # Alert/alert-success-text → Functional/Success/700 → Semantic Green/700
+  alert-warning-bg: "#fff5e0"                 # Alert/alert-warning-bg → Functional/Warning/100 → Semantic Yellow/100
+  alert-warning-border: "#ffe5b2"             # Alert/alert-warning-border → Functional/Warning/200 → Semantic Yellow/200
+  alert-warning-text: "#6b3e00"               # Alert/alert-warning-text → Functional/Warning/700 → Semantic Yellow/700
+  alert-danger-bg: "#fff0f1"                  # Alert/alert-danger-bg → Functional/Danger/100 → Semantic Red/100
+  alert-danger-border: "#fedcde"              # Alert/alert-danger-border → Functional/Danger/200 → Semantic Red/200
+  alert-danger-text: "#9b0810"                # Alert/alert-danger-text → Functional/Danger/700 → Semantic Red/700
   # --- Tag ---
-  tag-default: "#f5f4f3"                    # Tag/tag-default → Grey/100
-  tag-default-text: "#2c2a29"               # Tag/tag-default-text → Grey/800
-  tag-default-border: "#ebeae8"             # Tag/tag-default-border → Grey/200
-  tag-success: "#dcfce7"                    # Tag/tag-success → Functional/Success/100 → Semantic Green/100
-  tag-success-text: "#14532d"               # Tag/tag-success-text → Functional/Success/900 → Semantic Green/900
-  tag-success-border: "#bbf7d0"             # Tag/tag-success-border → Functional/Success/200 → Semantic Green/200
-  tag-warning: "#fff3e0"                    # Tag/tag-warning → Functional/Warning/100 → Orange/100
-  tag-warning-text: "#bf360c"               # Tag/tag-warning-text → Functional/Warning/900 → Orange/900
-  tag-warning-border: "#ffe0b2"             # Tag/tag-warning-border → Functional/Warning/200 → Orange/200
-  tag-danger: "#ffebee"                     # Tag/tag-danger → Functional/Danger/100 → Red/100
-  tag-danger-text: "#b71c1c"                # Tag/tag-danger-text → Functional/Danger/800 → Red/800
-  tag-danger-border: "#ffcdd2"              # Tag/tag-danger-border → Functional/Danger/200 → Red/200
+  tag-default: "#f6f7f8"                      # Tag/tag-default → Grey/100
+  tag-default-text: "#252628"                 # Tag/tag-default-text → Grey/900
+  tag-default-border: "#e8e9ea"               # Tag/tag-default-border → Grey/200
+  tag-success: "#eaf6ea"                      # Tag/tag-success → Functional/Success/100 → Semantic Green/100
+  tag-success-text: "#235825"                 # Tag/tag-success-text → Functional/Success/700 → Semantic Green/700
+  tag-success-border: "#cdeacf"               # Tag/chip-success-border → Functional/Success/200 → Semantic Green/200
+  tag-warning: "#fff5e0"                      # Tag/tag-warning-bg → Functional/Warning/100 → Semantic Yellow/100
+  tag-warning-text: "#6b3e00"                 # Tag/tag-warning-text → Functional/Warning/700 → Semantic Yellow/700
+  tag-warning-border: "#ffe5b2"               # Tag/tag-warning-border → Functional/Warning/200 → Semantic Yellow/200
+  tag-danger: "#fff0f1"                       # Tag/tag-danger-bg → Functional/Danger/100 → Semantic Red/100
+  tag-danger-text: "#9b0810"                  # Tag/tag-danger-text → Functional/Danger/700 → Semantic Red/700
+  tag-danger-border: "#fedcde"                # Tag/tag-danger-border → Functional/Danger/200 → Semantic Red/200
   # --- Chip ---
-  chip-primary: "#2c2a29"                   # Chip/chip-primary → Grey/800
-  chip-primary-border: "#d6d4d1"            # Chip/chip-primary-border → Grey/300
-  chip-secondary: "#548118"                 # Chip/chip-secondary → Green/600
-  chip-success: "#86efac"                   # Chip/chip-success → Functional/Success/300 → Semantic Green/300
-  chip-success-text: "#14532d"              # Chip/chip-success-text → Functional/Success/900 → Semantic Green/900
-  chip-warning: "#ffa726"                   # Chip/chip-warning → Functional/Warning/400 → Orange/400
-  chip-danger: "#c62828"                    # Chip/chip-danger → Functional/Danger/700 → Red/700
-  chip-danger-text: "#5f0f0f"               # Chip/chip-danger-text → Functional/Danger/900 → Red/900
-  chip-text-light: "#ffffff"                # Chip/chip-text-light → White/100
-  chip-text-dark: "#2c2a29"                 # Chip/chip-text-dark → Grey/800
+  chip-primary: "#434446"                     # Chip/chip-primary → Grey/800
+  chip-primary-border: "#cbcccc"              # Chip/chip-primary-border → Grey/300
+  chip-secondary: "#60a211"                   # Chip/chip-secondary → Green/600
+  chip-success: "#9fd6a1"                     # Chip/chip-success → Functional/Success/300 → Semantic Green/300
+  chip-success-text: "#235825"                # Chip/chip-success-text → Functional/Success/700 → Semantic Green/700
+  chip-warning: "#ffb81f"                     # Chip/chip-warning → Functional/Warning/400 → Semantic Yellow/400
+  chip-danger: "#da1e28"                      # Chip/chip-danger → Functional/Danger/600 → Semantic Red/600
+  chip-danger-text: "#9b0810"                 # Chip/chip-danger-text → Functional/Danger/700 → Semantic Red/700
+  chip-text-light: "#ffffff"                  # Chip/chip-text-light → White
+  chip-text-dark: "#252628"                   # Chip/chip-text-dark → Grey/900
   # --- Focus ---
-  focus-border-focus: "#007bff"             # Focus/border-focus
+  focus-border-focus: "#007bff"               # Focus/border-focus
   focus-shadow-focus: "rgba(128,189,255,0.4)"  # Focus/shadow-focus
-  focus-border-error-focus: "#dc3545"       # Focus/border-error-focus
+  focus-border-error-focus: "#dc3545"         # Focus/border-error-focus
   focus-shadow-error-focus: "rgba(220,53,69,0.4)"  # Focus/shadow-error-focus
   # --- State ---
-  state-hover-shade: "rgba(0,0,0,0.15)"     # State/hover-shade
+  state-hover-shade: "rgba(0,0,0,0.15)"       # State/hover-shade
   state-hover-tint: "rgba(255,255,255,0.15)"  # State/hover-tint
-  state-pressed-shade: "rgba(0,0,0,0.2)"    # State/pressed-shade
+  state-pressed-shade: "rgba(0,0,0,0.2)"      # State/pressed-shade
   state-pressed-tint: "rgba(255,255,255,0.2)"  # State/pressed-tint
-  # --- Primitives referenced directly in Figma (no semantic token yet — see Q-003 in DECISIONS.md) ---
-  grey-500: "#7c7874"                     # Grey/500 — navbar workflow-switcher border
-  grey-600: "#585450"                     # Grey/600 — navbar icon-button fill
-  grey-700: "#403d3b"                     # Grey/700 — sidebar footer divider
-  neon-green-800: "#98db40"               # Neon Green/800 — THE brand color: logo + Vyn AI outputs only (provisional rule)
+  # --- Primitives referenced directly in Figma (no semantic token yet; see Q-003) ---
+  brand-green: "#98db40"                    # Brand/Green (= Green/400): logo + Vyn AI outputs only
+  grey-500: "#828385"                       # Grey/500: navbar workflow-switcher border
+  grey-600: "#656668"                       # Grey/600: navbar icon-button fill
+  grey-700: "#535456"                       # Grey/700: sidebar footer divider
 
-typography:
-  header-h1-semi-bold:                # --font-header-h1-semi-bold
+typography:                # keys = Figma text-style names without the group (Heading/h1 → h1); see D-028
+  h1:                       # Figma Heading/h1
     fontFamily: Inter
-    fontSize: 20px
+    fontSize: 28px
     fontWeight: 600
-    lineHeight: 1.5
+    lineHeight: 1.2
     letterSpacing: 0
-  header-h2-semi-bold:                # --font-header-h2-semi-bold
+  h2:                       # Figma Heading/h2
+    fontFamily: Inter
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: 0
+  h3:                       # Figma Heading/h3
     fontFamily: Inter
     fontSize: 18px
     fontWeight: 600
-    lineHeight: 1.5
+    lineHeight: 1.2
     letterSpacing: 0
-  header-h3-regular:                # --font-header-h3-regular
+  h4:                       # Figma Heading/h4
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: 0
+  h5:                       # Figma Heading/h5
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: 0
+  h6:                       # Figma Heading/h6
+    fontFamily: Inter
+    fontSize: 12px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: 0
+  body-base:                # Figma Body/body-base
     fontFamily: Inter
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: 0
-  header-h3-medium:                # --font-header-h3-medium
+  body-base-medium:         # Figma Body/body-base-medium
     fontFamily: Inter
     fontSize: 16px
     fontWeight: 500
     lineHeight: 1.5
     letterSpacing: 0
-  header-h3-semi-bold:                # --font-header-h3-semi-bold
+  body-base-semibold:       # Figma Body/body-base-semibold
     fontFamily: Inter
     fontSize: 16px
     fontWeight: 600
     lineHeight: 1.5
     letterSpacing: 0
-  header-h4-regular:                # --font-header-h4-regular
+  body-small:               # Figma Body/body-small
     fontFamily: Inter
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: 0
-  header-h4-medium:                # --font-header-h4-medium
+  body-small-medium:        # Figma Body/body-small-medium
     fontFamily: Inter
     fontSize: 14px
     fontWeight: 500
     lineHeight: 1.5
     letterSpacing: 0
-  header-h4-semi-bold:                # --font-header-h4-semi-bold
+  body-small-semibold:      # Figma Body/body-small-semibold
     fontFamily: Inter
     fontSize: 14px
     fontWeight: 600
     lineHeight: 1.5
     letterSpacing: 0
-  body-p1-regular:                # --font-body-p1-regular
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p1-medium:                # --font-body-p1-medium
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: 500
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p1-semi-bold:                # --font-body-p1-semi-bold
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: 600
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p2-regular:                # --font-body-p2-regular
-    fontFamily: Inter
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p2-medium:                # --font-body-p2-medium
-    fontFamily: Inter
-    fontSize: 14px
-    fontWeight: 500
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p2-semi-bold:                # --font-body-p2-semi-bold
-    fontFamily: Inter
-    fontSize: 14px
-    fontWeight: 600
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p3-regular:                # --font-body-p3-regular
+  body-xsmall:              # Figma Body/body-xsmall
     fontFamily: Inter
     fontSize: 12px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: 0
-  body-p3-medium:                # --font-body-p3-medium
+  body-xsmall-medium:       # Figma Body/body-xsmall-medium
     fontFamily: Inter
     fontSize: 12px
     fontWeight: 500
     lineHeight: 1.5
     letterSpacing: 0
-  body-p3-semi-bold:                # --font-body-p3-semi-bold
+  body-xsmall-semibold:     # Figma Body/body-xsmall-semibold
     fontFamily: Inter
     fontSize: 12px
     fontWeight: 600
     lineHeight: 1.5
     letterSpacing: 0
-  body-p4-regular:                # --font-body-p4-regular
+  body-xxsmall:             # Figma Body/body-xxsmall
     fontFamily: Inter
     fontSize: 10px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: 0
-  body-p4-medium:                # --font-body-p4-medium
-    fontFamily: Inter
-    fontSize: 10px
-    fontWeight: 500
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-p4-semi-bold:                # --font-body-p4-semi-bold
+  body-xxsmall-semibold:    # Figma Body/body-xxsmall-semibold
     fontFamily: Inter
     fontSize: 10px
     fontWeight: 600
     lineHeight: 1.5
     letterSpacing: 0
-  eyebrow:            # NOT a Figma text style — composed from --font-xxs, --font-weight-bold, --font-letter-spacing-2; set UPPERCASE in CSS
+  display-4:                # Figma Display/display-4
     fontFamily: Inter
-    fontSize: 10px
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: 2px
+    fontSize: 56px
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: 0
+  display-5:                # Figma Display/display-5
+    fontFamily: Inter
+    fontSize: 48px
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: 0
+  display-6:                # Figma Display/display-6
+    fontFamily: Inter
+    fontSize: 40px
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: 0
+  eyebrow:                  # Figma Utility/eyebrow
+    fontFamily: Inter
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: 1px
 
 rounded:            # --radius-*
   s: 4px
@@ -252,55 +257,55 @@ components:
   button-primary:
     backgroundColor: "{colors.button-primary}"
     textColor: "{colors.button-primary-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     height: 50px
     padding: 12px 24px
   button-primary-md:
     backgroundColor: "{colors.button-primary}"
     textColor: "{colors.button-primary-text}"
-    typography: "{typography.body-p2-medium}"
+    typography: "{typography.body-small-medium}"
     rounded: "{rounded.s}"
     height: 39px
     padding: 8px 16px
   button-primary-sm:
     backgroundColor: "{colors.button-primary}"
     textColor: "{colors.button-primary-text}"
-    typography: "{typography.body-p3-medium}"
+    typography: "{typography.body-xsmall-medium}"
     rounded: "{rounded.s}"
     height: 28px
     padding: 4px 12px
   button-primary-outline:
     textColor: "{colors.button-primary}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 24px
   button-primary-text:
     textColor: "{colors.button-primary}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 24px
   button-secondary:
     backgroundColor: "{colors.button-secondary}"
     textColor: "{colors.button-secondary-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 24px
   button-secondary-outline:
     textColor: "{colors.button-secondary-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 24px
   button-danger:
     backgroundColor: "{colors.button-danger}"
     textColor: "{colors.button-primary-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 24px
   button-disabled:
     backgroundColor: "{colors.button-disabled}"
     textColor: "{colors.button-disabled-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
   icon-button:
     backgroundColor: "{colors.button-primary}"
@@ -321,20 +326,20 @@ components:
   text-input:
     backgroundColor: "{colors.input-primary}"
     textColor: "{colors.input-text-primary}"
-    typography: "{typography.body-p1-regular}"
+    typography: "{typography.body-base}"
     rounded: "{rounded.s}"
     height: 48px
     padding: 0 12px
   text-input-error:
     backgroundColor: "{colors.input-primary}"
     textColor: "{colors.input-text-primary}"
-    typography: "{typography.body-p1-regular}"
+    typography: "{typography.body-base}"
     rounded: "{rounded.s}"
     height: 48px
   text-input-disabled:
     backgroundColor: "{colors.input-disabled}"
     textColor: "{colors.input-text-disabled}"
-    typography: "{typography.body-p1-regular}"
+    typography: "{typography.body-base}"
     rounded: "{rounded.s}"
     height: 48px
   input-addon:
@@ -343,14 +348,14 @@ components:
     padding: 12px
   input-label:
     textColor: "{colors.input-text-primary}"
-    typography: "{typography.body-p1-semi-bold}"
+    typography: "{typography.body-base-semibold}"
   input-error-text:
     textColor: "{colors.input-danger}"
-    typography: "{typography.body-p2-regular}"
+    typography: "{typography.body-small}"
   dropdown-trigger:
     backgroundColor: "{colors.input-primary}"
     textColor: "{colors.input-text-primary}"
-    typography: "{typography.body-p1-regular}"
+    typography: "{typography.body-base}"
     rounded: "{rounded.s}"
     height: 48px
     padding: 12px
@@ -360,7 +365,7 @@ components:
   dropdown-item:
     backgroundColor: "{colors.input-primary}"
     textColor: "{colors.input-text-primary}"
-    typography: "{typography.body-p1-regular}"
+    typography: "{typography.body-base}"
     height: 48px
     padding: 12px
   card:
@@ -370,25 +375,25 @@ components:
   alert-default:
     backgroundColor: "{colors.alert-default-bg}"
     textColor: "{colors.alert-default-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 16px
   alert-success:
     backgroundColor: "{colors.alert-success-bg}"
     textColor: "{colors.alert-success-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 16px
   alert-warning:
     backgroundColor: "{colors.alert-warning-bg}"
     textColor: "{colors.alert-warning-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 16px
   alert-danger:
     backgroundColor: "{colors.alert-danger-bg}"
     textColor: "{colors.alert-danger-text}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     rounded: "{rounded.s}"
     padding: 12px 16px
   tab:
@@ -412,7 +417,7 @@ components:
     padding: 12px 16px
   navbar-workflow-switcher:
     textColor: "{colors.link-secondary-light-active}"
-    typography: "{typography.body-p2-medium}"
+    typography: "{typography.body-small-medium}"
     rounded: "{rounded.s}"
     height: 39px
     padding: 8px 16px
@@ -421,15 +426,15 @@ components:
     width: 250px
   sidebar-link:
     textColor: "{colors.link-secondary-light}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     padding: 12px 18px
   sidebar-link-active:
     textColor: "{colors.link-secondary-light-active}"
-    typography: "{typography.body-p1-medium}"
+    typography: "{typography.body-base-medium}"
     padding: 12px 18px
   sidebar-section-label:
     textColor: "{colors.link-secondary-disabled}"
-    typography: "{typography.eyebrow}"
+    typography: "{typography.body-xxsmall-semibold}"  # + 1px letter spacing, uppercase; no text style applied in Figma (Q-022)
     padding: 8px 12px
   filter-panel:
     backgroundColor: "{colors.background-secondary}"
@@ -446,141 +451,150 @@ Vyn is the web console for **Vyntelligence**. Customers and field crews record s
 
 The brand audit sums up the feel in one line: *"a practical, proven, slightly playful engineering partner."* The UI should read the same way. It's a tool people trust with safety and compliance evidence, so it stays calm and legible, and the personality shows up in small places (Vynnie, the brand words, the neon brand green) rather than in decoration. The brand's own summary is **professional but playful**, and it should always feel **premium**, digitally and physically.
 
-The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are stock Bootstrap themed with Vyn tokens. That means 4px control corners, 1px borders, 48px form controls and a Bootstrap-width (0.25rem) focus ring in classic Bootstrap blue. It uses **Material icons** throughout and Material elevation values for shadows. On top of that sits a warm, Vyn-specific palette: stone greys with a brown undertone (`#2c2a29` → `#f5f4f3`) instead of Bootstrap's cool greys. There are two greens with separate jobs: **action green** (`button-primary`, Green/600) for UI actions, and **neon brand green** (Neon Green/800) for Vyn AI and the logo.
+The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are stock Bootstrap themed with Vyn tokens. That means 4px control corners, 1px borders, 48px form controls and a Bootstrap-width (0.25rem) focus ring in classic Bootstrap blue. It uses **Material icons** throughout and Material elevation values for shadows. On top of that sits a neutral, cool-grey palette (Grey/100 to Grey/900 in Vyn Global). Primary actions are charcoal, and the neon brand green (`Brand/Green`) is reserved for the logo and Vyn AI outputs.
 
 **Key characteristics:**
-- **Dark chrome, light work area.** The navbar and sidebar sit on warm charcoal `{colors.background-dark}`. Everything the user works on sits on white `{colors.background-primary}`, with `{colors.background-secondary}` for secondary panels such as filters.
+- **Dark chrome, light work area.** The navbar and sidebar sit on charcoal `{colors.background-dark}`. Everything the user works on sits on white `{colors.background-primary}`, with `{colors.background-secondary}` for secondary panels such as filters.
 - **Neon green belongs to Vyn AI.** The neon brand green marks Vyn AI outputs (and the logo), nothing else. This is a provisional rule; see *Vyn AI UI*.
-- **One action color.** Action green (`{colors.button-primary}`, `{colors.link-primary}`, `{colors.input-primary-active}`) marks primary buttons, links, active inputs and the selected tab. It isn't used as a background for regions.
-- **Dense, small type.** Inter at 16px body with a 20px H1. Hierarchy comes from weight (400/500/600), not size jumps. Every style uses a 1.5 line-height.
-- **Warm neutrals do the structural work.** Borders, dividers, disabled states and secondary buttons all come from the Grey ramp. There's no pure black in the UI.
+- **Charcoal actions.** `{colors.button-primary}` and `{colors.link-primary}` (Grey/900), and `{colors.input-primary-active}` (Grey/700), mark primary buttons, links and active inputs. Color is kept for status and for Vyn AI.
+- **Clear type hierarchy.** Inter with 16px body (`body-base`). Headings run from `h1` 28px down to `h6` 12px at a 1.2 line height, and display styles (`display-4` to `display-6`, 56–40px) are kept for dashboard figures.
+- **Neutral greys do the structural work.** Borders, dividers, disabled states and secondary buttons all come from the Grey ramp. There's no pure black in the UI.
 - **Status is neutral by default.** "Info" is grey, not blue. Color is saved for success, warning and danger, so it means something when it appears.
 - **Bootstrap behaviour, Vyn skin.** When a pattern isn't specified here, fall back to the Bootstrap component and its usage guidance, then apply Vyn tokens.
 
-> **Source of truth:** the Figma file's **live variables**. Where the Foundations Documentation page disagrees with a live variable, the variable wins, and every value in this file is taken from the variables.
+> **Version 2 (2026-10-02).** This version follows the updated **Vyn Global** (primitives) and **Vyn Web App** (semantic tokens, text styles) libraries. The first pass (v1) is kept unchanged on branch `claude/figma-file-connection-of9n12` ([PR #1](https://github.com/maggiebrigleb/Vyn-DLS/pull/1)). What changed, and why, is in `DECISIONS.md` (D-023 to D-029).
+>
+> **Source of truth:** the Figma files' **live variables**. Where the Foundations Documentation page disagrees with a live variable, the variable wins, and every value in this file is taken from the variables.
 >
 > Sources: Figma file *Vyn Web App*, covering the Foundations Documentation, Grids, component pages (Button, Input Group, Dropdown, Cards, Alerts, Tabs, Navbar) and the Brand Feel audit. The marketing site (vyntelligence.com) couldn't be reached from the drafting environment, so brand voice comes from the audit frame, which quotes the site directly.
 
 ## Colors
 
 ### How color tokens work
-- **The semantic tokens are the API.** Components, CSS and this file only ever reference the local **Color** collection's semantic tokens. Primitives (`Green/600`, `Grey/300`…) are there to feed those semantic tokens, not to be used directly.
-- **One key per Figma variable, no merging.** `text-primary`, `input-text-primary`, `link-secondary` and `button-secondary-text` all resolve to #2C2A29 today, but they're separate so each can change on its own. **The DLS is under construction and these values will move.** Always use the most specific token for the job, even when another token has the same value right now.
-- **Naming rule:** key = developer token minus `--color-`. `{colors.alert-success-bg}` ↔ `--color-alert-success-bg` ↔ Figma `Alert/alert-success-bg`. Search any of the three to find the others.
+- **The semantic tokens are the API.** Components, CSS and this file only ever reference the Vyn Web App **Color** collection's semantic tokens. Primitives come from the **Vyn Global** library and only feed those semantic tokens.
+- **One key per Figma variable, no merging.** For example, `text-primary`, `input-text-primary`, `link-primary`, `button-primary` and `background-dark` all resolve to Grey/900 today, but they're separate so each can change on its own. **The DLS is under construction and these values will move.** Always use the most specific token for the job.
+- **Naming rule:** key = developer token minus `--color-`. `{colors.alert-success-bg}` ↔ `--color-alert-success-bg` ↔ Figma `Alert/alert-success-bg`. The exceptions are the three Tag tokens renamed by D-011, because Figma still uses their old names (Q-015).
 - **To change a value:** change the Figma variable, then update the matching line in the front matter and the table below. No other line in this file should hard-code that hex.
-- Only a **Light** mode exists.
+- Only a **Light** mode exists (D-015).
 
 ### Semantic tokens
-Values are the live variable values, which are the source of truth.
+Values are the live variable values (D-001), read on 2026-10-02. There are 79 tokens, including two that are new in v2: `border` and `input-border-disabled`.
 
 **Text**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `text-primary` | `Text/text-primary` | `--color-text-primary` | Grey/800 | `#2c2a29` |
-| `text-secondary` | `Text/text-secondary` | `--color-text-secondary` | Grey/600 | `#585450` |
-| `text-white` | `Text/text-white` | `--color-text-white` | White/100 | `#ffffff` |
-| `text-success` | `Text/text-success` | `--color-text-success` | Functional/Success/800 → Semantic Green/800 | `#166534` |
-| `text-warning` | `Text/text-warning` | `--color-text-warning` | Functional/Warning/900 → Orange/900 | `#bf360c` |
-| `text-danger` | `Text/text-danger` | `--color-text-danger` | Functional/Danger/800 → Red/800 | `#b71c1c` |
+| `text-primary` | `Text/text-primary` | `--color-text-primary` | Grey/900 | `#252628` |
+| `text-secondary` | `Text/text-secondary` | `--color-text-secondary` | Grey/700 | `#535456` |
+| `text-white` | `Text/text-white` | `--color-text-white` | White | `#ffffff` |
+| `text-success` | `Text/text-success` | `--color-text-success` | Functional/Success/700 → Semantic Green/700 | `#235825` |
+| `text-warning` | `Text/text-warning` | `--color-text-warning` | Functional/Warning/700 → Semantic Yellow/700 | `#6b3e00` |
+| `text-danger` | `Text/text-danger` | `--color-text-danger` | Functional/Danger/700 → Semantic Red/700 | `#9b0810` |
 
 **Background**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `background-primary` | `Background/bg-primary` | `--color-background-primary` | White/100 | `#ffffff` |
-| `background-secondary` | `Background/bg-secondary` | `--color-background-secondary` | Grey/100 | `#f5f4f3` |
-| `background-dark` | `Background/bg-dark` | `--color-background-dark` | Grey/800 | `#2c2a29` |
+| `background-primary` | `Background/bg-primary` | `--color-background-primary` | White | `#ffffff` |
+| `background-secondary` | `Background/bg-secondary` | `--color-background-secondary` | Grey/100 | `#f6f7f8` |
+| `background-dark` | `Background/bg-dark` | `--color-background-dark` | Grey/900 | `#252628` |
+
+**Border**
+
+| Key | Figma variable | CSS variable | Aliases | Value |
+|---|---|---|---|---|
+| `border` | `Border/border` | `--color-border` | Grey/200 | `#e8e9ea` |
 
 **Button**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `button-primary` | `Button/btn-primary` | `--color-button-primary` | Green/600 | `#548118` |
-| `button-primary-text` | `Button/btn-primary-text` | `--color-button-primary-text` | White/100 | `#ffffff` |
-| `button-secondary` | `Button/btn-secondary` | `--color-button-secondary` | Grey/200 | `#ebeae8` |
-| `button-secondary-text` | `Button/btn-secondary-text` | `--color-button-secondary-text` | Grey/800 | `#2c2a29` |
-| `button-danger` | `Button/btn-danger` | `--color-button-danger` | Functional/Danger/700 → Red/700 | `#c62828` |
-| `button-disabled` | `Button/btn-disabled` | `--color-button-disabled` | Grey/200 | `#ebeae8` |
-| `button-disabled-text` | `Button/btn-disabled-text` | `--color-button-disabled-text` | Grey/400 | `#a6a29e` |
+| `button-primary` | `Button/btn-primary` | `--color-button-primary` | Grey/900 | `#252628` |
+| `button-primary-text` | `Button/btn-primary-text` | `--color-button-primary-text` | White | `#ffffff` |
+| `button-secondary` | `Button/btn-secondary` | `--color-button-secondary` | Grey/200 | `#e8e9ea` |
+| `button-secondary-text` | `Button/btn-secondary-text` | `--color-button-secondary-text` | Grey/900 | `#252628` |
+| `button-danger` | `Button/btn-danger` | `--color-button-danger` | Functional/Danger/600 → Semantic Red/600 | `#da1e28` |
+| `button-disabled` | `Button/btn-disabled` | `--color-button-disabled` | Grey/200 | `#e8e9ea` |
+| `button-disabled-text` | `Button/btn-disabled-text` | `--color-button-disabled-text` | Grey/400 | `#a1a2a3` |
 
 **Input**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `input-primary` | `Input/input-primary` | `--color-input-primary` | White/100 | `#ffffff` |
-| `input-secondary` | `Input/input-secondary` | `--color-input-secondary` | Grey/100 | `#f5f4f3` |
-| `input-primary-active` | `Input/input-primary-active` | `--color-input-primary-active` | Green/600 | `#548118` |
-| `input-disabled` | `Input/input-disabled` | `--color-input-disabled` | Grey/100 | `#f5f4f3` |
-| `input-text-primary` | `Input/input-text-primary` | `--color-input-text-primary` | Grey/800 | `#2c2a29` |
-| `input-text-secondary` | `Input/input-text-secondary` | `--color-input-text-secondary` | Grey/600 | `#585450` |
-| `input-text-disabled` | `Input/input-text-disabled` | `--color-input-text-disabled` | Grey/400 | `#a6a29e` |
-| `input-text-light` | `Input/input-text-light` | `--color-input-text-light` | White/100 | `#ffffff` |
-| `input-border` | `Input/input-border` | `--color-input-border` | Grey/300 | `#d6d4d1` |
-| `input-danger` | `Input/input-danger` | `--color-input-danger` | Functional/Danger/800 → Red/800 | `#b71c1c` |
+| `input-primary` | `Input/input-primary` | `--color-input-primary` | White | `#ffffff` |
+| `input-secondary` | `Input/input-secondary` | `--color-input-secondary` | Grey/200 | `#e8e9ea` |
+| `input-primary-active` | `Input/input-primary-active` | `--color-input-primary-active` | Grey/700 | `#535456` |
+| `input-disabled` | `Input/input-disabled` | `--color-input-disabled` | Grey/100 | `#f6f7f8` |
+| `input-text-primary` | `Input/input-text-primary` | `--color-input-text-primary` | Grey/900 | `#252628` |
+| `input-text-secondary` | `Input/input-text-secondary` | `--color-input-text-secondary` | Grey/700 | `#535456` |
+| `input-text-disabled` | `Input/input-text-disabled` | `--color-input-text-disabled` | Grey/500 | `#828385` |
+| `input-text-light` | `Input/input-text-light` | `--color-input-text-light` | White | `#ffffff` |
+| `input-border` | `Input/input-border` | `--color-input-border` | Grey/500 | `#828385` |
+| `input-border-disabled` | `Input/input-border-disabled` | `--color-input-border-disabled` | Grey/300 | `#cbcccc` |
+| `input-danger` | `Input/input-danger` | `--color-input-danger` | Functional/Danger/600 → Semantic Red/600 | `#da1e28` |
 
 **Link**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `link-primary` | `Link/link-primary` | `--color-link-primary` | Green/600 | `#548118` |
-| `link-primary-active` | `Link/link-primary-active` | `--color-link-primary-active` | Green/600 | `#548118` |
-| `link-primary-disabled` | `Link/link-primary-disabled` | `--color-link-primary-disabled` | Grey/400 | `#a6a29e` |
-| `link-secondary` | `Link/link-secondary` | `--color-link-secondary` | Grey/800 | `#2c2a29` |
-| `link-secondary-active` | `Link/link-secondary-active` | `--color-link-secondary-active` | Grey/800 | `#2c2a29` |
-| `link-secondary-disabled` | `Link/link-secondary-disabled` | `--color-link-secondary-disabled` | Grey/400 | `#a6a29e` |
-| `link-secondary-light` | `Link/link-secondary-light` | `--color-link-secondary-light` | Grey/300 | `#d6d4d1` |
-| `link-secondary-light-active` | `Link/link-secondary-light-active` | `--color-link-secondary-light-active` | White/100 | `#ffffff` |
-| `link-secondary-light-disabled` | `Link/link-secondary-light-disabled` | `--color-link-secondary-light-disabled` | Grey/500 | `#7c7874` |
+| `link-primary` | `Link/link-primary` | `--color-link-primary` | Grey/900 | `#252628` |
+| `link-primary-active` | `Link/link-primary-active` | `--color-link-primary-active` | Grey/900 | `#252628` |
+| `link-primary-disabled` | `Link/link-primary-disabled` | `--color-link-primary-disabled` | Grey/400 | `#a1a2a3` |
+| `link-secondary` | `Link/link-secondary` | `--color-link-secondary` | Grey/700 | `#535456` |
+| `link-secondary-active` | `Link/link-secondary-active` | `--color-link-secondary-active` | Grey/700 | `#535456` |
+| `link-secondary-disabled` | `Link/link-secondary-disabled` | `--color-link-secondary-disabled` | Grey/400 | `#a1a2a3` |
+| `link-secondary-light` | `Link/link-secondary-light` | `--color-link-secondary-light` | Grey/300 | `#cbcccc` |
+| `link-secondary-light-active` | `Link/link-secondary-light-active` | `--color-link-secondary-light-active` | White | `#ffffff` |
+| `link-secondary-light-disabled` | `Link/link-secondary-light-disabled` | `--color-link-secondary-light-disabled` | Grey/500 | `#828385` |
 
 **Alert**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `alert-default-bg` | `Alert/alert-default-bg` | `--color-alert-default-bg` | Grey/100 | `#f5f4f3` |
-| `alert-default-border` | `Alert/alert-default-border` | `--color-alert-default-border` | Grey/200 | `#ebeae8` |
-| `alert-default-text` | `Alert/alert-default-text` | `--color-alert-default-text` | Grey/700 | `#403d3b` |
-| `alert-success-bg` | `Alert/alert-success-bg` | `--color-alert-success-bg` | Functional/Success/100 → Semantic Green/100 | `#dcfce7` |
-| `alert-success-border` | `Alert/alert-success-border` | `--color-alert-success-border` | Functional/Success/200 → Semantic Green/200 | `#bbf7d0` |
-| `alert-success-text` | `Alert/alert-success-text` | `--color-alert-success-text` | Functional/Success/900 → Semantic Green/900 | `#14532d` |
-| `alert-warning-bg` | `Alert/alert-warning-bg` | `--color-alert-warning-bg` | Functional/Warning/100 → Orange/100 | `#fff3e0` |
-| `alert-warning-border` | `Alert/alert-warning-border` | `--color-alert-warning-border` | Functional/Warning/200 → Orange/200 | `#ffe0b2` |
-| `alert-warning-text` | `Alert/alert-warning-text` | `--color-alert-warning-text` | Functional/Warning/900 → Orange/900 | `#bf360c` |
-| `alert-danger-bg` | `Alert/alert-danger-bg` | `--color-alert-danger-bg` | Functional/Danger/100 → Red/100 | `#ffebee` |
-| `alert-danger-border` | `Alert/alert-danger-border` | `--color-alert-danger-border` | Functional/Danger/200 → Red/200 | `#ffcdd2` |
-| `alert-danger-text` | `Alert/alert-danger-text` | `--color-alert-danger-text` | Functional/Danger/900 → Red/900 | `#5f0f0f` |
+| `alert-default-bg` | `Alert/alert-default-bg` | `--color-alert-default-bg` | Grey/100 | `#f6f7f8` |
+| `alert-default-border` | `Alert/alert-default-border` | `--color-alert-default-border` | Grey/200 | `#e8e9ea` |
+| `alert-default-text` | `Alert/alert-default-text` | `--color-alert-default-text` | Grey/800 | `#434446` |
+| `alert-success-bg` | `Alert/alert-success-bg` | `--color-alert-success-bg` | Functional/Success/100 → Semantic Green/100 | `#eaf6ea` |
+| `alert-success-border` | `Alert/alert-success-border` | `--color-alert-success-border` | Functional/Success/200 → Semantic Green/200 | `#cdeacf` |
+| `alert-success-text` | `Alert/alert-success-text` | `--color-alert-success-text` | Functional/Success/700 → Semantic Green/700 | `#235825` |
+| `alert-warning-bg` | `Alert/alert-warning-bg` | `--color-alert-warning-bg` | Functional/Warning/100 → Semantic Yellow/100 | `#fff5e0` |
+| `alert-warning-border` | `Alert/alert-warning-border` | `--color-alert-warning-border` | Functional/Warning/200 → Semantic Yellow/200 | `#ffe5b2` |
+| `alert-warning-text` | `Alert/alert-warning-text` | `--color-alert-warning-text` | Functional/Warning/700 → Semantic Yellow/700 | `#6b3e00` |
+| `alert-danger-bg` | `Alert/alert-danger-bg` | `--color-alert-danger-bg` | Functional/Danger/100 → Semantic Red/100 | `#fff0f1` |
+| `alert-danger-border` | `Alert/alert-danger-border` | `--color-alert-danger-border` | Functional/Danger/200 → Semantic Red/200 | `#fedcde` |
+| `alert-danger-text` | `Alert/alert-danger-text` | `--color-alert-danger-text` | Functional/Danger/700 → Semantic Red/700 | `#9b0810` |
 
 **Tag**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `tag-default` | `Tag/tag-default` | `--color-tag-default` | Grey/100 | `#f5f4f3` |
-| `tag-default-text` | `Tag/tag-default-text` | `--color-tag-default-text` | Grey/800 | `#2c2a29` |
-| `tag-default-border` | `Tag/tag-default-border` | `--color-tag-default-border` | Grey/200 | `#ebeae8` |
-| `tag-success` | `Tag/tag-success` | `--color-tag-success` | Functional/Success/100 → Semantic Green/100 | `#dcfce7` |
-| `tag-success-text` | `Tag/tag-success-text` | `--color-tag-success-text` | Functional/Success/900 → Semantic Green/900 | `#14532d` |
-| `tag-success-border` | `Tag/tag-success-border` | `--color-tag-success-border` | Functional/Success/200 → Semantic Green/200 | `#bbf7d0` |
-| `tag-warning` | `Tag/tag-warning` | `--color-tag-warning` | Functional/Warning/100 → Orange/100 | `#fff3e0` |
-| `tag-warning-text` | `Tag/tag-warning-text` | `--color-tag-warning-text` | Functional/Warning/900 → Orange/900 | `#bf360c` |
-| `tag-warning-border` | `Tag/tag-warning-border` | `--color-tag-warning-border` | Functional/Warning/200 → Orange/200 | `#ffe0b2` |
-| `tag-danger` | `Tag/tag-danger` | `--color-tag-danger` | Functional/Danger/100 → Red/100 | `#ffebee` |
-| `tag-danger-text` | `Tag/tag-danger-text` | `--color-tag-danger-text` | Functional/Danger/800 → Red/800 | `#b71c1c` |
-| `tag-danger-border` | `Tag/tag-danger-border` | `--color-tag-danger-border` | Functional/Danger/200 → Red/200 | `#ffcdd2` |
+| `tag-default` | `Tag/tag-default` | `--color-tag-default` | Grey/100 | `#f6f7f8` |
+| `tag-default-text` | `Tag/tag-default-text` | `--color-tag-default-text` | Grey/900 | `#252628` |
+| `tag-default-border` | `Tag/tag-default-border` | `--color-tag-default-border` | Grey/200 | `#e8e9ea` |
+| `tag-success` | `Tag/tag-success` | `--color-tag-success` | Functional/Success/100 → Semantic Green/100 | `#eaf6ea` |
+| `tag-success-text` | `Tag/tag-success-text` | `--color-tag-success-text` | Functional/Success/700 → Semantic Green/700 | `#235825` |
+| `tag-success-border` | `Tag/chip-success-border` *(renamed here, D-011)* | `--color-tag-success-border` | Functional/Success/200 → Semantic Green/200 | `#cdeacf` |
+| `tag-warning` | `Tag/tag-warning-bg` *(renamed here, D-011)* | `--color-tag-warning` | Functional/Warning/100 → Semantic Yellow/100 | `#fff5e0` |
+| `tag-warning-text` | `Tag/tag-warning-text` | `--color-tag-warning-text` | Functional/Warning/700 → Semantic Yellow/700 | `#6b3e00` |
+| `tag-warning-border` | `Tag/tag-warning-border` | `--color-tag-warning-border` | Functional/Warning/200 → Semantic Yellow/200 | `#ffe5b2` |
+| `tag-danger` | `Tag/tag-danger-bg` *(renamed here, D-011)* | `--color-tag-danger` | Functional/Danger/100 → Semantic Red/100 | `#fff0f1` |
+| `tag-danger-text` | `Tag/tag-danger-text` | `--color-tag-danger-text` | Functional/Danger/700 → Semantic Red/700 | `#9b0810` |
+| `tag-danger-border` | `Tag/tag-danger-border` | `--color-tag-danger-border` | Functional/Danger/200 → Semantic Red/200 | `#fedcde` |
 
 **Chip**
 
 | Key | Figma variable | CSS variable | Aliases | Value |
 |---|---|---|---|---|
-| `chip-primary` | `Chip/chip-primary` | `--color-chip-primary` | Grey/800 | `#2c2a29` |
-| `chip-primary-border` | `Chip/chip-primary-border` | `--color-chip-primary-border` | Grey/300 | `#d6d4d1` |
-| `chip-secondary` | `Chip/chip-secondary` | `--color-chip-secondary` | Green/600 | `#548118` |
-| `chip-success` | `Chip/chip-success` | `--color-chip-success` | Functional/Success/300 → Semantic Green/300 | `#86efac` |
-| `chip-success-text` | `Chip/chip-success-text` | `--color-chip-success-text` | Functional/Success/900 → Semantic Green/900 | `#14532d` |
-| `chip-warning` | `Chip/chip-warning` | `--color-chip-warning` | Functional/Warning/400 → Orange/400 | `#ffa726` |
-| `chip-danger` | `Chip/chip-danger` | `--color-chip-danger` | Functional/Danger/700 → Red/700 | `#c62828` |
-| `chip-danger-text` | `Chip/chip-danger-text` | `--color-chip-danger-text` | Functional/Danger/900 → Red/900 | `#5f0f0f` |
-| `chip-text-light` | `Chip/chip-text-light` | `--color-chip-text-light` | White/100 | `#ffffff` |
-| `chip-text-dark` | `Chip/chip-text-dark` | `--color-chip-text-dark` | Grey/800 | `#2c2a29` |
+| `chip-primary` | `Chip/chip-primary` | `--color-chip-primary` | Grey/800 | `#434446` |
+| `chip-primary-border` | `Chip/chip-primary-border` | `--color-chip-primary-border` | Grey/300 | `#cbcccc` |
+| `chip-secondary` | `Chip/chip-secondary` | `--color-chip-secondary` | Green/600 | `#60a211` |
+| `chip-success` | `Chip/chip-success` | `--color-chip-success` | Functional/Success/300 → Semantic Green/300 | `#9fd6a1` |
+| `chip-success-text` | `Chip/chip-success-text` | `--color-chip-success-text` | Functional/Success/700 → Semantic Green/700 | `#235825` |
+| `chip-warning` | `Chip/chip-warning` | `--color-chip-warning` | Functional/Warning/400 → Semantic Yellow/400 | `#ffb81f` |
+| `chip-danger` | `Chip/chip-danger` | `--color-chip-danger` | Functional/Danger/600 → Semantic Red/600 | `#da1e28` |
+| `chip-danger-text` | `Chip/chip-danger-text` | `--color-chip-danger-text` | Functional/Danger/700 → Semantic Red/700 | `#9b0810` |
+| `chip-text-light` | `Chip/chip-text-light` | `--color-chip-text-light` | White | `#ffffff` |
+| `chip-text-dark` | `Chip/chip-text-dark` | `--color-chip-text-dark` | Grey/900 | `#252628` |
 
 **Focus**
 
@@ -600,62 +614,107 @@ Values are the live variable values, which are the source of truth.
 | `state-pressed-shade` | `State/pressed-shade` | `--color-state-pressed-shade` | — (local value) | `rgba(0,0,0,0.2)` |
 | `state-pressed-tint` | `State/pressed-tint` | `--color-state-pressed-tint` | — (local value) | `rgba(255,255,255,0.2)` |
 
-### Primitives
-These are the external primitives library. They're listed for reference only, so don't reference them from components.
+### Primitives (Vyn Global)
+These come from the Vyn Global library. They're listed for reference only, so don't reference them from components.
 
 | Ramp | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
 |---|---|---|---|---|---|---|---|---|---|
-| Green | #F1F7E9 | #DEECCB | #C3DD9D | #A2CB6B | #7FB23D | **#548118** (brand) | #3F6310 | #2D470A | #1A2B05 |
-| Grey | #F5F4F3 | #EBEAE8 | #D6D4D1 | #A6A29E | #7C7874 | #585450 | #403D3B | #2C2A29 | — |
-| Red | #FFEBEE | #FFCDD2 | #EF9A9A | #E57373 | #EF5350 | #D32F2F | #C62828 | #B71C1C | #5F0F0F |
-| Orange | #FFF3E0 | #FFE0B2 | #FFB74D | #FFA726 | #FF9800 | #EF6C00 | #E65100 | #D84315 | #BF360C |
-| Semantic Green | #DCFCE7 | #BBF7D0 | #86EFAC | #4ADE80 | #22C55E | #16A34A | #15803D | #166534 | #14532D |
-| Neon Green | — | — | — | — | — | — | — | #98DB40 | #8ECB3D |
-| White | #FFFFFF | | | | | | | | |
+| Green | #E8FBD0 | #CDF0A0 | #B3E670 | **#98DB40** (brand) | #7CC123 | #60A211 | #477B04 | #335804 | #141C08 |
+| Grey | #F6F7F8 | #E8E9EA | #CBCCCC | #A1A2A3 | #828385 | #656668 | #535456 | #434446 | #252628 |
+| Semantic Red | #FFF0F1 | #FEDCDE | #FBB7BA | #F88288 | #F4525B | #DA1E28 | #9B0810 | #62090E | #37080A |
+| Semantic Yellow | #FFF5E0 | #FFE5B2 | #FFD175 | #FFB81F | #EB9800 | #AD6500 | #6B3E00 | #472A00 | #291900 |
+| Semantic Green | #EAF6EA | #CDEACF | #9FD6A1 | #63BF67 | #39A73F | #267D2B | #235825 | #123013 | #051E0E |
 
-`Functional/Success`, `Functional/Danger`, `Functional/Warning` and `Functional/Info` are alias layers over Semantic Green, Red, Orange and Grey respectively.
+- **Brand group:**
+  - `Brand/Green` is #98DB40, the same value as Green/400.
+  - `Brand/Black` is #2C2A29, described in Figma as *"For use with Vyn logo only"*.
+  - `Brand/White` is #FFFFFF.
+  - `White` is #FFFFFF.
+- **Figma descriptions:**
+  - Green/400: *"Vyn brand green: use is reserved for Vyn logo and VynAI only"* (see D-025).
+  - Green/600: *"Branding main green"* (Q-007).
+  - Grey/600: *"New secondary text color"*.
+  - Semantic Green/500: *"Main color; fill for success buttons and chips"*.
+- **Functional aliases:**
+  - `Functional/Success` (100, 200, 300, 500, 700) → Semantic Green
+  - `Functional/Danger` (100, 200, 300, 600, 700) → Semantic Red
+  - `Functional/Warning` (100, 200, 300, 400, 700) → Semantic Yellow
+  - `Functional/Info` (100, 200, 400, 500, 800) → Grey
+- **Removed since v1:** the warm Grey ramp, the old Green ramp, the separate Neon Green ramp, and Red and Orange (replaced by Semantic Red and Semantic Yellow).
 
-**Primitives used directly today:** four places in Figma bind a primitive because no semantic token exists yet. These are `grey-500` (navbar workflow-switcher border), `grey-600` (navbar icon-button fill), `grey-700` (sidebar footer divider) and `neon-green-800` (logo mark). They're in the front matter under their primitive names so they're easy to find and replace once semantic tokens exist.
+**Primitives used directly today:** four places in Figma bind a primitive because no semantic token exists yet. These are `brand-green` (the logo mark), `grey-500` (navbar workflow-switcher border), `grey-600` (navbar icon-button fill) and `grey-700` (sidebar footer divider). They're in the front matter under their primitive names so they're easy to find and replace once semantic tokens exist (Q-003).
 
 ### Usage guidance
-- **Action green is for action.** `button-primary`, `link-primary`, `input-primary-active` and the selected tab's `link-primary` underline. Don't use it as a background for regions.
+- **Actions are charcoal, not green** (D-024). `button-primary`, `link-primary` and `link-primary-active` are Grey/900, and `input-primary-active` is Grey/700. The UI is neutral, and color is kept for status and for Vyn AI.
+- **Never put a Primary Filled button on `background-dark`.** Both are Grey/900 today (1:1), so the button disappears. On dark chrome, use the outline treatment the workflow switcher uses (Q-016).
 - **Hover and pressed are overlays, not new colors.** Layer `state-hover-shade` (black 15%) or `state-pressed-shade` (black 20%) over the base fill. On dark surfaces, use `state-hover-tint` / `state-pressed-tint` (white 15% / 20%).
-- **Success isn't brand.** Success tokens alias the cooler Semantic Green ramp, so a success state never reads as a primary action.
-- **Info and default are neutral grey** (`alert-default-*`, `tag-default*`), not blue. Color is kept for success, warning and danger.
-- **Neon brand green is for Vyn AI outputs and the logo only** *(provisional rule, subject to change)*. Neon Green/800 is Vyntelligence's brand color. It's vibrant and energetic, and it looks premium against a dark backdrop. To make AI outputs easy to spot and trust, it's reserved for two things: the logo, and marking content produced by Vyn AI. Don't use it for buttons, links, success states, selection, highlights or decoration. See *Vyn AI UI* for how to apply it.
-- **Neon on white is a fill, never a foreground.** Neon on `background-primary` is 1.7:1, which fails even the 3:1 minimum for non-text UI. Use it as a background behind `text-primary` (8.5:1), or as text and icons on `background-dark` (8.5:1). Never use it as text, a thin border or a lone icon on a light surface.
-- **On dark chrome** (`background-dark`), use the `link-secondary-light*` family for text. Action green drops to 3.1:1 there, so don't use it on dark surfaces.
+- **Borders:**
+  - `input-border` (Grey/500, 3.8:1 on white) outlines form controls.
+  - `input-border-disabled` (Grey/300) outlines disabled controls.
+  - `border` (Grey/200) is the general divider, used by the dropdown menu header and the Input Group documentation.
+- **Status:** success, warning and danger alias Semantic Green, Yellow and Red through the Functional layer. Info and default are neutral grey (`alert-default-*`, `tag-default*`), not blue.
+- **The neon brand green is for Vyn AI outputs and the logo only** *(provisional, D-012; now also written into the Green/400 description, D-025)*. Don't use it for buttons, links, success states, selection, highlights or decoration. See *Vyn AI UI* for how to apply it.
+- **Neon on white is a fill, never a foreground.** Neon on `background-primary` is 1.7:1, which fails even the 3:1 minimum for non-text UI. Use it as a background behind `text-primary` (9:1), or as text and icons on `background-dark` (9:1).
+- **On dark chrome** (`background-dark`), use the `link-secondary-light*` family for text.
+- **`chip-secondary`** is the last semantic use of Green/600. White text on it is only 3.2:1, which fails AA for small text (Q-017).
 - **Non-token values from Bootstrap:** the modal and offcanvas backdrop (black 50%) and the card border (`$border-color-translucent`, black 17.5%) are Bootstrap 5 defaults, not Vyn tokens.
 
 ## Typography
 
 ### Font Family
-- **Inter** (`--font-family-sans-serif`). Fallback: Bootstrap 5's native stack, `system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif`. In code, set `$font-family-sans-serif: Inter, <native stack>`.
-- One family carries everything. Hierarchy comes from **weight** (Regular 400, Medium 500, Semi-Bold 600; Bold 700 appears only in eyebrow labels and badges) far more than from size.
+- **Inter** (`Family/sans-serif` in Vyn Global). Fallback: Bootstrap 5's native stack, `system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif`. In code, set `$font-family-sans-serif: Inter, <native stack>`.
+- One family carries everything. Weights come from Vyn Global's `Weight/*` variables: Regular 400, Medium 500, Semi-Bold 600 and Bold 700. Letter spacing comes from `Letter Spacing/0` and `Letter Spacing/1`.
 
 ### Hierarchy
-Keys match the Figma text styles and `--font-*` developer tokens exactly (`body-p2-medium` ↔ `--font-body-p2-medium` ↔ Figma "P2 - Medium"). All are Inter, 1.5 line-height and 0 letter spacing.
+The keys are the Vyn Web App text-style names without their group (`Heading/h1` → `h1`, `Body/body-small-medium` → `body-small-medium`). No CSS developer tokens are published for the new styles yet (Q-021). The *Bootstrap* column is from the Typography page in Figma.
 
-| Style | Size | Weights available | Use |
-|---|---|---|---|
-| `header-h1-semi-bold` | 20px | 600 | Page title, one per view |
-| `header-h2-semi-bold` | 18px | 600 | Section title, drawer title |
-| `header-h3-{regular,medium,semi-bold}` | 16px | 400 / 500 / 600 | Card title, panel heading |
-| `header-h4-{regular,medium,semi-bold}` | 14px | 400 / 500 / 600 | Sub-group heading, table group |
-| `body-p1-{regular,medium,semi-bold}` | 16px | 400 / 500 / 600 | Default body and input values (regular), button L and sidebar links (medium), form labels (semi-bold) |
-| `body-p2-{regular,medium,semi-bold}` | 14px | 400 / 500 / 600 | Dense body, helper and error text (regular), button M and workflow switcher (medium) |
-| `body-p3-{regular,medium,semi-bold}` | 12px | 400 / 500 / 600 | Captions, timestamps (regular), button S (medium) |
-| `body-p4-{regular,medium,semi-bold}` | 10px | 400 / 500 / 600 | Rare. Micro-labels only |
-| `eyebrow` *(not a Figma style)* | 10px | 700, +2px tracking, UPPERCASE | Sidebar section labels ("WORKFLOW", "SETTINGS") |
+| Style | Size | Weight | Line height | Bootstrap | Use |
+|---|---|---|---|---|---|
+| `h1` | 28px (1.75rem) | 600 | 1.2 | `h1` | Page headings: Settings, Management, Workflows |
+| `h2` | 22px (1.375rem) | 600 | 1.2 | `h2` | Content container headings |
+| `h3` | 18px (1.125rem) | 600 | 1.2 | `h3` | Card container headings |
+| `h4` | 16px (1rem) | 600 | 1.2 | `h4` | Headings used with regular body copy |
+| `h5` | 14px (0.875rem) | 600 | 1.2 | `h5` | Headings used with smaller body copy |
+| `h6` | 12px (0.75rem) | 600 | 1.2 | `h6` | |
+| `body-base` | 16px | 400 | 1.5 | `p` | Default body copy, input values, menu items |
+| `body-base-medium` | 16px | 500 | 1.5 | `p` + `$font-weight-medium` | Emphasized text that isn't a heading, Large button labels, sidebar links, alerts |
+| `body-base-semibold` | 16px | 600 | 1.5 | `p` + `$font-weight-semibold` | Input labels (semantically not a heading) |
+| `body-small` | 14px | 400 | 1.5 | `p` + `$small-font-size` | Small body copy, helper and error text |
+| `body-small-medium` | 14px | 500 | 1.5 | `$small-font-size` + medium | Medium button labels, the workflow switcher |
+| `body-small-semibold` | 14px | 600 | 1.5 | `$small-font-size` + semibold | |
+| `body-xsmall` | 12px | 400 | 1.5 | — | Extra-small copy: captions, timestamps |
+| `body-xsmall-medium` | 12px | 500 | 1.5 | — | Small button labels |
+| `body-xsmall-semibold` | 12px | 600 | 1.5 | — | |
+| `body-xxsmall` | 10px | 400 | 1.5 | — | Limited use only, because this size is generally too small to read comfortably |
+| `body-xxsmall-semibold` | 10px | 600 | 1.5 | — | Limited use only |
+| `eyebrow` | 12px | 500, +1px tracking | 1.2 | — | A short label directly above a main heading that gives it context |
+| `display-4` | 56px (3.5rem) | 400 | 1.2 | `.display-4` | TBD. Likely analytics dashboards |
+| `display-5` | 48px (3rem) | 400 | 1.2 | `.display-5` | |
+| `display-6` | 40px (2.5rem) | 400 | 1.2 | `.display-6` | Display numbers in cards |
 
-Button labels match the Medium body style at each button size. Size primitives: `--font-xxs` 10 · `--font-xs` 12 · `--font-s` 14 · `--font-m` 16 · `--font-l` 18 · `--font-xl` 20.
+- **Hidden styles:** `Display/_display-1` (80px), `_display-2` (72px) and `_display-3` (64px) exist but are hidden, described as *"not in active use in Web App"*. Don't use them.
+- **Size variables:** the Vyn Web App Typography collection is now named by pixel value: `10`, `12`, `14`, `16`, `18`, `22` and `28`.
+- **Bootstrap mapping:** the display sizes match Bootstrap 5's own `.display-*` sizes, though Vyn uses weight 400 where Bootstrap uses 300. The heading sizes don't match Bootstrap's defaults. Set them explicitly:
+
+| Sass variable | Value |
+|---|---|
+| `$h1-font-size` | 1.75rem |
+| `$h2-font-size` | 1.375rem |
+| `$h3-font-size` | 1.125rem |
+| `$h4-font-size` | 1rem |
+| `$h5-font-size` | 0.875rem |
+| `$h6-font-size` | 0.75rem |
+| `$headings-font-weight` | 600 |
+| `$headings-line-height` | 1.2 |
+| `$display-font-weight` | 400 |
 
 ### Principles
-- **The scale is intentionally small.** The largest type is 20px, which suits a data-dense application where content (video, maps, case lists) is the hero and headings are signposts. Don't import Bootstrap's 2.5rem `h1` into app views.
-- **Use weight before size.** To make one thing stand out from its neighbours, go Regular → Medium → Semi-Bold at the same size before stepping up a size.
-- **Keep line-height at 1.5 everywhere.** This matches Bootstrap's `$line-height-base` and keeps an 8px-friendly rhythm (16 × 1.5 = 24).
-- **Letter spacing stays at 0**, except the uppercase eyebrow at +2px.
-- **Sentence case** for headings, buttons, tabs and menu items. Uppercase is reserved for eyebrow labels.
+- **Headings are tight, body is relaxed.** Headings use a 1.2 line height and body uses 1.5, which matches Bootstrap's `$line-height-base` (16 × 1.5 = 24).
+- **One `h1` per view,** for the page title. Use `h2` for content containers such as sections and drawers, and `h3` for cards.
+- **Use weight before size.** Within body copy, go Regular → Medium → Semi-Bold before stepping up a size.
+- **Display styles are for figures,** not prose. `display-6` is for numbers in cards, and `display-4` is likely for analytics dashboards.
+- **Letter spacing stays at 0,** except `eyebrow` at +1px.
+- **Sentence case** for headings, buttons, tabs and menu items.
 
 ## Layout
 
@@ -677,9 +736,9 @@ Every screen is one of four shells, all designed at **1440 × 900**:
 | **Desktop + Vyn Viewer Drawer** | Desktop shell + 50% scrim + right-hand drawer | Opening a single Vyn (video + insights) without leaving the list. The drawer starts 290px from the left edge (sidebar + 40px), leaving the list visible behind the scrim for orientation |
 | **Desktop + Full Page** | Navbar + Content (no sidebar) | Focused, single-task flows: settings wizards, storyboard editing, anything that needs full width |
 
-**Navbar:** the Vyn logo, then the **Workflow switcher**. This is a standard **Medium Button** (39px tall, 8px 16px padding, 14px / `--font-s` Medium label) in an outline style for chrome: transparent fill, `Grey/500` border, white label and a trailing dropdown caret. It should match the Button component exactly, not a one-off navbar size. The right side holds the utility links: a notification icon button (40px, `Grey/600` fill, with a danger badge) and the avatar menu.
+**Navbar:** the Vyn logo, then the **Workflow switcher**. This is a standard **Medium Button** (39px tall, 8px 16px padding, 14px `body-small-medium` label) in an outline style for chrome: transparent fill, `Grey/500` border, white label and a trailing dropdown caret. It should match the Button component exactly, not a one-off navbar size. The right side holds the utility links: a notification icon button (40px, `Grey/600` fill, with a danger badge) and the avatar menu.
 
-**Sidebar:** grouped links under eyebrow labels (WORKFLOW, then SETTINGS), with a collapse chevron in the footer. Expanded and collapsed variants exist.
+**Sidebar:** grouped links under uppercase section labels (WORKFLOW, then SETTINGS), with a collapse chevron in the footer. Expanded and collapsed variants exist.
 
 ### Grid & Container
 - **12-column grid** on the Full Page template: **48px outer margins**, **24px gutters**, stretch alignment, plus an **8px baseline row grid**. This matches Bootstrap's 12-column model and its default 24px (1.5rem) gutter.
@@ -702,7 +761,7 @@ Dense but not cramped. The product is a working surface, so vertical rhythm is t
 
 Rules:
 - **Hairlines first, shadows second.** Most containers are separated by a 1px border. Shadows are for things that float: menus, drawers, modals and the raised content panel.
-- **The XXL drop is tinted warm** (`#57534F`, not black) to stay in the stone palette. Keep new shadows warm too.
+- **The XXL drop is still tinted with the v1 warm grey** (`#57534F`), while the v2 palette is cool grey. Keep it as it is until design decides (Q-019).
 - **Scrims are black 50%**, matching Bootstrap's `$modal-backdrop-opacity`.
 
 ## Shapes
@@ -745,7 +804,7 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 | Small | 28px | 4px 12px | 12px / 500 |
 
 - **Primary Filled** (`btn-primary`): the one main action in a view or dialog. **Use only one per view region**, as Bootstrap recommends.
-- **Primary Outline:** the secondary action beside a primary one, for example "Save draft" next to "Submit". It fills solid green on hover.
+- **Primary Outline:** the secondary action beside a primary one, for example "Save draft" next to "Submit". It fills with `button-primary` on hover.
 - **Primary Text:** low-emphasis or inline actions such as "View all" or "Add another".
 - **Secondary** (`button-secondary` fill, `button-secondary-text` label): neutral actions like Cancel, Close or Back.
 - **Danger:** destructive actions only (delete, revoke, reject). Pair each one with a confirmation step.
@@ -803,7 +862,7 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 
 ### Navigation
 - **Navbar** (64px, chrome): the logo, the workflow switcher (a Medium outline Button, 14px label), the notification icon button with its badge, and the avatar menu.
-- **Sidebar** (250px, chrome): eyebrow-labelled groups with 20px icon + 16px Medium label links. Default links use `Grey/300`, and the active link is white. There are Expanded and Collapsed variants with a collapse chevron in the footer.
+- **Sidebar** (250px, chrome): groups under uppercase section labels (10px Semi-Bold, +1px tracking, `link-secondary-disabled`; no text style applied, see Q-022), with 20px icon + `body-base-medium` label links. Default links use `link-secondary-light`, and the active link uses `link-secondary-light-active`. There are Expanded and Collapsed variants with a collapse chevron in the footer.
 - The **BETA pill** next to the WORKFLOW label is a **temporary placeholder**. Its purple colors aren't part of the Vyn system, so don't reuse them or build on them. If a pre-release marker is needed before one is designed, use a neutral Tag (`Tag/tag-default`).
 
 ### TBD components
@@ -816,11 +875,11 @@ Point each variable at the Vyn CSS variable rather than pasting a hex, so that a
 
 | Bootstrap variable | Vyn token |
 |---|---|
-| `$primary` / `--bs-primary` | `var(--color-button-primary)` |
+| `$primary` / `--bs-primary` | `var(--color-button-primary)` (Grey/900 in v2) |
 | `$secondary` | `var(--color-button-secondary)` |
 | `$danger` | `var(--color-button-danger)` |
-| `$success` | `Functional/Success/500` primitive (no semantic token yet, see Q-004) |
-| `$warning` | `Functional/Warning/400` primitive (no semantic token yet, see Q-004) |
+| `$success` | `Functional/Success/500` primitive, Semantic Green/500 (no semantic token yet, see Q-004) |
+| `$warning` | `Functional/Warning/400` primitive, Semantic Yellow/400 (no semantic token yet, see Q-004) |
 | `$body-color` | `var(--color-text-primary)` |
 | `$body-secondary-color` | `var(--color-text-secondary)` |
 | `$body-bg` | `var(--color-background-primary)` |
@@ -831,7 +890,7 @@ Point each variable at the Vyn CSS variable rather than pasting a hex, so that a
 | `$btn-border-radius`, `$input-border-radius`, `$alert-border-radius`, `$dropdown-border-radius` | `--radius-s` (Bootstrap's default is 6px) |
 | `$focus-ring-color` / `$input-focus-box-shadow` | `var(--color-focus-shadow-focus)`, 0.25rem |
 | `$input-focus-border-color` | `var(--color-focus-border-focus)` |
-| `$gray-100`…`$gray-800` | `--color-grey-100`…`--color-grey-800` primitives |
+| `$gray-100`…`$gray-900` | `--color-grey-100`…`--color-grey-900` primitives (Vyn Global) |
 
 Sass needs literal values at compile time. If the build compiles Bootstrap from Sass, generate these assignments from the token file rather than typing hex by hand.
 
@@ -869,13 +928,13 @@ This section covers **AI UI**: how Vyn AI's outputs are *presented in the deskto
 
 ### Neon marks Vyn AI (provisional)
 - **Every Vyn AI output gets the same, consistent marker** so users can always tell AI content from human-entered content. The marker combines three things:
-  1. the neon brand green,
+  1. the neon brand green (`brand-green`, Figma `Brand/Green`),
   2. a text label ("Vyn AI"), because color alone is never the only signal,
   3. optionally, the Vynnie mark.
 - **Where it goes:** on the output's container, such as the summary card header or the label chip, not scattered through the content.
 - **How to apply the color:**
   - **On light surfaces:** neon as a *fill* with `text-primary` on top, for example a small "Vyn AI" tag, or a header band on the summary card. Neon borders and underlines on white are decorative only, so always pair them with the text label.
-  - **On dark surfaces:** neon text and icons are fine at 8.5:1.
+  - **On dark surfaces:** neon text and icons are fine at 9:1.
 - **Nothing else is neon.** If it isn't a Vyn AI output or the logo, it doesn't use neon. That's how the marker keeps its meaning.
 - Per the Figma note, Vyn Viewer AI insights currently use a **modified Card**, not the Accordion. Build AI output containers on `card`.
 
@@ -941,7 +1000,7 @@ The Brand Feel audit defines four values and four voice principles. They apply t
 ## Do's and Don'ts
 
 ### Do
-- Keep action green (`button-primary`, `link-primary`, `input-primary-active`) for actions: primary buttons, links, the active input and the selected tab.
+- Use the charcoal action tokens (`button-primary`, `link-primary`, `input-primary-active`) for actions: primary buttons, links, the active input and the selected tab.
 - Use the most specific semantic token for every property, even when a different token has the same value today. Tokens will diverge as the DLS evolves.
 - Build every screen from one of the four shell templates, and keep the 24px content padding.
 - Use weight (400 → 500 → 600) to create hierarchy before reaching for a bigger size.
@@ -954,15 +1013,15 @@ The Brand Feel audit defines four values and four voice principles. They apply t
 - Mark every Vyn AI output with the same neon + "Vyn AI" label treatment, and give it an action the user can take.
 
 ### Don't
-- Don't use action green (`button-primary`) on dark chrome, where it's 3.1:1. Use the `link-secondary-light*` tokens there.
+- Don't put a Primary Filled button on dark chrome (`button-primary` on `background-dark` is 1:1). Use the outline treatment and the `link-secondary-light*` tokens there.
 - Don't use neon brand green for anything except Vyn AI outputs and the logo (provisional): no neon buttons, links, highlights, selection or success states.
 - Don't use neon as text, a thin border or a lone icon on light surfaces (1.7:1). On light surfaces it's a fill behind `text-primary`.
-- Don't use the success green (`Semantic Green`) for primary actions, or action or neon green for success states.
+- Don't use the success green (`Semantic Green`) for primary actions, or the neon brand green for success states.
 - Don't use more than one Primary Filled button in a view region.
 - Don't use pill-shaped text buttons, or round inputs and cards beyond the documented radii.
-- Don't import Bootstrap's large display headings (2.5rem h1) into app views. 20px is the top of the scale.
+- Don't use Bootstrap's default heading sizes (its 2.5rem `h1`). Set the Vyn sizes, where `h1` is 28px. Don't use the hidden `_display-1` to `_display-3` styles.
 - Don't use pure black (#000) or raw hex for text or surfaces. Use the semantic text and background tokens.
-- Don't use cool Bootstrap greys (`$gray-*`). Every neutral comes from the warm Grey ramp.
+- Don't use Bootstrap's default greys (`$gray-*`). Map them to the Vyn Global Grey ramp.
 - Don't put essential information in tooltips, or joke anywhere near safety or compliance content.
 
 ## Responsive Behavior
@@ -984,12 +1043,17 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
 ## Accessibility
 
 - **Contrast checks** (WCAG 2.2 AA) **at current token values.** Re-check whenever one of these tokens changes:
-  - `button-primary` / `link-primary` on `background-primary`: 4.64:1. That passes AA for text but only just.
-  - `text-secondary` on `background-primary`: 7.5:1.
-  - `button-primary-text` on `button-danger`: 5.6:1.
-  - `link-secondary-light` on `background-dark`: 9.7:1.
-  - `link-secondary-light-disabled` on `background-dark`: 3.3:1, which is acceptable only because it's disabled.
-  - `button-disabled-text` on `button-disabled`: 2.1:1, also acceptable only because it's disabled.
+  - `text-primary`, `link-primary` and `button-primary` on `background-primary`: 15.2:1.
+  - `text-secondary` on `background-primary`: 7.6:1. On `background-secondary` it's 7.1:1.
+  - `button-primary-text` on `button-danger`: 5.0:1.
+  - `link-secondary-light` on `background-dark`: 9.4:1. `link-secondary-disabled` (sidebar labels) on `background-dark` is 5.9:1.
+  - `input-border` on white: 3.8:1, which passes the 3:1 minimum for control borders. `input-border-disabled` is 1.6:1 and `border` is 1.2:1, so use those only for disabled or decorative edges.
+  - Alert text on its own background: 7.6:1 (success), 8.4:1 (warning), 7.8:1 (danger) and 9.1:1 (default).
+  - `link-secondary-light-disabled` on `background-dark`: 4.0:1, and `button-disabled-text` on `button-disabled`: 2.1:1. Both are acceptable only because they're disabled.
+  - **Failing pairs:**
+    - `button-primary` on `background-dark` is 1:1 (Q-016).
+    - `chip-text-light` on `chip-secondary` is 3.2:1 (Q-017).
+    - The navbar icon button (`grey-600`) on `background-dark` is 2.6:1, below 3:1 for a control (Q-018).
 - **Focus:** every interactive element shows the 4px focus ring (`focus-shadow-focus`, plus `focus-border-focus` on inputs) and must never have `outline: none` without it.
 - **Color is never the only signal.** Pair status color with text or an icon, which applies to alerts, badges, tags and validation.
 - **Keyboard:** drawers and modals trap focus and close on Esc. Dropdowns and tabs follow the WAI-ARIA patterns that Bootstrap implements.
@@ -1000,7 +1064,7 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
 1. Work on **one component at a time** and refer to it by its `components:` token name, for example `button-primary-outline` or `text-input-error`. Colors, type and radii are referenced by their token keys.
 2. Start from the matching **Bootstrap 5 component**, themed with the variables in *Bootstrap theming map*. Don't restyle it with bespoke CSS.
 3. Pick the **shell template** first (Desktop, + Filter panel, + Drawer, Full Page), then lay out content on the 12-column / 24px-gutter grid.
-4. Default body text to `body-p1-regular` (16/24) and dense views to `body-p2-regular` (14/21).
+4. Default body text to `body-base` (16/24) and dense views to `body-small` (14/21).
 5. Add new variants as separate component entries (`-hover`, `-selected`, `-error`) that reference existing tokens.
 6. Before shipping, check new copy against the four voice principles, especially near safety or compliance content.
 7. When a token value changes, update its front-matter line and its row in *Semantic tokens*, re-check the contrast pairs under *Accessibility*, then run `npx @google/design.md lint DESIGN.md`.
@@ -1010,7 +1074,7 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
 The full record, with dates, owners, reasons and history, lives in [`DECISIONS.md`](DECISIONS.md). This section summarizes what's currently in force. Entries marked *proposed* were drafted by Claude and are awaiting confirmation.
 
 **In force**
-- **D-001:** live Figma variables are the source of truth.
+- **D-001:** the live Figma variables (Vyn Global + Vyn Web App) are the source of truth.
 - **D-002:** the codebase uses Bootstrap 5.3.x.
 - **D-003:** desktop-only. *(proposed: D-016, a 1280px minimum width)*
 - **D-004:** Bootstrap 5 default motion.
@@ -1020,15 +1084,21 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **D-008:** the sidebar is 250px, and the drawer inset is 290px.
 - **D-009:** the Workflow switcher is a Medium Button with a 14px label.
 - **D-010:** token names mirror the developer tokens and are never merged.
-- **D-011:** the Tag token renames.
-- **D-012:** neon green is for Vyn AI outputs and the logo only. *(provisional)*
+- **D-011:** the Tag token renames (Figma still has the old names, Q-015).
+- **D-012:** the neon brand green is for Vyn AI outputs and the logo only. *(provisional)*
 - **D-013:** AI UI scope is outputs in the web app, not nudges or Agentic Toolbox.
+- **D-023:** the v2 palette (cool greys, Semantic Red, Yellow and Green, a rebuilt Green ramp).
+- **D-024:** primary actions are charcoal, not green. *(supersedes D-017)*
+- **D-025:** the brand green is `Brand/Green`, which equals Green/400 (#98DB40). The separate Neon Green ramp is gone.
+- **D-026:** new semantic tokens `border` and `input-border-disabled`.
+- **D-027:** the v2 type scale (h1–h6, body-base/small/xsmall/xxsmall, eyebrow, display-4 to 6). *(provisional: "Proposed / In-flight" in Figma)*
+- **D-029:** v2 lives on the `v2` branch, and v1 is kept as it is.
 - **Proposed, awaiting confirmation:**
-  - **D-017:** the action green and neon green split.
   - **D-018:** neon on light grounds is only a fill.
   - **D-019:** one Vyn AI marker.
   - **D-020:** cards keep Bootstrap's radius and border.
   - **D-021:** the standard name is "Agentic Toolbox".
+  - **D-028:** type keys use the text-style names.
 
 **Deferred.** Leave these as they are until resolved:
 - **D-014:** the secondary outline button border (`button-secondary`, about 1.2:1 on white).
@@ -1039,7 +1109,6 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-002:** give the card radius and border token names?
 - **Q-003:** semantic tokens for the primitives bound directly in Figma.
 - **Q-004:** success and warning fill tokens.
-- **Q-005:** an eyebrow text style.
 - **Q-006:** `AI/*` tokens and an AI output component.
 - **Q-007:** fix the Green/600 description.
 - **Q-008:** do Agentic Toolbox outputs get the neon marker?
@@ -1047,5 +1116,13 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-010:** review the marketing site.
 - **Q-011:** confirm the 1280px minimum width.
 - **Q-012:** a logo for light backgrounds?
-- **Q-013:** rebind the Workflow switcher label to `S`.
 - **Q-014:** keep `DESIGN.md` and the design-system page in sync.
+- **Q-015:** rename the Tag variables in Figma, or revert D-011?
+- **Q-016:** `button-primary` equals `background-dark`.
+- **Q-017:** `chip-secondary` contrast.
+- **Q-018:** navbar icon-button contrast.
+- **Q-019:** the XXL shadow tint.
+- **Q-020:** `Brand/Black` vs `background-dark`.
+- **Q-021:** CSS tokens for the v2 text styles.
+- **Q-022:** sidebar labels don't use `Utility/eyebrow`.
+- **Q-023:** the design-system page still shows v1.
