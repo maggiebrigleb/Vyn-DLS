@@ -6,7 +6,8 @@ description: "A calm, desk-side operations console for utilities and infrastruct
 # v2: values from the Vyn Global and Vyn Web App libraries as of 2026-10-02.
 # Naming rule: every color key is the developer token minus --color-,
 # so {colors.text-secondary} == --color-text-secondary == Figma "Text/text-secondary".
-# Exception (D-011): tag-success-border, tag-warning and tag-danger are renamed here; Figma still uses the old names (Q-015).
+# Exception (D-011): tag-warning and tag-danger are renamed here; Figma still uses the old names (Q-015).
+# Figma renamed Tag/chip-success-border to Tag/tag-success-border on 2026-10-03, so that one now matches.
 # Semantic tokens are listed one per variable and are NEVER merged, even when
 # two share a value today. To change a value, edit that one line.
 colors:
@@ -34,7 +35,7 @@ colors:
   # --- Input ---
   input-primary: "#ffffff"                    # Input/input-primary → White
   input-secondary: "#e8e9ea"                  # Input/input-secondary → Grey/200
-  input-primary-active: "#535456"             # Input/input-primary-active → Grey/700
+  input-primary-active: "#267d2b"             # Input/input-primary-active → Functional/Success/600 → Semantic Green/600
   input-disabled: "#f6f7f8"                   # Input/input-disabled → Grey/100
   input-text-primary: "#252628"               # Input/input-text-primary → Grey/900
   input-text-secondary: "#535456"             # Input/input-text-secondary → Grey/700
@@ -72,7 +73,7 @@ colors:
   tag-default-border: "#e8e9ea"               # Tag/tag-default-border → Grey/200
   tag-success: "#eaf6ea"                      # Tag/tag-success → Functional/Success/100 → Semantic Green/100
   tag-success-text: "#235825"                 # Tag/tag-success-text → Functional/Success/700 → Semantic Green/700
-  tag-success-border: "#cdeacf"               # Tag/chip-success-border → Functional/Success/200 → Semantic Green/200
+  tag-success-border: "#cdeacf"               # Tag/tag-success-border → Functional/Success/200 → Semantic Green/200
   tag-warning: "#fff5e0"                      # Tag/tag-warning-bg → Functional/Warning/100 → Semantic Yellow/100
   tag-warning-text: "#6b3e00"                 # Tag/tag-warning-text → Functional/Warning/700 → Semantic Yellow/700
   tag-warning-border: "#ffe5b2"               # Tag/tag-warning-border → Functional/Warning/200 → Semantic Yellow/200
@@ -368,10 +369,22 @@ components:
     typography: "{typography.body-base}"
     height: 48px
     padding: 12px
+  dropdown-item-selected:
+    backgroundColor: "{colors.input-primary-active}"
+    textColor: "{colors.input-text-light}"
+    typography: "{typography.body-base}"
+    height: 48px
+    padding: 12px
   checkbox:
     backgroundColor: "{colors.input-primary}"
     rounded: "{rounded.s}"
     size: 16px                    # 1px input-border
+  switch:
+    backgroundColor: "{colors.input-primary}"  # 1px input-border; knob in input-border
+    rounded: "{rounded.pill}"
+  switch-checked:
+    backgroundColor: "{colors.input-primary-active}"  # knob in input-primary
+    rounded: "{rounded.pill}"
   checkbox-checked:
     backgroundColor: "{colors.input-primary-active}"
     textColor: "{colors.input-primary}"  # the checkmark
@@ -416,7 +429,7 @@ components:
     height: 18px
     padding: 2px 4px
   avatar:
-    backgroundColor: "{colors.background-primary}"
+    backgroundColor: "{colors.button-secondary}"  # 1px border in the same token
     textColor: "{colors.link-secondary}"
     rounded: "{rounded.pill}"
     size: 40px
@@ -465,7 +478,7 @@ The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are s
 **Key characteristics:**
 - **Dark chrome, light work area.** The navbar and sidebar sit on charcoal `{colors.background-dark}`. Everything the user works on sits on white `{colors.background-primary}`, with `{colors.background-secondary}` for secondary panels such as filters.
 - **Neon green belongs to Vyn AI.** The neon brand green marks Vyn AI outputs (and the logo), nothing else. This is a provisional rule; see *Vyn AI UI*.
-- **Charcoal actions.** `{colors.button-primary}` and `{colors.link-primary}` (Grey/900), and `{colors.input-primary-active}` (Grey/700), mark primary buttons, links and active inputs. Color is kept for status and for Vyn AI.
+- **Charcoal actions, green selection.** `{colors.button-primary}` and `{colors.link-primary}` (Grey/900) mark primary buttons and links. `{colors.input-primary-active}` (Semantic Green/600) marks what's selected: checked checkboxes, radios and switches, and the selected dropdown item (D-045). Other color is kept for status and for Vyn AI.
 - **Clear type hierarchy.** Inter with 16px body (`body-base`). Headings run from `h1` 28px down to `h6` 12px at a 1.2 line height, and display styles (`display-4` to `display-6`, 56–40px) are kept for dashboard figures.
 - **Neutral greys do the structural work.** Borders, dividers, disabled states and secondary buttons all come from the Grey ramp. There's no pure black in the UI.
 - **Status is neutral by default.** "Info" is grey, not blue. Color is saved for success, warning and danger, so it means something when it appears.
@@ -482,7 +495,7 @@ The codebase runs on **the latest Bootstrap (5.3.x)**, and most components are s
 ### How color tokens work
 - **The semantic tokens are the API.** Components, CSS and this file only ever reference the Vyn Web App **Color** collection's semantic tokens. Primitives come from the **Vyn Global** library and only feed those semantic tokens.
 - **One key per Figma variable, no merging.** For example, `text-primary`, `input-text-primary`, `link-primary`, `button-primary` and `background-dark` all resolve to Grey/900 today, but they're separate so each can change on its own. **The DLS is under construction and these values will move.** Always use the most specific token for the job.
-- **Naming rule:** key = developer token minus `--color-`. `{colors.alert-success-bg}` ↔ `--color-alert-success-bg` ↔ Figma `Alert/alert-success-bg`. The exceptions are the three Tag tokens renamed by D-011, because Figma still uses their old names (Q-015).
+- **Naming rule:** key = developer token minus `--color-`. `{colors.alert-success-bg}` ↔ `--color-alert-success-bg` ↔ Figma `Alert/alert-success-bg`. The exceptions are two Tag tokens renamed by D-011 (`tag-warning`, `tag-danger`), because Figma still uses their old names (Q-015).
 - **To change a value:** change the Figma variable, then update the matching line in the front matter and the table below. No other line in this file should hard-code that hex.
 - Only a **Light** mode exists (D-015).
 
@@ -532,7 +545,7 @@ Values are the live variable values (D-001), read on 2026-10-02. There are 79 to
 |---|---|---|---|---|
 | `input-primary` | `Input/input-primary` | `--color-input-primary` | White | `#ffffff` |
 | `input-secondary` | `Input/input-secondary` | `--color-input-secondary` | Grey/200 | `#e8e9ea` |
-| `input-primary-active` | `Input/input-primary-active` | `--color-input-primary-active` | Grey/700 | `#535456` |
+| `input-primary-active` | `Input/input-primary-active` | `--color-input-primary-active` | Functional/Success/600 → Semantic Green/600 | `#267d2b` |
 | `input-disabled` | `Input/input-disabled` | `--color-input-disabled` | Grey/100 | `#f6f7f8` |
 | `input-text-primary` | `Input/input-text-primary` | `--color-input-text-primary` | Grey/900 | `#252628` |
 | `input-text-secondary` | `Input/input-text-secondary` | `--color-input-text-secondary` | Grey/700 | `#535456` |
@@ -582,7 +595,7 @@ Values are the live variable values (D-001), read on 2026-10-02. There are 79 to
 | `tag-default-border` | `Tag/tag-default-border` | `--color-tag-default-border` | Grey/200 | `#e8e9ea` |
 | `tag-success` | `Tag/tag-success` | `--color-tag-success` | Functional/Success/100 → Semantic Green/100 | `#eaf6ea` |
 | `tag-success-text` | `Tag/tag-success-text` | `--color-tag-success-text` | Functional/Success/700 → Semantic Green/700 | `#235825` |
-| `tag-success-border` | `Tag/chip-success-border` *(renamed here, D-011)* | `--color-tag-success-border` | Functional/Success/200 → Semantic Green/200 | `#cdeacf` |
+| `tag-success-border` | `Tag/tag-success-border` | `--color-tag-success-border` | Functional/Success/200 → Semantic Green/200 | `#cdeacf` |
 | `tag-warning` | `Tag/tag-warning-bg` *(renamed here, D-011)* | `--color-tag-warning` | Functional/Warning/100 → Semantic Yellow/100 | `#fff5e0` |
 | `tag-warning-text` | `Tag/tag-warning-text` | `--color-tag-warning-text` | Functional/Warning/700 → Semantic Yellow/700 | `#6b3e00` |
 | `tag-warning-border` | `Tag/tag-warning-border` | `--color-tag-warning-border` | Functional/Warning/200 → Semantic Yellow/200 | `#ffe5b2` |
@@ -645,7 +658,7 @@ These come from the Vyn Global library. They're listed for reference only, so do
   - Grey/600: *"New secondary text color"*.
   - Semantic Green/500: *"Main color; fill for success buttons and chips"*.
 - **Functional aliases:**
-  - `Functional/Success` (100, 200, 300, 500, 700) → Semantic Green
+  - `Functional/Success` (100, 200, 300, 600, 700) → Semantic Green. Step 600 replaced 500 on 2026-10-03.
   - `Functional/Danger` (100, 200, 300, 600, 700) → Semantic Red
   - `Functional/Warning` (100, 200, 300, 400, 700) → Semantic Yellow
   - `Functional/Info` (100, 200, 400, 500, 800) → Grey
@@ -654,7 +667,8 @@ These come from the Vyn Global library. They're listed for reference only, so do
 **Primitives used directly today:** four places in Figma bind a primitive because no semantic token exists yet. These are `brand-green` (the logo mark), `grey-500` (navbar workflow-switcher border), `grey-600` (navbar icon-button fill) and `grey-700` (sidebar footer divider). They're in the front matter under their primitive names so they're easy to find and replace once semantic tokens exist (Q-003).
 
 ### Usage guidance
-- **Actions are charcoal, not green** (D-024). `button-primary`, `link-primary` and `link-primary-active` are Grey/900, and `input-primary-active` is Grey/700. The UI is neutral, and color is kept for status and for Vyn AI.
+- **Actions are charcoal, not green** (D-024). `button-primary`, `link-primary` and `link-primary-active` are Grey/900. The UI is neutral, and color is kept for status, selection and Vyn AI.
+- **Selection is green** (D-045). `input-primary-active` is Semantic Green/600 (#267D2B): the checked checkbox, radio and switch, and the selected dropdown item. It's a darker, calmer green than the neon brand green, so the two never compete. White on it is 5.2:1.
 - **Never put a Primary Filled button on `background-dark`.** Both are Grey/900 today (1:1), so the button disappears. On dark chrome, use the outline treatment the workflow switcher uses (Q-016).
 - **Hover and pressed are overlays, not new colors.** Light fills darken with `state-hover-shade` (black 15%) / `state-pressed-shade` (black 20%). Charcoal fills (dark chrome *and* Primary buttons) lighten with `state-hover-tint` / `state-pressed-tint` (white 15% / 20%). See *Buttons* for the per-type rules (D-034).
 - **Borders:**
@@ -796,7 +810,7 @@ Rules:
   - **MUI** (Material, names ending `_MUI`, such as `add_MUI`, `call_MUI` and `notifications_bell_outline_MUI`).
   - **Bootstrap Icons** (such as `chevron-down`, `chevron-up`, `chevron-left`, `x`, `x-lg`, `person-fill` and `caret-down-fill`).
 - **How the Web App components use them:** Bootstrap glyphs for controls (dropdown chevrons, alert close `x-lg`, accordion carets, the `person-fill` input add-on, the sidebar collapse chevron) and MUI glyphs for actions (add, call, notifications). The workflow-switcher caret is the custom `arrow_drop_down`. Which set new icons should default to is open (Q-027).
-- **No search icon yet.** Vyn Global has `search_MUI` and a Bootstrap `search`, but no Web App component uses either (Q-025).
+- **Search uses `search_MUI`** (D-041). The search input pattern itself will be defined later.
 - **Don't redraw icons.** Use the Figma exports, so the glyph and its padding match the file.
 - **Vynnie** is the Vyn mascot (see *Brand & Mascot*). A face-less Vynnie silhouette (`.vynnie no face`) is the sidebar icon for Cases and Vyns. The full smiling Vynnie is a brand asset, so keep it for brand moments (empty states, onboarding, Vyn AI identity) and don't use it as a generic icon.
 - Sizes: 20px in the sidebar, 16px inside buttons (18px in Large), 16px in dropdown triggers, alerts and the accordion, 22px in input add-ons, and 22.5px inside the 40px navbar icon button.
@@ -839,8 +853,8 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
   - Enabled.
   - Error: the border and message both switch to `input-danger`.
   - Disabled: `input-disabled` fill with `input-text-disabled` text.
-  - Active: `input-primary-active` border.
-  - Focus: the blue focus ring.
+  - Focus: a 1px `focus-border-focus` border plus the blue focus ring. Figma has a Focus toggle on the Input Group for this.
+  - There's **no "Active" state** in the Figma Input Group or Textarea. `input-primary-active` is the selection color (see *Checkbox, Radio & Switch*), not an input border (D-046).
 - **Values:** Empty, Placeholder or Populated. Placeholder text is never a substitute for a label.
 - **Required fields:** mark them with `*` after the label. When most fields are required, mark the optional ones instead.
 - **Validation (Bootstrap):** use `.is-invalid` on the control with an `.invalid-feedback` message. Validate on blur or submit, not on every keystroke. Show one specific message under the field, such as "Enter a postcode like SW1A 1AA" rather than "Invalid input".
@@ -848,15 +862,20 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 
 ### Dropdown
 - **Trigger:** 48px tall, styled like an input, with optional label and icon. It has Collapsed, Expanded and Selected states. It shows a 16px `chevron-down` in `input-text-secondary`, which becomes `chevron-up` while the menu is open.
+- **Selected trigger:** the chosen value in `input-text-primary`, then a clear button (a 16px `x` in a 24px-tall area with an `input-border` divider on its left), then the chevron.
 - **Focus:** the same as every other form control: a 1px `focus-border-focus` border plus the 4px `focus-shadow-focus` ring (Figma's "Focus border" layer on the trigger).
-- **Menu:** opens 8px below the trigger, with an `input-primary` fill, 1px `input-border` border, 4px radius and elevation 8. Items are 48px tall with 12px padding in 16px Regular text, and have Enabled, Hover (black 15% overlay), Pressed (black 20%) and Selected states.
+- **Menu:** opens 8px below the trigger, with an `input-primary` fill, 1px `input-border` border, 4px radius and elevation 8. Items are 48px tall with 12px padding in 16px Regular text. States: Enabled (`input-primary`), Hover (`state-hover-shade` over it), Pressed (`state-pressed-shade`) and **Selected**, which fills with `input-primary-active` and switches the text to `input-text-light`.
 - **Menu headers** group items. They get extra top padding (16px) and a divider.
 - In code: use `.form-select` for a plain single-value select, and `.dropdown` + `.dropdown-menu` when items need icons, headers or custom rendering.
 - Use a dropdown for **5 or more** mutually exclusive options. For 2–4 options, use radio buttons so all choices are visible, following Bootstrap's form guidance.
 
 ### Checkbox, Radio & Switch
-- **Checkbox anatomy:** a 16px box with a 1px `input-border`, 4px radius and an `input-primary` fill. **Checked**, it fills with `input-primary-active` and shows a white (`input-primary`) checkmark; there's no separate border. The label is `body-base` in `input-text-primary`, 8px from the box. The checked radio dot and the switch track use the same `input-primary-active`. Focus is the blue ring (Figma's checked variant uses an `input-primary-active` focus border instead, Q-026).
-- **Checkbox:** for multiple independent choices. The Vyn-specific **Excluded** state (from `.Checkbox-exclude`) lets filters express "everything except…". Groups can be vertical (default) or horizontal.
+- **Checkbox anatomy:** a 16px box with a 1px `input-border`, 4px radius and an `input-primary` fill. **Checked**, it fills with `input-primary-active` (green) and shows a white (`input-primary`) checkmark; there's no separate border. The label is `body-base` in `input-text-primary`, 8px from the box.
+- **Radio:** unchecked is an `input-primary` circle with a 1px `input-border`. Checked is an `input-primary-active` circle with a white center dot.
+- **Switch:** off is an `input-primary` track with a 1px `input-border` and an `input-border` knob. On is an `input-primary-active` track with a white knob.
+- **Disabled** checkbox, radio and switch: the whole control, label included, at **50% opacity**, in both checked and unchecked states.
+- **Focus:** the blue focus border and ring on every selection control, checked or not (D-043). Figma's checked checkbox still has a grey focus layer, which needs updating (Q-032).
+- **Checkbox:** for multiple independent choices. The Vyn-specific **Excluded** state (its look isn't designed yet, Q-029) (from `.Checkbox-exclude`) lets filters express "everything except…". Groups can be vertical (default) or horizontal.
 - **Radio Button:** a single choice among 2–5 visible options. Groups come preconfigured with 5 slots, and items should be set to fill in vertical groups.
 - **Switch (Toggle):** Bootstrap's `.form-check.form-switch`. An instant on/off setting that applies without a Save button. When the change only applies on submit, use a checkbox instead.
 - All three support Required and Focus states.
@@ -881,16 +900,36 @@ Figma defines 108 variants: **Type** (Primary / Secondary / Danger) × **Style**
 
 ### Badge, Avatar & Tooltip
 - **Badge:** `.badge.rounded-pill`. An 18px pill counter, positioned inline or top-right (absolute). Types are Primary, Secondary and Danger, and the navbar notification badge uses Danger. **Cap at "99+".**
-- **Avatar:** 40px circle in three types. Text shows two initials from the user's first name, Image uses a photo fill, and Icon shows the profile silhouette. Sizes are S, M and L, with Enabled, Hover, Pressed and Inactive states.
+- **Avatar:** 40px circle in three types. Text shows two initials from the user's first name, Image uses a photo fill, and Icon shows the profile silhouette. Sizes are S, M and L.
+  - **Colors:** a `button-secondary` fill with a 1px `button-secondary` border, and Medium initials in `link-secondary`.
+  - **States:** Hover adds `state-hover-shade`, Pressed adds `state-pressed-shade`, and Inactive switches the fill and border to `button-disabled`.
 - **Tooltip:** four positions with fixed or auto width. Bootstrap 5 tooltips are opt-in, so initialize them in JS. Following Bootstrap, tooltips are **supplementary only**. They open on hover *and* keyboard focus, never hold essential information or interactive content, and aren't used on disabled elements without a focusable wrapper.
 
 ### Navigation
 - **Navbar** (64px, chrome): the logo, the workflow switcher (a Medium outline Button, 14px label), the notification icon button with its badge, and the avatar menu.
-- **Sidebar** (250px, chrome): groups under uppercase section labels in the `eyebrow` style (12px Medium, +1px tracking) and `link-secondary-disabled` (D-033), with 20px icon + `body-base-medium` label links. Default links use `link-secondary-light`, and the active link uses `link-secondary-light-active`. There are Expanded (250px) and Collapsed (55px, icons only, no link or section labels) variants, with a `chevron-left` collapse control in the footer.
+- **Sidebar** (250px, chrome): groups under uppercase section labels in the `eyebrow` style (12px Medium, +1px tracking) and `link-secondary-disabled` (D-033), with 20px icon + `body-base-medium` label links. Link states (from Figma): Enabled has a `link-secondary-light` label and a Grey/500 icon. Active turns both label and icon `link-secondary-light-active` (white). Hover and Pressed lay `state-hover-tint` / `state-pressed-tint` over the label and icon color. **No state adds a background fill.** There are Expanded (250px) and Collapsed (55px, icons only, no link or section labels) variants, with a `chevron-left` collapse control in the footer.
+- **Notifications panel** (opened from the bell). This is a summary of the production app. It describes the content and structure only, because the design system wins over production visuals (D-042):
+  - A "Notifications" title with a "Clear All" link.
+  - Items grouped by recency, for example "Older".
+  - Each item has a type icon (with an unread dot), a title such as "New Comment" or "New Comment Mention", "from" and the sender, a message preview, and a date.
+  - A "View All" link at the bottom opens the full activity history.
+  - Production shows dates as MM/DD/YYYY, which is a US format in a UK-first product (Q-035).
+- **Avatar menu** (from the avatar): Management, Workflows and Settings, a divider, then Logout.
+- **Workflow switcher menu:** "No Workflow Selected" first, a divider, then every workflow the user can access. The current workflow is shown as the selected item.
 - The **BETA pill** next to the WORKFLOW label is a **temporary placeholder**. Its purple colors aren't part of the Vyn system, so don't reuse them or build on them. If a pre-release marker is needed before one is designed, use a neutral Tag (`Tag/tag-default`).
+
+### Empty states
+- **No results:** a centered illustration (Vynnie asleep under a moon), a heading ("No Vyns found") and one line explaining why ("No Vyns found with the selected filters."). This is how production shows a search with no results (D-042).
+- Production colors the heading green, and there's no token for that (Q-033). Until it's decided, use `text-primary`.
+- Other empty, loading and error states will be resolved later (Q-030).
 
 ### TBD components
 Breadcrumb, Chip and Tag (on hold, though tokens exist), Filters, Modal, Pagination, Progress, Table and Video Player are **TBD**. They have placeholder pages in Figma but no design yet. Until they're designed, **use the stock Bootstrap 5 component with Vyn tokens**: 4px radius, `input-border` borders, Inter type and the semantic color tokens. Don't invent a bespoke version.
+- **Table** (D-036): tables come from Bootstrap today. The case list's layout and organization are likely to change.
+- **Filters** (D-038): use Bootstrap's filter behavior with Vyn branding until a Vyn component is built.
+- **Modal, Pagination, Breadcrumb, Progress, Stepper, Chip and Tag** (D-037): deferred. Use the Bootstrap component.
+- **Video Player and the Vyn Viewer contents** (D-039): being redesigned along with the AI UI, so don't treat today's layout as final.
+- **Every other undocumented component** (D-040) defaults to Bootstrap with Vyn tokens. Documenting the remaining Figma sets isn't a priority.
 
 ### Bootstrap theming map
 Set these Bootstrap 5 Sass variables (or their `--bs-*` CSS variables) from Vyn tokens so that stock components pick up the brand:
@@ -902,7 +941,7 @@ Point each variable at the Vyn CSS variable rather than pasting a hex, so that a
 | `$primary` / `--bs-primary` | `var(--color-button-primary)` (Grey/900 in v2) |
 | `$secondary` | `var(--color-button-secondary)` |
 | `$danger` | `var(--color-button-danger)` |
-| `$success` | `Functional/Success/500` primitive, Semantic Green/500 (no semantic token yet, see Q-004) |
+| `$success` | `Functional/Success/600` primitive, Semantic Green/600 (no semantic token yet, see Q-004) |
 | `$warning` | `Functional/Warning/400` primitive, Semantic Yellow/400 (no semantic token yet, see Q-004) |
 | `$body-color` | `var(--color-text-primary)` |
 | `$body-secondary-color` | `var(--color-text-secondary)` |
@@ -939,7 +978,7 @@ Dropdown menus open instantly, with no animation, which is also Bootstrap's defa
 
 ## Vyn AI UI
 
-> **Status: in progress.** The team is currently working to make Vyn AI's outputs more **transparent, helpful and actionable** for web-app users. Rules in this section are provisional, and there are no dedicated AI components or tokens in Figma yet. Treat this section as direction, not spec.
+> **Status: in progress.** The team is currently working to make Vyn AI's outputs more **transparent, helpful and actionable** for web-app users. AI outputs are undergoing a **complete redesign** in the product (D-039), which will also reshape the Vyn Viewer. Rules in this section are provisional, and there are no dedicated AI components or tokens in Figma yet. Treat this section as direction, not spec.
 
 ### Scope
 This section covers **AI UI**: how Vyn AI's outputs are *presented in the desktop web app*, mainly in the **Vyn Viewer**.
@@ -1024,7 +1063,7 @@ The Brand Feel audit defines four values and four voice principles. They apply t
 ## Do's and Don'ts
 
 ### Do
-- Use the charcoal action tokens (`button-primary`, `link-primary`, `input-primary-active`) for actions: primary buttons, links, the active input and the selected tab.
+- Use the charcoal action tokens (`button-primary`, `link-primary`) for actions: primary buttons, links and the selected tab. Use `input-primary-active` (green) for selected controls.
 - Use the most specific semantic token for every property, even when a different token has the same value today. Tokens will diverge as the DLS evolves.
 - Build every screen from one of the four shell templates, and keep the 24px content padding.
 - Use weight (400 → 500 → 600) to create hierarchy before reaching for a bigger size.
@@ -1070,6 +1109,7 @@ Desktop pointer targets must be at least **24 × 24px** (WCAG 2.2, 2.5.8). The S
   - `text-primary`, `link-primary` and `button-primary` on `background-primary`: 15.2:1.
   - `text-secondary` on `background-primary`: 7.6:1. On `background-secondary` it's 7.1:1.
   - `button-primary-text` on `button-danger`: 5.0:1.
+  - `input-text-light` and `input-primary` (white) on `input-primary-active`: 5.2:1. `input-primary-active` against white is also 5.2:1, which passes 3:1 for a control.
   - `link-secondary-light` on `background-dark`: 9.4:1. `link-secondary-disabled` (sidebar labels) on `background-dark` is 5.9:1.
   - `input-border` on white: 3.8:1, which passes the 3:1 minimum for control borders. `input-border-disabled` is 1.6:1 and `border` is 1.2:1, so use those only for disabled or decorative edges.
   - Alert text on its own background: 7.6:1 (success), 8.4:1 (warning), 7.8:1 (danger) and 9.1:1 (default).
@@ -1108,7 +1148,7 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **D-008:** the sidebar is 250px, and the drawer inset is 290px.
 - **D-009:** the Workflow switcher is a Medium Button with a 14px label.
 - **D-010:** token names mirror the developer tokens and are never merged.
-- **D-011:** the Tag token renames (Figma still has the old names, Q-015).
+- **D-011:** the Tag token renames (Figma now matches for `tag-success-border`; two still differ, Q-015).
 - **D-012:** the neon brand green is for Vyn AI outputs and the logo only. *(provisional)*
 - **D-013:** AI UI scope is outputs in the web app, not nudges or Agentic Toolbox.
 - **D-023:** the v2 palette (cool greys, Semantic Red, Yellow and Green, a rebuilt Green ramp).
@@ -1122,6 +1162,16 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **D-032:** `DESIGN.md` and the v2 template page are kept in sync. The branded page is best-effort.
 - **D-033:** sidebar section labels use `eyebrow`.
 - **D-034:** hover and pressed overlays depend on the button type (Primary lightens, Secondary and Danger darken).
+- **D-036:** tables come from Bootstrap; the case list is likely to be reorganized.
+- **D-037:** Modal, Pagination, Breadcrumb, Progress, Stepper, Chip and Tag are deferred, so use Bootstrap. *(deferred)*
+- **D-038:** filters use Bootstrap behavior with Vyn branding.
+- **D-039:** Video Player, the Vyn Viewer and AI outputs are being redesigned with the AI UI. *(provisional)*
+- **D-040:** undocumented components default to Bootstrap; documenting them isn't a priority.
+- **D-041:** search uses `search_MUI`.
+- **D-042:** production screenshots document content and structure only; the design system wins.
+- **D-043:** every selection control gets the blue focus border, checked or not.
+- **D-044:** component states match the Figma spec (sidebar links, avatar, disabled selection controls, selected dropdown item).
+- **D-045:** `input-primary-active` is Semantic Green/600, so selection is green.
 - **Proposed, awaiting confirmation:**
   - **D-018:** neon on light grounds is only a fill.
   - **D-019:** one Vyn AI marker.
@@ -1129,6 +1179,7 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
   - **D-021:** the standard name is "Agentic Toolbox".
   - **D-028:** type keys use the text-style names.
   - **D-035:** icons come only from Vyn Global's MUI and Bootstrap sets.
+  - **D-046:** inputs have no "Active" state.
 
 **Deferred.** Leave these as they are until resolved:
 - **D-014:** the secondary outline button border (`button-secondary`, about 1.2:1 on white).
@@ -1142,7 +1193,6 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-006:** `AI/*` tokens and an AI output component.
 - **Q-007:** fix the Green/600 description.
 - **Q-008:** do Agentic Toolbox outputs get the neon marker?
-- **Q-009:** document the remaining component sets.
 - **Q-010:** review the marketing site.
 - **Q-011:** confirm the 1280px minimum width.
 - **Q-012:** a logo for light backgrounds?
@@ -1154,7 +1204,12 @@ The full record, with dates, owners, reasons and history, lives in [`DECISIONS.m
 - **Q-020:** `Brand/Black` vs `background-dark`.
 - **Q-021:** CSS tokens for the v2 text styles.
 - **Q-024:** the Primary Pressed stroke uses the shade.
-- **Q-025:** which search icon?
-- **Q-026:** the checked checkbox's focus border.
 - **Q-027:** MUI or Bootstrap Icons as the default set?
 - **Q-028:** apply `eyebrow` to the Figma Sidebar labels.
+- **Q-029:** the Excluded checkbox look.
+- **Q-030:** loading, empty and error state patterns.
+- **Q-031:** hover and pressed states for clickable cards.
+- **Q-032:** update the checked checkbox's focus layer to blue in Figma.
+- **Q-033:** the green empty-state heading has no token.
+- **Q-034:** design the notifications panel and navbar menus as Figma components.
+- **Q-035:** date format (production shows MM/DD/YYYY).
